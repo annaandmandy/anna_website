@@ -10,6 +10,7 @@ import About from './pages/About';
 import Footer from './components/footer';
 import GorillaCharms from './pages/GorillaCharms';
 import Booklet from './pages/Booklet';
+import MessageBoard from './pages/MessageBoard';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/interests" element={<Interests />} />
         <Route path="/gorillacharms" element={<GorillaCharms />} />
         <Route path="/booklet" element={<Booklet />} />
+        <Route path="/messageboard" element={<MessageBoard />} />
       </Routes>
       <Footer />
     </>
