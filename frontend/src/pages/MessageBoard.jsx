@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function MessageBoard() {
     const [messages, setMessages] = useState([]);
@@ -55,13 +57,13 @@ export default function MessageBoard() {
     return (
         <div className="container-fluid py-3" style={{ backgroundColor: "#fffceb"}}>
             {/* Heading */}
-            <div className="text-center mb-5">
+            <div className="text-center mb-5" data-aos="fade-down">
                 <h1 className="fw-bold">Message Board</h1>
                 <p>Leave Me A Message, And Click to Add Likes!</p>
             </div>
 
             {/* Floating messages container */}
-            <div className="position-relative w-100 rounded mb-5" style={{ maxWidth: "800px", margin: "0 auto", maxHeight: "500px", overflowY: "auto" }}>
+            <div className="position-relative w-100 rounded mb-5" style={{ maxWidth: "800px", margin: "0 auto", maxHeight: "500px", overflowY: "auto" }} data-aos="fade-up">
                 {messages.map((m, i) => (
                 <div
                     key={m.id}
@@ -79,7 +81,7 @@ export default function MessageBoard() {
             </div>
 
             {/* Form */}
-            <div className="d-flex flex-column align-items-center mb-5">
+            <div className="d-flex flex-column align-items-center mb-5" data-aos="fade-up">
                 <form
                 onSubmit={handleSubmit}
                 className="w-full"
