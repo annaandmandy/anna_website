@@ -12,7 +12,8 @@ export default function MessageBoard() {
         const { data, error } = await supabase
         .from("Message")
         .select("*")
-        .order("likes", { ascending: false });
+        .order("likes", { ascending: false })
+        .order("created_at", { ascending: false });
         console.log(data);
 
         if (error) {
@@ -27,7 +28,7 @@ export default function MessageBoard() {
         const form = e.target;
         const content = form.content.value;
 
-        if (!name || !content) return;
+        if (!content) return;
 
         const { error } = await supabase
         .from("Message")
@@ -44,30 +45,35 @@ export default function MessageBoard() {
         fetchMessages();
     };
 
-    const getColor = (likes) => {
-        if (likes === 0) return "bg-gray-300 text-black";
-        if (likes < 10) return "bg-blue-300 text-black";
-        if (likes < 50) return "bg-pink-400 text-black";
-        return "bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 text-black";
-    };
+    // const getColor = (likes) => {
+    //     if (likes === 0) return "bg-gray-300 text-black";
+    //     if (likes < 10) return "bg-blue-300 text-black";
+    //     if (likes < 50) return "bg-pink-400 text-black";
+    //     return "bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 text-black";
+    // };
 
     return (
         <div className="container-fluid py-3" style={{ backgroundColor: "#fffceb"}}>
             {/* Heading */}
             <div className="text-center mb-5">
                 <h1 className="fw-bold">Message Board</h1>
+                <p>Leave Me A Message, And Click to Add Likes!</p>
             </div>
 
             {/* Floating messages container */}
-            <div className="relative w-full border rounded-md mb-5" style={{ maxWidth: "800px", margin: "0 auto", maxHeight: "800px", overflowY: "auto" }}>
+            <div className="position-relative w-100 rounded mb-5" style={{ maxWidth: "800px", margin: "0 auto", maxHeight: "500px", overflowY: "auto" }}>
                 {messages.map((m, i) => (
                 <div
                     key={m.id}
-                    className={`absolute px-4 py-2 rounded-full shadow-md cursor-pointer ${getColor(m.likes)}`}
+                    className={`d-flex justify-content-between align-items-center mb-3 p-3 rounded shadow-sm cursor-pointer`}
+                    style={{
+                        background: "linear-gradient(135deg, #ffecd2, #fffbea)",
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    }}
                     onClick={() => handleLike(m.id, m.likes)}
                 >
-                    {m.content} 
-                    <span className="ml-2 px-5">♡{m.likes}</span>
+                    <span>{m.content}  &nbsp; ♡  {m.likes}</span>
+                    <span className="text-muted" style={{ fontSize: "0.8rem" }}> - {new Date(m.created_at).toLocaleString()}</span>
                 </div>
                 ))}
             </div>
