@@ -7,6 +7,10 @@ export default function MessageBoard() {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
+        AOS.init({ duration: 1000 });
+      }, []);
+
+    useEffect(() => {
         fetchMessages();
     }, []);
 
