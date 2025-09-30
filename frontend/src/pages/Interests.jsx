@@ -25,6 +25,11 @@ export default function Interests() {
                             Booklet
                         </a>
                     </li>
+                    <li className="nav-item" >
+                        <a className="nav-link active" aria-current="page" href="https://huanghybu.cargo.site/">
+                            Collages
+                        </a>
+                    </li>
                 </ul>
             </div>
             
