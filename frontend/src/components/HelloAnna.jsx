@@ -19,7 +19,7 @@ export default function HelloAnna() {
                 {/* Welcome Image Section */}
                 <div className="col-lg-6 text-center">
                     <img
-                        src="src/assets/anna-welcome.png"
+                        src="/img_main/anna-welcome.png"
                         alt="anna-welcome"
                         className="img-fluid"
                         style={{ maxWidth: "500px" }}

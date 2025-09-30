@@ -7,7 +7,7 @@ export default function Navbar() {
                 {/* Brand Logo */}
                 <a className="navbar-brand" href="/">
                     <img
-                        src="/src/assets/IMG_0505.PNG"
+                        src="/img_main/IMG_0505.PNG"
                         alt="Logo"
                         width="30"
                         height="30"

@@ -34,7 +34,7 @@ export default function About() {
             </div>   
             <div>
                 <img
-                src="src/assets/anna-welcome.png"
+                src="/img_main/anna-welcome.png"
                 alt="Anna"
                 style={{
                     width: "300px",
@@ -55,7 +55,7 @@ export default function About() {
         <div className="col-md-6 col-lg-4" data-aos="fade-up">
           <div className="card h-100 shadow-sm" style={{backgroundColor: "rgb(250, 247, 217)", borderTop: "6px solid #FFD93D"}}>
             <img
-              src="src/assets/pikmin_walk.png"
+              src="/img_main/pikmin_walk.png"
               className="card-img-top p-3"
               alt="Walking"
               style={{ height: "300px", objectFit: "contain" }}
@@ -83,7 +83,7 @@ export default function About() {
         <div className="col-md-6 col-lg-4" data-aos="fade-up">
           <div className="card h-100 shadow-sm"  style={{backgroundColor: "rgb(250, 247, 217)", borderTop: "6px solid #FFD93D"}}>
             <img
-              src="src/assets/drawing_cat.jpg"
+              src="/img_main/drawing_cat.jpg"
               className="card-img-top p-3"
               alt="Drawing"
               style={{ height: "300px", objectFit: "contain" }}
@@ -110,7 +110,7 @@ export default function About() {
         <div className="col-md-6 col-lg-4" data-aos="fade-up">
           <div className="card h-100 shadow-sm"  style={{backgroundColor: "rgb(250, 247, 217)", borderTop: "6px solid #FFD93D"}}>
             <img
-              src="src/assets/silksong.png"
+              src="/img_main/silksong.png"
               className="card-img-top p-3"
               alt="Gaming"
               style={{ height: "300px", objectFit: "contain" }}

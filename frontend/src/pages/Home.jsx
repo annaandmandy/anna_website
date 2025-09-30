@@ -41,7 +41,7 @@ export default function Home() {
             </div>    
             <div>
                 <img
-                src="src/assets/anna_nobg.png"
+                src="/img_main/anna_nobg.png"
                 alt="Anna"
                 style={{
                     width: "400px",
