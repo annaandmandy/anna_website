@@ -1,9 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as LAppDefine from "../../public//live2d/src/lappdefine";
 import { LAppDelegate } from "../../public/live2d/src/lappdelegate";
+import { useNavigate } from 'react-router-dom';
 
 const Live2DViewer = () => {
     const initialized = useRef(false);
+    const [showDialog, setShowDialog] = useState(false);
+    const [dialogMessage, setDialogMessage] = useState('');
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (initialized.current) return;
         initialized.current = true;
@@ -14,14 +19,80 @@ const Live2DViewer = () => {
             return;
         }
         delegate.run();
+
+        // Access the Live2D manager through the subdelegate
+        // Wait a bit for initialization to complete
+        setTimeout(() => {
+            // Get the first subdelegate (index 0)
+            const subdelegate = delegate._subdelegates?.at(0);
+            if (subdelegate) {
+                const live2DManager = subdelegate.getLive2DManager();
+                if (live2DManager) {
+                    live2DManager.onUserTap = (area) => {
+                        console.log('User tapped:', area);
+                        console.log('Detected')                       
+                        setDialogMessage('Awww! (*/ω＼*)');
+                        setShowDialog(true);
+                        console.log(dialogMessage);
+                        console.log(showDialog);
+                        setTimeout(() => {
+                                setShowDialog(false);
+                            }, 3000);
+                    };
+                }
+            }
+        }, 100); // Small delay to ensure initialization is complete
+        
         
     }, []);
 
     return (
-        <div
-            id="live2d-container"
-            />
-    ); 
+        <>
+         <div id="live2d-canvas"/>
+            {showDialog && (
+                <div>
+                    <div >
+                        <p style={{
+                            position: 'fixed',
+                            bottom: "30vh",
+                            right: "15px",
+                            transform: 'translateX(-50%)',
+                            background: 'white',
+                            opacity: '0.8',
+                            padding: '15px 25px',
+                            borderRadius: '10px',
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                            zIndex: 10000,
+                            minWidth: '200px',
+                            textAlign: 'center'
+                        }}>
+                            {dialogMessage}
+                        </p>
+                        {/* <button style={{
+                            position: 'fixed',
+                            bottom: "22vh",
+                            right: "calc(20vw + 30px)",
+                            backgroundColor: "white",
+                            border: '2px solid transparent',
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                            borderRadius: '50%',
+                            width: '60px',
+                            maxWidth: '',
+                            height: '60px',
+                            fontSize: '30px',
+                            cursor: 'pointer',
+                            zIndex: 10000,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'}} onClick={() => navigate('/')} >
+                            🏚️
+                        </button> */}
+                    </div>
+                        
+                </div> 
+            )} 
+        </>
+    );
 };
 
 export default Live2DViewer;

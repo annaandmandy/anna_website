@@ -23,6 +23,7 @@
   max-width: 40vw;
   pointer-events: none; /* Make the canvas non-interactive */
   z-index: 1000; /* Ensure the canvas is on top of other elements */
+  overflow: auto;
 }
 
  /*
