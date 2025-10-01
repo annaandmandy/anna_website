@@ -6,18 +6,25 @@
 			"winni.1024/texture_00.png"
 		],
 		"Physics": "winni.physics3.json",
+		"UserData": "winni.userdata3.json",
 		"DisplayInfo": "winni.cdi3.json"
 	},
 	"Groups": [
 		{
 			"Target": "Parameter",
-			"Name": "EyeBlink",
+			"Name": "LipSync",
 			"Ids": []
 		},
 		{
 			"Target": "Parameter",
-			"Name": "LipSync",
+			"Name": "EyeBlink",
 			"Ids": []
+		}
+	],
+	"HitAreas": [
+		{
+			"Id": "Whole",
+			"Name": "Body"
 		}
 	]
 }

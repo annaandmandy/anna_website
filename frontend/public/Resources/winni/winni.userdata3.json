@@ -1,0 +1,14 @@
+{
+	"Version": 3,
+	"Meta": {
+		"UserDataCount": 1,
+		"TotalUserDataSize": 7
+	},
+	"UserData": [
+		{
+			"Target": "ArtMesh",
+			"Id": "Whole",
+			"Value": "HitArea"
+		}
+	]
+}

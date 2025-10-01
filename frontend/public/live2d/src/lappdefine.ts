@@ -56,6 +56,26 @@ export const ModelDir: string[] = [
 ];
 export const ModelDirSize: number = ModelDir.length;
 
+
+export const ModelDirWords: Record<string, string[]> = {
+  "anna" : [
+    'Awwwww! (*/ω＼*)',
+  ],
+  "carrie" : [
+    'OMG You are so cute! (❁´◡`❁)',
+  ],
+  "winni" : [
+    'Hey Bro! Whats up?(〜￣▽￣)〜',
+  ],
+  "carlos" : [
+    'Skibidi (° ͜ʖ °)',
+  ],
+  "charlie" : [
+    '=￣ω￣=',
+  ]
+};
+
+
 // 外部定義ファイル（json）と合わせる
 export const MotionGroupIdle = 'Idle'; // アイドリング
 export const MotionGroupTapBody = 'TapBody'; // 体をタップしたとき
