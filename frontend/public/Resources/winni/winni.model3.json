@@ -19,15 +19,5 @@
 			"Name": "LipSync",
 			"Ids": []
 		}
-	],
-	"HitAreas": [
-		{
-			"Id": "HitArea",
-			"Name": "Body"
-		},
-		{
-			"Id": "HitArea2",
-			"Name": "Head"
-		}
 	]
 }

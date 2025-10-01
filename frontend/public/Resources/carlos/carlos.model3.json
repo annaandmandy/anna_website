@@ -1,12 +1,12 @@
 {
 	"Version": 3,
 	"FileReferences": {
-		"Moc": "carrie.moc3",
+		"Moc": "carlos.moc3",
 		"Textures": [
-			"carrie.1024/texture_00.png"
+			"carlos.1024/texture_00.png"
 		],
-		"Physics": "carrie.physics3.json",
-		"DisplayInfo": "carrie.cdi3.json"
+		"Physics": "carlos.physics3.json",
+		"DisplayInfo": "carlos.cdi3.json"
 	},
 	"Groups": [
 		{
