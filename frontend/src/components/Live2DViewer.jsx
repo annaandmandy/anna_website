@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { LAppDelegate } from "../live2d/src/lappdelegate";
-import * as LAppDefine from "../live2d/src/lappdefine";
+import * as LAppDefine from "../../public//live2d/src/lappdefine";
+import { LAppDelegate } from "../../public/live2d/src/lappdelegate";
 
 const Live2DViewer = () => {
     const initialized = useRef(false);
