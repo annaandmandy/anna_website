@@ -39,6 +39,11 @@ export class LAppLive2DManager {
     }
   }
 
+  
+  /* Add an OnUserTap to monitor if the user clicks or not*/
+  public onUserTap: ((area: string) => void) | null = null;
+
+
   /**
    * 画面をタップした時の処理
    *
@@ -58,11 +63,13 @@ export class LAppLive2DManager {
       if (LAppDefine.DebugLogEnable) {
         LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameHead}]`);
       }
+      if (this.onUserTap) this.onUserTap("head");
       model.setRandomExpression();
     } else if (model.hitTest(LAppDefine.HitAreaNameBody, x, y)) {
       if (LAppDefine.DebugLogEnable) {
         LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameBody}]`);
       }
+      if (this.onUserTap) this.onUserTap("body");
       model.startRandomMotion(
         LAppDefine.MotionGroupTapBody,
         LAppDefine.PriorityNormal,
@@ -71,6 +78,7 @@ export class LAppLive2DManager {
       );
     }
   }
+
 
   /**
    * 画面を更新するときの処理
