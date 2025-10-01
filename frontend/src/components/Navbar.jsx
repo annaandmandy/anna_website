@@ -48,10 +48,11 @@ export default function Navbar() {
                             </a>
                             <ul className="dropdown-menu">
                                 <li><a className="dropdown-item" href="https://github.com/annaandmandy/Skill_demonstration">Overall</a></li>
-                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/25LPCVC_Track2_Segmentation_Sample_Solution">DS542: Deep Learning Project</a></li>
-                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/ds598_azure/tree/hw">DS598: Azure Big Data Project</a></li>
-                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/ds701_fa2024_assignments">DS701: Data Science Project</a></li>
-                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/seniorProject-machineLearning">Undergrad Thesis</a></li>
+                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/25LPCVC_Track2_Segmentation_Sample_Solution">25LPCVC_Track2 Project</a></li>
+                                <li><a className="dropdown-item" href="https://www.citaleco.com">Citale Website</a></li>
+                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/ds598_azure/tree/hw">Big Data Engineering HW</a></li>
+                                <li><a className="dropdown-item" href="https://strickds.com/">Strick Data Solutions</a></li>
+                                <li><a className="dropdown-item" href="https://drive.google.com/file/d/1UmiLAO-Hok-t_WhGOM4XEx5YTtSEzRei/view">C++ Game Demo</a></li>
                             </ul>
                         </li>
                         <li className="nav-item">
