@@ -1,0 +1,79 @@
+# Query: @framework
+# ContextLines: 1
+
+29 results - 7 files
+
+frontend/vite.config.js:
+  11      alias: {
+  12:       '@framework': path.resolve(__dirname, '../Framework/src'), // Adjust path to where you copied Framework
+  13      }
+
+frontend/src/components/Live2DModel.jsx:
+  1  import { useEffect, useRef } from "react";
+  2: import { Live2DCubismFramework } from "../Frameworksrc/live2dcubismframework";
+  3  
+
+frontend/src/live2d/src/lappdelegate.ts:
+   7  
+   8: import { csmVector } from '@framework/type/csmvector';
+   9: import { CubismFramework, Option } from '@framework/live2dcubismframework';
+  10  import * as LAppDefine from './lappdefine';
+
+  12  import { LAppSubdelegate } from './lappsubdelegate';
+  13: import { CubismLogError } from '@framework/utils/cubismdebug';
+  14  
+
+frontend/src/live2d/src/lapplive2dmanager.ts:
+   7  
+   8: import { CubismMatrix44 } from '@framework/math/cubismmatrix44';
+   9: import { ACubismMotion } from '@framework/motion/acubismmotion';
+  10: import { csmVector } from '@framework/type/csmvector';
+  11  
+
+frontend/src/live2d/src/lappmodel.ts:
+   7  
+   8: import { CubismDefaultParameterId } from '@framework/cubismdefaultparameterid';
+   9: import { CubismModelSettingJson } from '@framework/cubismmodelsettingjson';
+  10  import {
+
+  12    CubismBreath
+  13: } from '@framework/effect/cubismbreath';
+  14: import { CubismEyeBlink } from '@framework/effect/cubismeyeblink';
+  15: import { ICubismModelSetting } from '@framework/icubismmodelsetting';
+  16: import { CubismIdHandle } from '@framework/id/cubismid';
+  17: import { CubismFramework } from '@framework/live2dcubismframework';
+  18: import { CubismMatrix44 } from '@framework/math/cubismmatrix44';
+  19: import { CubismUserModel } from '@framework/model/cubismusermodel';
+  20  import {
+
+  23    FinishedMotionCallback
+  24: } from '@framework/motion/acubismmotion';
+  25: import { CubismMotion } from '@framework/motion/cubismmotion';
+  26  import {
+
+  28    InvalidMotionQueueEntryHandleValue
+  29: } from '@framework/motion/cubismmotionqueuemanager';
+  30: import { csmMap } from '@framework/type/csmmap';
+  31: import { csmRect } from '@framework/type/csmrectf';
+  32: import { csmString } from '@framework/type/csmstring';
+  33: import { csmVector } from '@framework/type/csmvector';
+  34  import {
+
+  37    CubismLogInfo
+  38: } from '@framework/utils/cubismdebug';
+  39  
+
+  43  import { LAppWavFileHandler } from './lappwavfilehandler';
+  44: import { CubismMoc } from '@framework/model/cubismmoc';
+  45  import { LAppDelegate } from './lappdelegate';
+
+frontend/src/live2d/src/lapptexturemanager.ts:
+  7  
+  8: import { csmVector, iterator } from '@framework/type/csmvector';
+  9  import { LAppGlManager } from './lappglmanager';
+
+frontend/src/live2d/src/lappview.ts:
+  7  
+  8: import { CubismMatrix44 } from '@framework/math/cubismmatrix44';
+  9: import { CubismViewMatrix } from '@framework/math/cubismviewmatrix';
+  10  

@@ -12,6 +12,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.live2d-canvas {
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+  width: auto;
+  height: 40vh;
+  max-height: 60vh;
+  max-width: 40vw;
+  pointer-events: none; /* Make the canvas non-interactive */
+  z-index: 1000; /* Ensure the canvas is on top of other elements */
+}
+
  /*
 a {
   font-weight: 500;

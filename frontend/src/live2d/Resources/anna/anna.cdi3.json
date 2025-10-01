@@ -1,0 +1,129 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "Angle X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "Angle Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "Angle Z"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "Body X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "Body Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "Body Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "Breath"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "",
+			"Name": "Hair Move Front"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "Hair Move Back"
+		},
+		{
+			"Id": "ParamHairSideR",
+			"GroupId": "ParamGroupSway",
+			"Name": "Hair Sway Side R"
+		},
+		{
+			"Id": "ParamHairSideL",
+			"GroupId": "ParamGroupSway",
+			"Name": "Hair Sway Side L"
+		},
+		{
+			"Id": "ParamShoulderLRotation",
+			"GroupId": "ParamGroupArmL",
+			"Name": "Shoulder L Rotation"
+		},
+		{
+			"Id": "ParamShoulderRRotation",
+			"GroupId": "ParamGroupArmR",
+			"Name": "Shoulder R Rotation"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroupSway",
+			"GroupId": "",
+			"Name": "Sway"
+		},
+		{
+			"Id": "ParamGroupArmL",
+			"GroupId": "",
+			"Name": "Arm L"
+		},
+		{
+			"Id": "ParamGroupArmR",
+			"GroupId": "",
+			"Name": "Arm R"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "PartHairBack",
+			"Name": "Back Hair"
+		},
+		{
+			"Id": "PartFace",
+			"Name": "Face"
+		},
+		{
+			"Id": "PartHairSide",
+			"Name": "Side Hair"
+		},
+		{
+			"Id": "PartHairFront",
+			"Name": "Front Hair"
+		},
+		{
+			"Id": "PartCore",
+			"Name": "Core"
+		},
+		{
+			"Id": "PartUpperBody",
+			"Name": "Upper Body"
+		},
+		{
+			"Id": "PartNeck",
+			"Name": "Neck"
+		},
+		{
+			"Id": "PartArmL",
+			"Name": "Arm L"
+		},
+		{
+			"Id": "PartArmR",
+			"Name": "Arm R"
+		},
+		{
+			"Id": "PartLegs",
+			"Name": "Legs"
+		}
+	]
+}

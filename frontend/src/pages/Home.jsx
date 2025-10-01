@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import emailjs from "emailjs-com";
+import Live2DViewer from "../components/Live2DViewer";
 
 export default function Home() {
   useEffect(() => {
@@ -176,5 +177,6 @@ export default function Home() {
             </div>
          </div>
     </div>
+    
   );
 }
