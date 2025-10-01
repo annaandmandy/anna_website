@@ -61,13 +61,13 @@ export class LAppLive2DManager {
 
     if (model.hitTest(LAppDefine.HitAreaNameHead, x, y)) {
       if (LAppDefine.DebugLogEnable) {
-        LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameHead}]`);
+        LAppPal.printMessage(`[APP]hit head area: [${LAppDefine.HitAreaNameHead}]`);
       }
       if (this.onUserTap) this.onUserTap("head");
       model.setRandomExpression();
     } else if (model.hitTest(LAppDefine.HitAreaNameBody, x, y)) {
       if (LAppDefine.DebugLogEnable) {
-        LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameBody}]`);
+        LAppPal.printMessage(`[APP]hit body area: [${LAppDefine.HitAreaNameBody}]`);
       }
       if (this.onUserTap) this.onUserTap("body");
       model.startRandomMotion(
