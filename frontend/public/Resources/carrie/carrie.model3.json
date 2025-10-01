@@ -1,0 +1,33 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "carrie.moc3",
+		"Textures": [
+			"carrie.1024/texture_00.png"
+		],
+		"Physics": "carrie.physics3.json",
+		"DisplayInfo": "carrie.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": [
+		{
+			"Id": "HitArea",
+			"Name": "Body"
+		},
+		{
+			"Id": "HitArea2",
+			"Name": "Head"
+		}
+	]
+}

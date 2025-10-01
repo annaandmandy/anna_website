@@ -48,7 +48,9 @@ export const PowerImageName = 'CloseNormal.png';
 // モデルを配置したディレクトリ名の配列
 // ディレクトリ名とmodel3.jsonの名前を一致させておくこと
 export const ModelDir: string[] = [
-  'anna'
+  'anna',
+  'carrie',
+  'winni',
 ];
 export const ModelDirSize: number = ModelDir.length;
 

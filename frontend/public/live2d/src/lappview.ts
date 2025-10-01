@@ -156,10 +156,10 @@ export class LAppView {
     // 歯車画像初期化
     imageName = LAppDefine.GearImageName;
     const initGearTexture = (textureInfo: TextureInfo): void => {
-      const x = width - textureInfo.width * 0.5;
-      const y = height - textureInfo.height * 0.5;
-      const fwidth = textureInfo.width;
-      const fheight = textureInfo.height;
+      const x = width - textureInfo.width * 1;
+      const y = height - textureInfo.height * 1;
+      const fwidth = textureInfo.width * 1.5;
+      const fheight = textureInfo.height * 1.5;
       this._gear = new LAppSprite(x, y, fwidth, fheight, textureInfo.id);
       this._gear.setSubdelegate(this._subdelegate);
     };

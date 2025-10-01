@@ -1,0 +1,33 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "winni.moc3",
+		"Textures": [
+			"winni.1024/texture_00.png"
+		],
+		"Physics": "winni.physics3.json",
+		"DisplayInfo": "winni.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": [
+		{
+			"Id": "HitArea",
+			"Name": "Body"
+		},
+		{
+			"Id": "HitArea2",
+			"Name": "Head"
+		}
+	]
+}
