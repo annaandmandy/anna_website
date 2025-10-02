@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="container text-center">
                 <p className="mb-0">Welcome to connect with me.</p>
                 <p className="mb-0 d-flex justify-content-center align-items-center gap-3">
-                    <a href="https://drive.google.com/file/d/1mmieDlm8oPFpSeQbUJ8Ej3xdGwWqWqIh/view?usp=sharing" className="text-black text-decoration-none">
+                    <a href="/HsiangYuHuang_Anna_Resume.pdf" className="text-black text-decoration-none">
                         <img
                             src="https://img.icons8.com/?size=100&id=SnwGrzYElOwk&format=png&color=000000"
                             alt="CV"
