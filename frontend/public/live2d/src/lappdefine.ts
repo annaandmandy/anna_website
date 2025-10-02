@@ -56,12 +56,13 @@ export const ModelDir: string[] = [
 ];
 export const ModelDirSize: number = ModelDir.length;
 
-
+// Set different dialogs for different person
 export const ModelDirWords: Record<string, string[]> = {
   "anna" : [
     'Awwwww! (*/ω＼*)',
     'Welcome to My Website!',
-    '( •̀ ω •́ )✧'
+    '( •̀ ω •́ )✧',
+    'Check out Message Board!',
   ],
   "carrie" : [
     'OMG So cute! (❁´◡`❁)',

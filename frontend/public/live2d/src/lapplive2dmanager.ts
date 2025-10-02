@@ -39,6 +39,8 @@ export class LAppLive2DManager {
     }
   }
 
+  // Used for getting the current model name and dialog
+
   public getCurrentModelName(): string | null {
     return LAppDefine.ModelDir[this._sceneIndex] || null;
   }

@@ -153,6 +153,8 @@ export class LAppView {
       initBackGroundTexture
     );
 
+    // Resized the gear icon
+
     // 歯車画像初期化
     imageName = LAppDefine.GearImageName;
     const initGearTexture = (textureInfo: TextureInfo): void => {
