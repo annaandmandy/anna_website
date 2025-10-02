@@ -60,18 +60,26 @@ export const ModelDirSize: number = ModelDir.length;
 export const ModelDirWords: Record<string, string[]> = {
   "anna" : [
     'Awwwww! (*/ω＼*)',
+    'Welcome to My Website!',
+    '( •̀ ω •́ )✧'
   ],
   "carrie" : [
     'OMG So cute! (❁´◡`❁)',
+    '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'
   ],
   "winni" : [
     'Whats up?(〜￣▽￣)〜',
+    '(〃￣︶￣)人(￣︶￣〃)'
   ],
   "carlos" : [
     'Skibidi (° ͜ʖ °)',
+    'Ocho Eggs A Day 🥚'
   ],
   "charlie" : [
     '=￣ω￣=',
+    '(　o=^•ェ•)o　┏━┓',
+    '( ⓛ ω ⓛ *)',
+    'ο(=•ω＜=)ρ⌒☆'
   ]
 };
 
