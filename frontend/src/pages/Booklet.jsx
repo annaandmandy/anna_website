@@ -9,7 +9,7 @@ export default function Booklet() {
       }, []);
     
     return (
-        <div className="container-fluid py-3" style={{ backgroundColor: "#fffceb" }}>
+        <div className="container-fluid py-3">
             <div className="mb-2 px-4 text-center" data-aos="fade-down">
                 <h1 className="fw-bold">Booklet</h1>
                 <p>Final Project from AR123 Foundation Design.</p>

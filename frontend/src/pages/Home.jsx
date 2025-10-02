@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import emailjs from "emailjs-com";
+import Background from "../components/Background";
 
 export default function Home() {
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function Home() {
   }
 
   return (
-    <div className="container-fluid py-3" style={{ backgroundColor: "#fffceb" }}>
+    <div className="container-fluid py-3" >
         <div className="d-flex flex-column flex-md-row align-items-center justify-content-center mb-5" data-aos="fade-down">
             <div className="d-flex flex-column justify-content-center text-center text-md-start mb-3 mb-md-0 ms-md-5">
                 <h1 className="fw-bold mb-3 mt-5">Welcome to My Website</h1>

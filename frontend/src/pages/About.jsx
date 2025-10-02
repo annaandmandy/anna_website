@@ -8,7 +8,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="container-fluid py-3" style={{ backgroundColor: "#fffceb" }}>
+    <div className="container-fluid py-3">
       {/* Hero Section */}
         <div className="mb-5 px-4 text-center" data-aos="fade-down">
             <h1 className="fw-bold mb-3">About Me</h1>

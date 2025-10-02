@@ -1,6 +1,6 @@
 export default function GorillaCharms() {
     return (
-       <div className="container-fluid py-3" style={{ backgroundColor: "#fffceb" }}>
+       <div className="container-fluid py-3">
             <h1 className="text-center mb-4">Iteration: Gorilla Charm</h1>
             <div className="row justify-content-center mb-5">
                 <div className="col-md-6 text-center">

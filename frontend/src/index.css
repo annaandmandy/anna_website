@@ -26,6 +26,18 @@
   overflow: auto;
 }
 
+body {
+  background: linear-gradient(270deg, #fffceb, #fff3c2, #fff8d5);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
  /*
 a {
   font-weight: 500;

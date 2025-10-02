@@ -8,7 +8,7 @@ export default function Interests() {
       }, []);
 
     return (
-        <div className="container-fluid py-3 d-flex flex-column justify-content-center" style={{ backgroundColor: "#fffceb"}}>
+        <div className="container-fluid py-3 d-flex flex-column justify-content-center">
             <div className="px-4 text-center mb-2" data-aos="fade-down">
                 <h1 className="fw-bold">Interests</h1>
             </div>

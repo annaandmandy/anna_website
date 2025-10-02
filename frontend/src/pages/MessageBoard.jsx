@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
 export default function MessageBoard() {
     const [messages, setMessages] = useState([]);
@@ -59,7 +61,7 @@ export default function MessageBoard() {
     // };
 
     return (
-        <div className="container-fluid py-3" style={{ backgroundColor: "#fffceb"}}>
+        <div className="container-fluid py-3">
             {/* Heading */}
             <div className="text-center mb-5" data-aos="fade-down">
                 <h1 className="fw-bold">Message Board</h1>
