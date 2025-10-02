@@ -8,6 +8,7 @@ const Live2DViewer = () => {
     const [showDialog, setShowDialog] = useState(false);
     const [dialogMessage, setDialogMessage] = useState('');
     const navigate = useNavigate();
+    const [modelName, setModelName] = useState('anna');
 
     useEffect(() => {
         if (initialized.current) return;
@@ -27,24 +28,34 @@ const Live2DViewer = () => {
             const subdelegate = delegate._subdelegates?.at(0);
             if (subdelegate) {
                 const live2DManager = subdelegate.getLive2DManager();
+
+                console.log('Live2D Manager:', live2DManager);
+
                 if (live2DManager) {
                     live2DManager.onUserTap = (area) => {
-                        console.log('User tapped:', area);
-                        console.log('Detected')                       
-                        setDialogMessage('Awww! (*/ω＼*)');
-                        setShowDialog(true);
-                        console.log(dialogMessage);
-                        console.log(showDialog);
+                        const modelName = live2DManager.getCurrentModelName();
+                        console.log('Current Model Name:', modelName);
+                        const modelDialog = live2DManager.getCurrentModelDialog();
+                        if (modelDialog && modelDialog.length > 0) {
+                            const randomIndex = Math.floor(Math.random() * modelDialog.length);
+                            const message = modelDialog[randomIndex];
+                            setDialogMessage(message);
+                            setShowDialog(true);
+                        } else {
+                            setDialogMessage("╰(*°▽°*)╯");
+                            setShowDialog(true);
+                        }
                         setTimeout(() => {
                                 setShowDialog(false);
                             }, 3000);
                     };
+                    
                 }
             }
         }, 100); // Small delay to ensure initialization is complete
-        
-        
     }, []);
+
+
 
     return (
         <>

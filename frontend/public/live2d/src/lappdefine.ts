@@ -62,10 +62,10 @@ export const ModelDirWords: Record<string, string[]> = {
     'Awwwww! (*/ω＼*)',
   ],
   "carrie" : [
-    'OMG You are so cute! (❁´◡`❁)',
+    'OMG So cute! (❁´◡`❁)',
   ],
   "winni" : [
-    'Hey Bro! Whats up?(〜￣▽￣)〜',
+    'Whats up?(〜￣▽￣)〜',
   ],
   "carlos" : [
     'Skibidi (° ͜ʖ °)',

@@ -39,6 +39,15 @@ export class LAppLive2DManager {
     }
   }
 
+  public getCurrentModelName(): string | null {
+    return LAppDefine.ModelDir[this._sceneIndex] || null;
+  }
+
+  public getCurrentModelDialog(): string[] | null {
+    const modelName = this.getCurrentModelName();
+    return modelName ? LAppDefine.ModelDirWords[modelName] ?? null : null;
+  }
+
   
   /* Add an OnUserTap to monitor if the user clicks or not*/
   public onUserTap: ((area: string) => void) | null = null;
