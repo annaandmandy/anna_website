@@ -8,8 +8,5 @@ export default defineConfig({
   base: './',
   resolve: {
     extensions: ['.ts', '.js', '.jsx'], // Add .ts to handle Framework files
-    alias: {
-      '@framework': path.resolve(__dirname, '../Framework/src'), // Adjust path to where you copied Framework
-    }
   },
 })
