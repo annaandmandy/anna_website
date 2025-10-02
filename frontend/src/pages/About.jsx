@@ -50,7 +50,7 @@ export default function About() {
           <h2 className="fw-bold text-center mb-4">Activities and Interests</h2>
       </div>
     
-      <div className="row g-4 d-flex align-items-center justify-content-center" style={{ width: "90%", margin: "0 auto"  }}>
+      <div className="row g-4 d-flex align-items-stretch justify-content-center" style={{ width: "90%", margin: "0 auto"  }}>
         {/* Walking */}
         <div className="col-md-6 col-lg-4" data-aos="fade-up">
           <div className="card h-100 shadow-sm" style={{backgroundColor: "rgb(250, 247, 217)", borderTop: "6px solid #FFD93D"}}>
