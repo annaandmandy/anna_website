@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hsiangyuhuang-anna.vercel.app/sitemap.xml
