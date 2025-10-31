@@ -60,9 +60,14 @@ export default function Navbar() {
                                 Interests
                             </a>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link" href="/messageboard">
                                 Message Board
+                            </a>
+                        </li> */}
+                        <li className="nav-item">
+                            <a className="nav-link" href="/weekend_report">
+                                Weekend Report
                             </a>
                         </li>
                     </ul>
