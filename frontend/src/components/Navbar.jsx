@@ -53,6 +53,8 @@ export default function Navbar() {
                                 <li><a className="dropdown-item" href="https://github.com/annaandmandy/ds598_azure/tree/hw">Big Data Engineering HW</a></li>
                                 <li><a className="dropdown-item" href="https://strickds.com/">Strick Data Solutions</a></li>
                                 <li><a className="dropdown-item" href="https://drive.google.com/file/d/1UmiLAO-Hok-t_WhGOM4XEx5YTtSEzRei/view">C++ Game Demo</a></li>
+                                <li><a className="dropdown-item" href="https://devpost.com/software/rhettsearch">DS+X Hackathon: RhettSearch(Best Overall Prize)</a></li>
+                                <li><a className="dropdown-item" href="https://devpost.com/software/virtual-garden-lfmqhy">CivilHack: U.S. Virtual Garden(Dashboard Prize)</a></li>
                             </ul>
                         </li>
                         <li className="nav-item">
