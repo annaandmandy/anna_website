@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+langchain
+langchain-openai
+pydantic
+chromadb
+openai
+requests
+python-dotenv
+pinecone-client
+weaviate-client
+boto3
