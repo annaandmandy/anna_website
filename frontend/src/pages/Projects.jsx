@@ -67,6 +67,12 @@ export default function Projects() {
             desc: "Generate a event and weather report for you everyday.",
             tech: ["AWS Lambda", "AWS S3", "AWS EC2", "APIs"],
             link: "/weekend_report"
+        },
+        {
+            title: "Quantitative Investment Strategy Analysis",
+            desc: "Designed and backtested four trading strategies using MA, RSI, BIAS, and Bollinger Bands.",
+            tech: ["Quantitative Trading Strategies", "Performance Analysis", "Market Trend Analysis"],
+            link: "https://drive.google.com/file/d/11NdOXpROD5kXkBDKqRT0YKWfbgX6q7mm/view?usp=sharing"
         }
     ];
 
