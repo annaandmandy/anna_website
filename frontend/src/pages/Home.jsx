@@ -76,7 +76,7 @@ export default function Home() {
                     <div>
                         <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>Core Skills</h3>
                         <div className="flex" style={{ flexWrap: "wrap", gap: "0.5rem" }}>
-                            {["Python", "Azure", "PyTorch", "React", "SQL", "Medallion Architecture", "Power BI"].map(skill => (
+                            {["Python", "R", "SQL", "C++", "React", "Git", "Linux", "ETL", "PyTorch", "Feature Engineering", "Predictive Analytics", "Time Series", "NLP", "Statistical Analysis", "Medallion Architecture", "Azure", "AWS", "Supabase", , "Power BI", "Looker Studio", "Docker"].map(skill => (
                                 <span key={skill} className="tech-badge">{skill}</span>
                             ))}
                         </div>
