@@ -1,79 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#FFD93D" }}>
-            <div className="container-fluid">
+        <nav className="navbar">
+            <div className="container navbar-content">
                 {/* Brand Logo */}
-                <a className="navbar-brand" href="/">
+                <Link to="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "var(--text-primary)", fontWeight: "bold", fontSize: "1.2rem" }}>
                     <img
                         src="/img_main/IMG_0505.PNG"
                         alt="Logo"
                         width="30"
                         height="30"
-                        className="d-inline-block align-text-top me-2"
+                        style={{ marginRight: "10px" }}
                     />
-                    <span className="ms-2 py-6">Anna's Website</span>
-                </a>
+                    <span>Anna's Website</span>
+                </Link>
 
-                {/* Toggle Button for Mobile View */}
+                {/* Mobile Toggle */}
                 <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
+                    className="btn"
+                    style={{ display: "none" }} // Hidden on desktop, need media query to show on mobile
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
-                    <span className="navbar-toggler-icon"></span>
+                    ☰
                 </button>
 
                 {/* Navbar Links */}
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">
-                                Home
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/about">
-                                About
-                            </a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="/projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Projects
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/Skill_demonstration">Overall</a></li>
-                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/25LPCVC_Track2_Segmentation_Sample_Solution">25LPCVC_Track2 Project</a></li>
-                                <li><a className="dropdown-item" href="https://www.citaleco.com">Citale Website</a></li>
-                                <li><a className="dropdown-item" href="https://github.com/annaandmandy/ds598_azure/tree/hw">Big Data Engineering HW</a></li>
-                                <li><a className="dropdown-item" href="https://strickds.com/">Strick Data Solutions</a></li>
-                                <li><a className="dropdown-item" href="https://drive.google.com/file/d/1UmiLAO-Hok-t_WhGOM4XEx5YTtSEzRei/view">C++ Game Demo</a></li>
-                                <li><a className="dropdown-item" href="https://devpost.com/software/rhettsearch">DS+X Hackathon: RhettSearch(Best Overall Prize)</a></li>
-                                <li><a className="dropdown-item" href="https://devpost.com/software/virtual-garden-lfmqhy">CivilHack: U.S. Virtual Garden(Dashboard Prize)</a></li>
+                <ul className="nav-links" style={{ display: "flex", alignItems: "center", gap: "2rem", margin: 0, padding: 0 }}>
+                    <li><Link to="/" className="nav-link">Home</Link></li>
+                    <li><Link to="/about" className="nav-link">About</Link></li>
+
+                    {/* Projects Dropdown */}
+                    <li style={{ position: "relative" }}
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        onMouseLeave={() => setIsDropdownOpen(false)}
+                    >
+                        <Link to="/projects" className="nav-link" style={{ cursor: "pointer" }}>Projects ▾</Link>
+                        {isDropdownOpen && (
+                            <ul style={{
+                                position: "absolute",
+                                top: "100%",
+                                left: 0,
+                                backgroundColor: "white",
+                                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                                listStyle: "none",
+                                padding: "1rem",
+                                borderRadius: "8px",
+                                width: "250px",
+                                zIndex: 1000
+                            }}>
+                                <li style={{ marginBottom: "0.5rem" }}><a href="https://github.com/annaandmandy/Skill_demonstration" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>Overall</a></li>
+                                <li style={{ marginBottom: "0.5rem" }}><a href="https://github.com/annaandmandy/25LPCVC_Track2_Segmentation_Sample_Solution" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>25LPCVC_Track2 Project</a></li>
+                                <li style={{ marginBottom: "0.5rem" }}><a href="https://www.citaleco.com" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>Citale Website</a></li>
+                                <li style={{ marginBottom: "0.5rem" }}><a href="https://github.com/annaandmandy/ds598_azure/tree/hw" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>Big Data Engineering HW</a></li>
+                                <li style={{ marginBottom: "0.5rem" }}><a href="https://strickds.com/" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>Strick Data Solutions</a></li>
+                                <li style={{ marginBottom: "0.5rem" }}><a href="https://drive.google.com/file/d/1UmiLAO-Hok-t_WhGOM4XEx5YTtSEzRei/view" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>C++ Game Demo</a></li>
+                                <li style={{ marginBottom: "0.5rem" }}><a href="https://devpost.com/software/rhettsearch" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>RhettSearch (Hackathon)</a></li>
+                                <li><a href="https://devpost.com/software/virtual-garden-lfmqhy" target="_blank" className="nav-link" style={{ fontSize: "0.9rem" }}>U.S. Virtual Garden</a></li>
                             </ul>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/interests">
-                                Interests
-                            </a>
-                        </li>
-                        {/* <li className="nav-item">
-                            <a className="nav-link" href="/messageboard">
-                                Message Board
-                            </a>
-                        </li> */}
-                        <li className="nav-item">
-                            <a className="nav-link" href="/weekend_report">
-                                Weekend Report
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                        )}
+                    </li>
+
+                    <li><Link to="/interests" className="nav-link">Interests</Link></li>
+                    <li><Link to="/weekend_report" className="nav-link">Weekend Report</Link></li>
+                </ul>
             </div>
         </nav>
     );

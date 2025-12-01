@@ -5,34 +5,27 @@ import "aos/dist/aos.css";
 export default function Interests() {
     useEffect(() => {
         AOS.init({ duration: 1000 });
-      }, []);
+    }, []);
 
     return (
-        <div className="container-fluid py-3 d-flex flex-column justify-content-center">
-            <div className="px-4 text-center mb-2" data-aos="fade-down">
-                <h1 className="fw-bold">Interests</h1>
+        <div className="container section">
+            <div className="text-center" style={{ marginBottom: "3rem" }} data-aos="fade-down">
+                <h1>Interests</h1>
             </div>
-            <div className="mb-4 d-flex flex-column" data-aos="fade-up" style={{ maxWidth: "800px", margin: "0 auto" }}>
-                <p className="mb-2">I am also interested in drawing and designing. Here are some of the works.</p>
-                <ul>
-                    <li className="nav-item" >
-                        <a className="nav-link active" aria-current="page" href="/gorillacharms">
-                            Gorilla Charms
-                        </a>
+            <div className="grid-item" data-aos="fade-up" style={{ maxWidth: "800px", margin: "0 auto" }}>
+                <p style={{ marginBottom: "1rem" }}>I am also interested in drawing and designing. Here are some of the works.</p>
+                <ul className="nav-links flex-col" style={{ gap: "0.5rem" }}>
+                    <li>
+                        <a href="/gorillacharms" className="nav-link">Gorilla Charms</a>
                     </li>
-                    <li className="nav-item" >
-                        <a className="nav-link active" aria-current="page" href="/booklet">
-                            Booklet
-                        </a>
+                    <li>
+                        <a href="/booklet" className="nav-link">Booklet</a>
                     </li>
-                    <li className="nav-item" >
-                        <a className="nav-link active" aria-current="page" href="https://huanghybu.cargo.site/">
-                            Collages
-                        </a>
+                    <li>
+                        <a href="https://huanghybu.cargo.site/" className="nav-link" target="_blank" rel="noopener noreferrer">Collages</a>
                     </li>
                 </ul>
             </div>
-            
         </div>
     );
 }

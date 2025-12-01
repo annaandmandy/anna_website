@@ -2,22 +2,35 @@ import React, { useEffect } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
 export default function Booklet() {
     useEffect(() => {
         AOS.init({ duration: 1000 });
-      }, []);
-    
+    }, []);
+
     return (
-        <div className="container-fluid py-3">
-            <div className="mb-2 px-4 text-center" data-aos="fade-down">
-                <h1 className="fw-bold">Booklet</h1>
+        <div className="container section">
+            <div className="text-center" style={{ marginBottom: "3rem" }} data-aos="fade-down">
+                <h1>Booklet</h1>
                 <p>Final Project from AR123 Foundation Design.</p>
             </div>
 
-            <div style={{position:"relative", paddingTop:"0", width:"auto", height:"700px"}}>
-                <iframe style={{position:"absolute", border:"none", width:"80%", height:"100%", left:"10%", top:"0"}} src="https://online.fliphtml5.com/mypage/sgvq/"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" >
-                </iframe>
+            <div className="grid-item" style={{ padding: "0", overflow: "hidden", height: "800px", position: "relative" }}>
+                <iframe
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        border: "none"
+                    }}
+                    src="https://online.fliphtml5.com/mypage/sgvq/"
+                    seamless="seamless"
+                    scrolling="no"
+                    frameBorder="0"
+                    allowTransparency="true"
+                    allowFullScreen="true"
+                />
             </div>
         </div>
     );

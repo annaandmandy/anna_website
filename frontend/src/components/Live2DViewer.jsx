@@ -13,7 +13,7 @@ const Live2DViewer = () => {
     useEffect(() => {
         if (initialized.current) return;
         initialized.current = true;
-        
+
         const delegate = LAppDelegate.getInstance();
         if (!delegate.initialize()) {
             console.warn("Live2D Failed to initialize.");
@@ -46,10 +46,10 @@ const Live2DViewer = () => {
                             setShowDialog(true);
                         }
                         setTimeout(() => {
-                                setShowDialog(false);
-                            }, 3000);
+                            setShowDialog(false);
+                        }, 3000);
                     };
-                    
+
                 }
             }
         }, 100); // Small delay to ensure initialization is complete
@@ -59,49 +59,16 @@ const Live2DViewer = () => {
 
     return (
         <>
-         <div id="live2d-canvas"/>
+            <div id="live2d-canvas" />
             {showDialog && (
                 <div>
-                    <div >
-                        <p style={{
-                            position: 'fixed',
-                            bottom: "30vh",
-                            right: "15px",
-                            transform: 'translateX(-50%)',
-                            background: 'white',
-                            opacity: '0.8',
-                            padding: '15px 25px',
-                            borderRadius: '10px',
-                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                            zIndex: 10000,
-                            minWidth: '200px',
-                            textAlign: 'center'
-                        }}>
+                    <div>
+                        <p className="live2d-dialog">
                             {dialogMessage}
                         </p>
-                        {/* <button style={{
-                            position: 'fixed',
-                            bottom: "22vh",
-                            right: "calc(20vw + 30px)",
-                            backgroundColor: "white",
-                            border: '2px solid transparent',
-                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                            borderRadius: '50%',
-                            width: '60px',
-                            maxWidth: '',
-                            height: '60px',
-                            fontSize: '30px',
-                            cursor: 'pointer',
-                            zIndex: 10000,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'}} onClick={() => navigate('/')} >
-                            🏚️
-                        </button> */}
                     </div>
-                        
-                </div> 
-            )} 
+                </div>
+            )}
         </>
     );
 };
