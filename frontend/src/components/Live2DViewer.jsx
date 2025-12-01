@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as LAppDefine from "../../public//live2d/src/lappdefine";
-import { LAppDelegate } from "../../public/live2d/src/lappdelegate";
+import * as LAppDefine from "../live2d/src/lappdefine";
+import { LAppDelegate } from "../live2d/src/lappdelegate";
 import { useNavigate } from 'react-router-dom';
 
 const Live2DViewer = () => {

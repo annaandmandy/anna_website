@@ -33,7 +33,7 @@ export const ViewLogicalMaxBottom = -2.0;
 export const ViewLogicalMaxTop = 2.0;
 
 // 相対パス
-export const ResourcesPath = './Resources/';
+export const ResourcesPath = '/Resources/';
 
 // モデルの後ろにある背景の画像ファイル
 export const BackImageName = 'back_class_normal.png';
@@ -58,25 +58,25 @@ export const ModelDirSize: number = ModelDir.length;
 
 // Set different dialogs for different person
 export const ModelDirWords: Record<string, string[]> = {
-  "anna" : [
+  "anna": [
     'Awwwww! (*/ω＼*)',
     'Welcome to My Website!',
     '( •̀ ω •́ )✧',
     'Check out Message Board!',
   ],
-  "carrie" : [
+  "carrie": [
     'OMG So cute! (❁´◡`❁)',
     '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'
   ],
-  "winni" : [
+  "winni": [
     'Whats up?(〜￣▽￣)〜',
     '(〃￣︶￣)人(￣︶￣〃)'
   ],
-  "carlos" : [
+  "carlos": [
     'Skibidi (° ͜ʖ °)',
     'Ocho Eggs A Day 🥚'
   ],
-  "charlie" : [
+  "charlie": [
     '=￣ω￣=',
     '(　o=^•ェ•)o　┏━┓',
     '( ⓛ ω ⓛ *)',
