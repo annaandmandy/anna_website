@@ -9,24 +9,6 @@ export default function Projects() {
 
     const projects = [
         {
-            title: "RhettSearch",
-            desc: "Gamified research engine using semantic search and AI recommendations.",
-            tech: ["React", "OpenAI", "OpenAlex"],
-            link: "https://devpost.com/software/rhettsearch"
-        },
-        {
-            title: "U.S. Virtual Garden",
-            desc: "Interactive dashboard visualizing U.S. Herbaria data with Groq API.",
-            tech: ["Looker Studio", "Groq API"],
-            link: "https://devpost.com/software/virtual-garden-lfmqhy"
-        },
-        {
-            title: "Citale",
-            desc: "Social media platform for finding things to do in Boston.",
-            tech: ["React", "Google Maps API", "SQL"],
-            link: "https://www.citaleco.com"
-        },
-        {
             title: "NVIDIA Stock Forecast",
             desc: "Real-time data pipeline for forecasting stock volume from tweets.",
             tech: ["Azure Synapse", "Medallion Architecture"],
@@ -63,17 +45,41 @@ export default function Projects() {
             link: "https://drive.google.com/file/d/1ymSMYf7Qc58ASLcXHSMZMMnxLYQvSIaI/view?usp=drive_link"
         },
         {
+            title: "Sundai Club Projects",
+            desc: "Joining the Hack at Sundai Club for several times.",
+            tech: ["Web Development", "LLM", "Interesting Projects"],
+            link: "https://www.sundai.club/hacker/9563db75-7468-4092-98e8-70d9112a127d"
+        },
+        {
             title: "Boston Weekend Vibe",
             desc: "Generate a event and weather report for you everyday.",
             tech: ["AWS Lambda", "AWS S3", "AWS EC2", "APIs"],
             link: "/weekend_report"
         },
         {
+            title: "RhettSearch",
+            desc: "Gamified research engine using semantic search and AI recommendations.",
+            tech: ["React", "OpenAI", "OpenAlex"],
+            link: "https://devpost.com/software/rhettsearch"
+        },
+        {
+            title: "U.S. Virtual Garden",
+            desc: "Interactive dashboard visualizing U.S. Herbaria data with Groq API.",
+            tech: ["Looker Studio", "Groq API"],
+            link: "https://devpost.com/software/virtual-garden-lfmqhy"
+        },
+        {
+            title: "Citale",
+            desc: "Social media platform for finding things to do in Boston.",
+            tech: ["React", "Google Maps API", "SQL"],
+            link: "https://www.citaleco.com"
+        },
+        {
             title: "Quantitative Investment Strategy Analysis",
             desc: "Designed and backtested four trading strategies using MA, RSI, BIAS, and Bollinger Bands.",
             tech: ["Quantitative Trading Strategies", "Performance Analysis", "Market Trend Analysis"],
             link: "https://drive.google.com/file/d/11NdOXpROD5kXkBDKqRT0YKWfbgX6q7mm/view?usp=sharing"
-        }
+        },
     ];
 
     return (
