@@ -100,7 +100,7 @@ export default function Home() {
                         Architected a multi-agent system to orchestrate complex contextual retrieval workflows for research. Engineered a "Product-Enrichment" RAG pipeline and a high-performance observability backend using FastAPI to log 1536-dim embeddings.
                     </p>
                     <div style={{ marginTop: "1rem" }}>
-                        <a href="https://llm-platform.vercel.app" target="_blank" style={{ fontWeight: "bold" }}>View Source →</a>
+                        <a href="https://llm-platform.vercel.app" target="_blank" style={{ fontWeight: "bold" }}>Live Demo →</a>
                     </div>
                 </div>
 
