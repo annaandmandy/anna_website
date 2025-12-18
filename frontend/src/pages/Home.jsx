@@ -34,9 +34,9 @@ export default function Home() {
                 <div className="container grid grid-2 items-center">
                     <div className="hero-content">
                         <h1 className="hero-title">Hsiang Yu (Anna) Huang</h1>
-                        <h2 className="hero-subtitle">Data Scientist & ML Engineer</h2>
+                        <h2 className="hero-subtitle">AI Engineer | LLM & Multi-Agent Systems</h2>
                         <p style={{ fontSize: "1.2rem", marginBottom: "2rem", color: "var(--text-secondary)" }}>
-                            I build machine learning systems, cloud pipelines, and full-stack tools that turn data into real impact.
+                            I architect multi-agent workflows, optimize retrieval systems (RAG), and deploy serverless AI solutions that solve complex problems.
                         </p>
                         <div className="flex">
                             <a href="#projects" className="btn btn-primary">View My Projects</a>
@@ -66,11 +66,11 @@ export default function Home() {
                 <div className="grid grid-2">
                     <div>
                         <p style={{ marginBottom: "1rem" }}>
-                            I am a Data Science Master's Student at Boston University, graduating in December 2025.
-                            My background bridges finance, industrial management, and computer science, giving me a unique perspective on solving real-world problems.
+                            I am a Master's student at Boston University specializing in <strong>AI Engineering</strong> and <strong>Large Language Models (LLMs)</strong>. 
+                            Moving beyond traditional data analysis, I focus on architecting production-ready AI systems—from <strong>Multi-Agent Orchestration</strong> to <strong>Serverless Cloud Pipelines</strong>.
                         </p>
                         <p>
-                            I am actively seeking job opportunities in data science and analytics. Feel free to explore my projects and interests!
+                            I am actively seeking full-time roles in <strong>AI Engineering</strong>, <strong>LLM Development</strong>, and <strong>Machine Learning</strong> starting early 2026.
                         </p>
                     </div>
                     <div>
