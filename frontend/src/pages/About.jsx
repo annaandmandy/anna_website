@@ -18,9 +18,9 @@ export default function About() {
         <div>
           <h3 style={{ marginBottom: "1rem" }}>Short Bio</h3>
           <p>
-            Hello! My name is Hsiang Yu Huang, and you can just call me Anna! I
-            come from Taiwan, and came to the U.S. for my Master's Degree. I love
-            dogs, and I had a poodle back in Taiwan.
+            Hello! My name is Hsiang Yu Huang, but you can just call me <strong>Anna</strong>!
+            Originally from <strong>Taiwan</strong>, I moved to the U.S. to pursue my Master's degree at Boston University.
+            Outside of work, I am a huge dog lover—I have a lovely poodle back home in Taiwan that I miss dearly!
           </p>
         </div>
       </div>

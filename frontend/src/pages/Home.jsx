@@ -76,7 +76,18 @@ export default function Home() {
                     <div>
                         <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>Core Skills</h3>
                         <div className="flex" style={{ flexWrap: "wrap", gap: "0.5rem" }}>
-                            {["Python", "R", "SQL", "C++", "React", "Git", "Linux", "ETL", "PyTorch", "Feature Engineering", "Predictive Analytics", "Time Series", "NLP", "Statistical Analysis", "Medallion Architecture", "Azure", "AWS", "Supabase", , "Power BI", "Looker Studio", "Docker"].map(skill => (
+                            {[
+                                // Tier 1: AI Engineering (最重要，放最前)
+                                "Python", "FastAPI", "LangGraph", "RAG Pipelines", "Multi-Agent Systems",
+                                "Vector Databases", "Prompt Engineering",
+
+                                // Tier 2: Cloud & Backend (展示全端能力)
+                                "AWS Serverless", "Azure", "SQL", "MongoDB", "Supabase", "Docker",
+                                "React", "Next.js", "REST APIs", "Git", "Linux",
+
+                                // Tier 3: ML & Analytics (展示底層實力 & 視覺化)
+                                "PyTorch", "NLP", "Time Series", "Power BI", "Looker Studio"
+                            ].map(skill => (
                                 <span key={skill} className="tech-badge">{skill}</span>
                             ))}
                         </div>
