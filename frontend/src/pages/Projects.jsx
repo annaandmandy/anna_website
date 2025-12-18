@@ -9,6 +9,16 @@ export default function Projects() {
 
     const projects = [
         {
+            title: "LLM Multi-Agent Platform",
+            desc: "Architected a multi-agent RAG system using LangGraph and FastAPI to orchestrate complex retrieval and observability workflows.",
+            tech: ["FastAPI", "LangGraph", "MongoDB", "RAG"],
+            link: "https://llm-platform.vercel.app"
+        }, {
+            title: "Multi-Agent AI Novel Generator",
+            desc: "Hierarchical agent workflow (Director, Planner, Writer) capable of generating coherent long-form narratives with recursive self-correction.",
+            tech: ["LangGraph", "Cloudflare Workers", "Supabase"],
+            link: "https://dogblood-novel.dogblood-novel.workers.dev/"
+        }, {
             title: "NVIDIA Stock Forecast",
             desc: "Real-time data pipeline for forecasting stock volume from tweets.",
             tech: ["Azure Synapse", "Medallion Architecture"],

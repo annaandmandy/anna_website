@@ -66,7 +66,7 @@ export default function Home() {
                 <div className="grid grid-2">
                     <div>
                         <p style={{ marginBottom: "1rem" }}>
-                            I am a Master's student at Boston University specializing in <strong>AI Engineering</strong> and <strong>Large Language Models (LLMs)</strong>. 
+                            I am a Master's student at Boston University specializing in <strong>AI Engineering</strong> and <strong>Large Language Models (LLMs)</strong>.
                             Moving beyond traditional data analysis, I focus on architecting production-ready AI systems—from <strong>Multi-Agent Orchestration</strong> to <strong>Serverless Cloud Pipelines</strong>.
                         </p>
                         <p>
@@ -89,6 +89,37 @@ export default function Home() {
                 <h2 style={{ marginBottom: "3rem" }} data-aos="fade-up">Featured Projects</h2>
 
                 <div className="project-item" data-aos="fade-up">
+                    <h3 className="project-title">LLM Platform - Multi-Agent Orchestration</h3>
+                    <div className="project-meta">
+                        <span>FastAPI</span>
+                        <span>LangGraph</span>
+                        <span>RAG</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <p>
+                        Architected a multi-agent system to orchestrate complex contextual retrieval workflows for research. Engineered a "Product-Enrichment" RAG pipeline and a high-performance observability backend using FastAPI to log 1536-dim embeddings.
+                    </p>
+                    <div style={{ marginTop: "1rem" }}>
+                        <a href="https://llm-platform.vercel.app" target="_blank" style={{ fontWeight: "bold" }}>View Source →</a>
+                    </div>
+                </div>
+
+                <div className="project-item" style={{ marginTop: "1rem" }} data-aos="fade-up">
+                    <h3 className="project-title">Multi-Agent AI Novel Generator</h3>
+                    <div className="project-meta">
+                        <span>LangGraph</span>
+                        <span>Cloudflare Workers</span>
+                        <span>Supabase</span>
+                    </div>
+                    <p>
+                        Architected a hierarchical multi-agent workflow (Director, Planner, Writer) to generate coherent long-form narratives. Implemented recursive self-correction loops and solved context window challenges for sustained plot continuity.
+                    </p>
+                    <div style={{ marginTop: "1rem" }}>
+                        <a href="https://dogblood-novel.dogblood-novel.workers.dev/" target="_blank" style={{ fontWeight: "bold" }}>Live Demo →</a>
+                    </div>
+                </div>
+
+                <div className="project-item" style={{ marginTop: "1rem" }} data-aos="fade-up">
                     <h3 className="project-title">NVIDIA Stock Volume Forecast</h3>
                     <div className="project-meta">
                         <span>Azure Synapse</span>
@@ -118,20 +149,6 @@ export default function Home() {
                 </div>
 
                 <div className="project-item" style={{ marginTop: "1rem" }} data-aos="fade-up">
-                    <h3 className="project-title">Hybrid ARIMA–XGBoost Demand Forecasting</h3>
-                    <div className="project-meta">
-                        <span>GPU Supply Chain</span>
-                        <span>ARIMA</span>
-                        <span>XGBoost</span>
-                        <span>Time Series</span>
-                    </div>
-                    <p>
-                        Developed a hybrid ARIMA–XGBoost forecasting pipeline for a GPU component manufacturer. Built adaptive rolling-window models to handle seasonality and volatility, improving predictive accuracy from 8.3% → 73.4%.
-                    </p>
-                    <small style={{ marginTop: "1rem", color: "var(--text-secondary)" }}>Details of this project are confidential due to an industry collaboration agreement.</small>
-                </div>
-
-                <div className="project-item" style={{ marginTop: "1rem" }} data-aos="fade-up">
                     <h3 className="project-title">Smart Vending Machine Shelf Optimization</h3>
                     <div className="project-meta">
                         <span>Retail Analytics</span>
@@ -144,21 +161,6 @@ export default function Home() {
                     </p>
 
                     <small style={{ marginTop: "1rem", color: "var(--text-secondary)" }}>Details of this project are confidential due to an industry collaboration agreement.</small>
-                </div>
-
-                <div className="project-item" style={{ marginTop: "1rem" }} data-aos="fade-up">
-                    <h3 className="project-title">Power System Load Forecasting</h3>
-                    <div className="project-meta">
-                        <span>Energy Analytics</span>
-                        <span>SARIMAX</span>
-                        <span>Neural Networks</span>
-                    </div>
-                    <p>
-                        Forecasted Taiwan’s electricity demand using SARIMAX for long-term patterns and a Backpropagation Neural Network for short-term fluctuations. Achieved 69.4% accuracy and identified key holiday and seasonal consumption trends.
-                    </p>
-                    <div style={{ marginTop: "1rem" }}>
-                        <a href="https://drive.google.com/file/d/1ymSMYf7Qc58ASLcXHSMZMMnxLYQvSIaI/view?usp=sharing" target="_blank" style={{ fontWeight: "bold" }}>View Project →</a>
-                    </div>
                 </div>
 
                 <div className="project-item" style={{ marginTop: "1rem" }} data-aos="fade-up">
