@@ -66,11 +66,11 @@ export default function Home() {
                 <div className="grid grid-2">
                     <div>
                         <p style={{ marginBottom: "1rem" }}>
-                            I am a Master's student at Boston University specializing in <strong>AI Engineering</strong> and <strong>Large Language Models (LLMs)</strong>.
-                            Moving beyond traditional data analysis, I focus on architecting production-ready AI systems—from <strong>Multi-Agent Orchestration</strong> to <strong>Serverless Cloud Pipelines</strong>.
+                            I am a Master's student at Boston University specializing in <strong>Backend Engineering</strong> and <strong>Cloud Infrastructure</strong>.
+                            Moving beyond model development, I focus on architecting robust <strong>RESTful APIs (FastAPI)</strong>, optimizing <strong>Database Performance</strong>, and engineering <strong>Scalable Microservices</strong> that power production-grade AI applications.
                         </p>
                         <p>
-                            I am actively seeking full-time roles in <strong>AI Engineering</strong>, <strong>LLM Development</strong>, and <strong>Machine Learning</strong> starting early 2026.
+                            I am actively seeking full-time roles in <strong>Backend Software Engineering</strong>, <strong>AI Infrastructure</strong>, and <strong>Cloud Engineering</strong> starting early 2026.
                         </p>
                     </div>
                     <div>

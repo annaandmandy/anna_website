@@ -67,6 +67,7 @@ export default function Navbar() {
 
                     <li><Link to="/interests" className="nav-link">Interests</Link></li>
                     <li><Link to="/weekend_report" className="nav-link">Weekend Report</Link></li>
+                    <li><a href="https://github.com/annaandmandy/Skill_demonstration" className="nav-link">GitHub</a></li>
                 </ul>
             </div>
         </nav>
