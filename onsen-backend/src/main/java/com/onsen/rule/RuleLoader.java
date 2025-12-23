@@ -1,8 +1,9 @@
 package com.onsen.rule;
 
+import org.springframework.core.io.ClassPathResource;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.charset.StandardCharsets;
 
 public class RuleLoader {
 
@@ -23,12 +24,13 @@ public class RuleLoader {
             throw new IllegalArgumentException("Unknown rule stage: " + stage);
         }
 
-        Path path = Path.of(RULE_BASE_PATH, folder, "rules.md");
+        String resourcePath = RULE_BASE_PATH + "/" + folder + "/rules.md";
+        ClassPathResource resource = new ClassPathResource(resourcePath);
 
         try {
-            return Files.readString(path);
+            return resource.getContentAsString(StandardCharsets.UTF_8);
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load rules for " + stage, e);
+            throw new RuntimeException("Failed to load rules for " + stage + " from " + resourcePath, e);
         }
     }
 }

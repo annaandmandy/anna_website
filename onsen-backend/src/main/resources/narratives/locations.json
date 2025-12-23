@@ -1,0 +1,401 @@
+{
+    "HOME": {
+        "default": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "Morning light filters through the curtains."
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You're awake already?"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "Yeah… good morning mom."
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You haven't been sleeping well lately. (With a worried look)"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Why don't you visit that new hot spring facility nearby?"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Everyone says it's very relaxing."
+                }
+            ]
+        },
+        "after_loop_a": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "Morning light filters through the curtains."
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You're awake already?"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(I am frightened. When did I get home? Is all of that just a dream?)"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You haven't been sleeping well lately. (With a worried look)"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Why don't you visit that new hot spring facility nearby?"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Everyone says it's very relaxing."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(Hot Spring…? That is exactly what my dream take place in. )"
+                }
+            ]
+        },
+        "after_loop_b": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "Morning light filters through the curtains."
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You're awake already?"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "Yeah…. (…Why does this conversation feel so familiar?)"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You haven't been sleeping well lately. (With a worried look)"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Why don't you visit that new hot spring facility nearby?"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Everyone says it's very relaxing."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(Some weird thought crosses my mind, but it is so blur that I can't remember it.)"
+                }
+            ]
+        },
+        "after_loop_c": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "Morning light filters through the curtains."
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You're awake already?"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "Yeah…. (…Why does this conversation feel so familiar?)"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "You haven't been sleeping well lately. (With a worried look)"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Why don't you visit that new hot spring facility nearby?"
+                },
+                {
+                    "speaker": "Mother",
+                    "text": "Everyone says it's very relaxing."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(…Didn't I just went to that place yesterday? Couldn't remember anything….)"
+                }
+            ]
+        }
+    },
+    "ENTRANCE": {
+        "default": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "I arrive at the hot spring facility. The building looks newly constructed, almost too clean."
+                },
+                {
+                    "speaker": "Front Desk Staff",
+                    "text": "Welcome. Is this your first visit?"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "Yes."
+                },
+                {
+                    "speaker": "Front Desk Staff",
+                    "text": "Then please make sure to read the rules posted at the entrance."
+                },
+                {
+                    "speaker": "Front Desk Staff",
+                    "text": "They are very important.",
+                    "emotion": "smiling, but staring a little too long"
+                }
+            ]
+        },
+        "after_loop": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "I arrive at the hot spring facility. The building looks newly constructed, almost too clean."
+                },
+                {
+                    "speaker": "Front Desk Staff",
+                    "text": "Welcome. Is this your first visit?"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "Yeah…? I think so."
+                },
+                {
+                    "speaker": "Front Desk Staff",
+                    "text": "Then please make sure to read the rules posted at the entrance."
+                },
+                {
+                    "speaker": "Front Desk Staff",
+                    "text": "They are very important.",
+                    "emotion": "smiling, but staring a little too long"
+                }
+            ]
+        }
+    },
+    "HOT_SPRING": {
+        "default": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "Warm steam rushes toward me as I open the door to the bathing area."
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "Several visitors are already soaking in the water."
+                },
+                {
+                    "speaker": "Visitor A",
+                    "text": "The water feels amazing, doesn't it?"
+                },
+                {
+                    "speaker": "Visitor B",
+                    "text": "Yeah. The longer you stay, the better it gets."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(It looks like a perfectly normal hot spring.)"
+                }
+            ]
+        },
+        "stay_longer": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "I feel the water getting warmer and warmer."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "But my body starts to feel weird."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "It's almost 15 mins, but I don't want to leave."
+                }
+            ]
+        },
+        "noticed_fin": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(…Wait.)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "For just a moment, the steam thins."
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "Something cuts through the surface of the water."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(That… was a dorsal fin.)"
+                },
+                {
+                    "speaker": "Visitor A",
+                    "text": "Is something wrong?",
+                    "emotion": "watching me without blinking"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "No… I must be imagining things."
+                }
+            ]
+        },
+        "sanity_low": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(Why do their faces look… wrong?)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "The steam thickens. The visitors' faces blur and stretch."
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "I can feel my teeth clenching."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(Why does the thought of biting feel… natural?)"
+                }
+            ]
+        }
+    },
+    "COLD_SPRING": {
+        "default": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "The cold spring area is quiet. The water shocks my senses."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(Cold… but my thoughts are clearing.)"
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "Cold water helps stabilize your condition."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(…Condition?)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "The staff left."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "This water is freezingly cold. I dont think I can stay for the whole 5 minutes."
+                }
+            ]
+        },
+        "stay_longer": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "The cold mist surrounds the whole pool.."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "I can feel my body shivering, but my thoughts are getting clearer."
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "Five minutes have passed."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "I need to get out of here, cannot stand the cold any longer."
+                }
+            ]
+        },
+        "panic_recovery": {
+            "dialogue": [
+                {
+                    "speaker": "Narrator",
+                    "text": "The pounding in my head slowly fades."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(The rules were right. This place works… somehow.)"
+                }
+            ]
+        }
+    },
+    "SHARK_POOL": {
+        "default": {
+            "dialogue": [
+                {
+                    "speaker": "Staff",
+                    "text": "Please follow me."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "Where are we going?"
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "To a pool better suited for your current state."
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "The room is hotter. The pool is deeper."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "I am not feeling too well now.."
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "Don't worry. You'll be fine soon.",
+                    "emotion": "expressionless"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "Something large moves beneath the surface."
+                }
+            ]
+        },
+        "bleeding": {
+            "dialogue": [
+                {
+                    "speaker": "Staff",
+                    "text": "You're bleeding."
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "(Whispering) That attracts attention."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "What did you just say?"
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "Nothing, let me take you to the pool, it helps you to recover your wounds."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "I can handle it myself."
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "No.",
+                    "emotion": "gripping my arm with unnatural strength"
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "Sorry, but you need to follow me. We don't want to be sued for negligence."
+                }
+            ]
+        }
+    }
+}

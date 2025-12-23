@@ -1,0 +1,410 @@
+{
+    "SURVIVE_LOOP_A": {
+        "title": "Ending A: Panicked Escape",
+        "dialogue": [
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "ENDING UNLOCKED: Panicked Escape"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I run. My heart pounds in my ears."
+            },
+            {
+                "speaker": "Me",
+                "text": "(Those things… they weren't people…)"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I don't stop until I'm blocks away."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "My hands are shaking. My vision blurs."
+            },
+            {
+                "speaker": "Me",
+                "text": "(What did I just see…?)"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "The world fades to black."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "You escaped… but at what cost?"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            }
+        ],
+        "epilogue": "You discovered the truth, but couldn't handle it. You escaped, but the trauma remains.",
+        "stats": {
+            "discovery": true,
+            "survival": true,
+            "mental_state": "Traumatized",
+            "continues_to_loop": true
+        }
+    },
+    "SURVIVE_LOOP_B": {
+        "title": "Ending B: Rational Response",
+        "dialogue": [
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "ENDING UNLOCKED: Rational Response"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "Narrator",
+                "text": "The cold water cleared my mind."
+            },
+            {
+                "speaker": "Me",
+                "text": "(I saw the truth. But I also know what to do.)"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I calmly change back into my clothes."
+            },
+            {
+                "speaker": "Front Desk Staff",
+                "text": "Thank you for visiting. How was your experience?"
+            },
+            {
+                "speaker": "Me",
+                "text": "Very relaxing. Thank you."
+            },
+            {
+                "speaker": "Front Desk Staff",
+                "text": "Wonderful. We hope to see you again.",
+                "emotion": "watching me carefully"
+            },
+            {
+                "speaker": "Me",
+                "text": "Perhaps.",
+                "emotion": "smiling politely"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I walk out. The door closes behind me."
+            },
+            {
+                "speaker": "Me",
+                "text": "(I won't come back. And I'll never tell anyone what I saw.)"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "Reason triumphed over fear."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            }
+        ],
+        "epilogue": "You discovered the truth and used the rules to protect yourself. This is reason's victory.",
+        "stats": {
+            "discovery": true,
+            "survival": true,
+            "mental_state": "Rational",
+            "continues_to_loop": true
+        }
+    },
+    "SURVIVE_LOOP_C": {
+        "title": "Ending C: Perfect Visit",
+        "dialogue": [
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "ENDING UNLOCKED: Perfect Visit"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "Me",
+                "text": "(That was a wonderful experience.)"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I followed all the rules. Didn't stay too long. Didn't look around."
+            },
+            {
+                "speaker": "Front Desk Staff",
+                "text": "Thank you for visiting! You are a model guest."
+            },
+            {
+                "speaker": "Me",
+                "text": "Thank you. I had a great time."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "Nothing unusual happened. Everything was perfectly normal."
+            },
+            {
+                "speaker": "Me",
+                "text": "(I should come back next week.)"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "Ignorance is bliss."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "…Or is it?"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            }
+        ],
+        "epilogue": "You followed the rules perfectly and noticed nothing. Perhaps this is the best ending?",
+        "stats": {
+            "discovery": false,
+            "survival": true,
+            "mental_state": "Blissfully Unaware",
+            "continues_to_loop": true
+        }
+    },
+    "END_DISPOSAL": {
+        "title": "Ending D: Special Treatment",
+        "dialogue": [
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "ENDING REACHED"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "Staff",
+                "text": "You look exhausted."
+            },
+            {
+                "speaker": "Staff",
+                "text": "Some guests need a little extra care before leaving."
+            },
+            {
+                "speaker": "Me",
+                "text": "I just want to go home."
+            },
+            {
+                "speaker": "Staff",
+                "text": "Of course."
+            },
+            {
+                "speaker": "Staff",
+                "text": "This will help you feel better."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "The staff member guides me toward a deeper pool."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "The water is far hotter than the others."
+            },
+            {
+                "speaker": "Me",
+                "text": "This doesn't feel right..."
+            },
+            {
+                "speaker": "Staff",
+                "text": "That's just the heat relaxing your body."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "Something massive shifts beneath the surface."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "A dark fin cuts through the water."
+            },
+            {
+                "speaker": "Me",
+                "text": "W-Wait—!"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I lose my balance and fall in."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "Teeth tear into my body."
+            },
+            {
+                "speaker": "Me",
+                "text": "AAAAAH—!"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "The water churns violently."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "My screaming is swallowed by the pool."
+            },
+            {
+                "speaker": "Staff",
+                "text": "Thank you for your cooperation."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "GAME OVER"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            }
+        ],
+        "epilogue": "Some guests never leave the facility.",
+        "stats": {
+            "discovery": "irrelevant",
+            "survival": false,
+            "mental_state": "Consumed"
+        }
+    },
+    "END_ASSIMILATION": {
+        "title": "Ending E: Assimilation",
+        "dialogue": [
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "TRUE ENDING UNLOCKED"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "Narrator",
+                "text": "The water feels warm."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "Warmer than it should be."
+            },
+            {
+                "speaker": "Me",
+                "text": "I feel... calm."
+            },
+            {
+                "speaker": "Me",
+                "text": "My thoughts are slowing down."
+            },
+            {
+                "speaker": "Staff",
+                "text": "That's good."
+            },
+            {
+                "speaker": "Staff",
+                "text": "It means the treatment is working."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "Shadows move beneath the surface."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I recognize them now."
+            },
+            {
+                "speaker": "They",
+                "text": "You are safe here."
+            },
+            {
+                "speaker": "They",
+                "text": "No more confusion."
+            },
+            {
+                "speaker": "Me",
+                "text": "I don't feel afraid anymore."
+            },
+            {
+                "speaker": "Me",
+                "text": "I don't want to leave."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "My body sinks deeper into the water."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "Breathing feels unnecessary."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "My skin tingles."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "My thoughts dissolve."
+            },
+            {
+                "speaker": "Staff",
+                "text": "Welcome home."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "YOU ARE PART OF THE FACILITY"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "===================="
+            }
+        ],
+        "epilogue": "You no longer need to understand. You no longer need to escape.",
+        "stats": {
+            "discovery": true,
+            "survival": false,
+            "mental_state": "Assimilated"
+        }
+    }
+}

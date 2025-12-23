@@ -1,0 +1,392 @@
+{
+    "GAME_START": {
+        "dialogue": [
+            {
+                "speaker": "System",
+                "text": "===================="
+            },
+            {
+                "speaker": "System",
+                "text": "Welcome to: The Onsen Chronicle"
+            },
+            {
+                "speaker": "System",
+                "text": "===================="
+            },
+            {
+                "speaker": "Narrator",
+                "text": "A rule-based horror story. Please read all rules carefully."
+            }
+        ]
+    },
+    "ENTER_HOT_SPRING": {
+        "first_time": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(The changing room is spotless. But... why are all the mirrors covered?)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "I change into the yukata and push open the door to the hot spring."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(The steam is thick... I can barely see anything.)"
+                }
+            ]
+        },
+        "repeated": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(That familiar feeling again...)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "I enter the hot spring area once more."
+                }
+            ]
+        }
+    },
+    "LOOK_AROUND": {
+        "safe": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(Let me take a look around...)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "The other guests look perfectly normal. The clock on the wall ticks forward as expected."
+                },
+                {
+                    "speaker": "Guest A",
+                    "text": "Such nice weather today."
+                },
+                {
+                    "speaker": "Guest B",
+                    "text": "Yes, it's been lovely."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(Nothing seems out of place...)"
+                }
+            ]
+        },
+        "notice_fin": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(Wait... under the water...)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "I see something I shouldn't have."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "That's... a fin?!"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(No way... this is an onsen, not the ocean...)"
+                },
+                {
+                    "speaker": "Guest A",
+                    "text": "What are you looking at?",
+                    "emotion": "Turns toward me, eyes hollow"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "N-nothing..."
+                },
+                {
+                    "speaker": "System",
+                    "text": "[SANITY -15]"
+                }
+            ],
+            "sanity_loss": 15
+        }
+    },
+    "STAY_TOO_LONG": {
+        "warning": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(How long have I been in here...?)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "My head starts to feel light. The water seems hotter than before."
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "You've been soaking for a while. Would you like to move to the cold spring?"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(That smile... something feels off.)"
+                },
+                {
+                    "speaker": "System",
+                    "text": "[SANITY -10]"
+                }
+            ],
+            "sanity_loss": 10
+        },
+        "danger": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "How much time has passed...?"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "My vision blurs. Sounds stretch and warp around me."
+                },
+                {
+                    "speaker": "Guests",
+                    "text": "Join us... join us...",
+                    "emotion": "Whispers echo from all directions"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(No... something's wrong...)"
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "It seems you require special care.",
+                    "emotion": "Approaching"
+                },
+                {
+                    "speaker": "System",
+                    "text": "[SANITY -20]"
+                }
+            ],
+            "sanity_loss": 20
+        }
+    },
+    "ENTER_COLD_SPRING": {
+        "normal": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "I'd like to go to the cold spring."
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "Of course. It's right this way."
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "The cold water snaps my mind awake."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(That's better...)"
+                },
+                {
+                    "speaker": "System",
+                    "text": "[SANITY +15]"
+                }
+            ],
+            "sanity_gain": 15
+        },
+        "panic": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(Calm down... I need to calm down...)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "I rush into the cold spring, submerging myself completely."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "Hah... hah..."
+                },
+                {
+                    "speaker": "Staff",
+                    "text": "Are you all right? You seem distressed."
+                },
+                {
+                    "speaker": "Me",
+                    "text": "I-I'm fine. I just needed to cool off."
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "The cold sharpens my thoughts. What I saw earlier... was it a hallucination?"
+                },
+                {
+                    "speaker": "System",
+                    "text": "[SANITY +25]"
+                }
+            ],
+            "sanity_gain": 25
+        }
+    },
+    "LEAVE_FACILITY": {
+        "normal": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "I think it's time to leave."
+                },
+                {
+                    "speaker": "Front Desk",
+                    "text": "Thank you for visiting! We hope you had a pleasant experience."
+                },
+                {
+                    "speaker": "Front Desk",
+                    "text": "We look forward to seeing you again.",
+                    "emotion": "Smiling"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(I'm finally out...)"
+                }
+            ]
+        },
+        "panic": {
+            "dialogue": [
+                {
+                    "speaker": "Me",
+                    "text": "(I have to leave... now!)"
+                },
+                {
+                    "speaker": "Narrator",
+                    "text": "I change back into my clothes and rush out the door."
+                },
+                {
+                    "speaker": "Front Desk",
+                    "text": "Take care... you'll be back.",
+                    "emotion": "Calls out gently from behind"
+                },
+                {
+                    "speaker": "Me",
+                    "text": "(What did they mean by that...?)"
+                }
+            ]
+        }
+    },
+    "INJURED": {
+        "dialogue": [
+            {
+                "speaker": "Me",
+                "text": "Ah!"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I accidentally cut my feet on the stones by the pool."
+            },
+            {
+                "speaker": "Me",
+                "text": "Damn... I'm bleeding..."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "Blood drips into the water. Instantly, every guest turns to look at me."
+            },
+            {
+                "speaker": "Staff",
+                "text": "...The scent of blood.",
+                "emotion": "Inhales deeply"
+            },
+            {
+                "speaker": "Staff",
+                "text": "Please come with me. We need to... take care of this."
+            }
+        ]
+    },
+    "ATTACKED_VISITOR": {
+        "dialogue": [
+            {
+                "speaker": "Me",
+                "text": "This smells delicious, and I am so hungry..."
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I lose control and start biting at a nearby guest."
+            },
+            {
+                "speaker": "Guest",
+                "text": "...",
+                "emotion": "Falls to the ground, expressionless"
+            },
+            {
+                "speaker": "Other Guests",
+                "text": "...",
+                "emotion": "All movement stops. Every head turns toward me."
+            },
+            {
+                "speaker": "Staff",
+                "text": "An unstable guest.",
+                "emotion": "Approaching from all directions"
+            },
+            {
+                "speaker": "Staff",
+                "text": "Initiating containment procedure."
+            }
+        ]
+    },
+    "STAFF_GUIDANCE": {
+        "dialogue": [
+            {
+                "speaker": "Staff",
+                "text": "Hello. Do you require assistance?"
+            },
+            {
+                "speaker": "Me",
+                "text": "No, thank you. I can manage on my—"
+            },
+            {
+                "speaker": "Staff",
+                "text": "We believe you would benefit from our special service.",
+                "emotion": "Rigid smile"
+            },
+            {
+                "speaker": "Staff",
+                "text": "Please follow me."
+            },
+            {
+                "speaker": "Me",
+                "text": "(Why... can't I move my body?)"
+            }
+        ]
+    },
+    "NOTICE_FIN": {
+        "dialogue": [
+            {
+                "speaker": "Narrator",
+                "text": "For a brief moment, the steam parts."
+            },
+            {
+                "speaker": "Me",
+                "text": "......!!!"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "That is not human. A massive fin cuts through the water."
+            },
+            {
+                "speaker": "Me",
+                "text": "(This can't be... this isn't an onsen... this is—)"
+            },
+            {
+                "speaker": "Guest A",
+                "text": "You saw it.",
+                "emotion": "Turns to me without emotion"
+            },
+            {
+                "speaker": "Guest B",
+                "text": "That's unfortunate."
+            },
+            {
+                "speaker": "System",
+                "text": "[SANITY -15] [ANOMALY DISCOVERED]"
+            }
+        ]
+    }
+}
