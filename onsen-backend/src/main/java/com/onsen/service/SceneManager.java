@@ -118,27 +118,27 @@ public class SceneManager {
     
     private String getNarrative(Location location, WorldState state) {
         return switch (location) {
-            case HOME -> "You wake up at home. Your mother suggests visiting the hot spring.";
-            case ENTRANCE -> "You arrive at the Onsen Facility. A sign displays the entrance rules.";
+            case HOME -> "I wake up at home. Mother suggests I visit the hot spring to relax.";
+            case ENTRANCE -> "I arrive at the Onsen Facility. A worn sign displays the entrance rules.";
             case HOT_SPRING -> {
                 if (state.isNoticedFin()) {
-                    yield "Something feels wrong. You notice strange shapes in the steam...";
+                    yield "Something feels wrong. I notice strange shapes moving beneath the steam...";
                 } else {
-                    yield "The hot spring is peaceful. Several other visitors are relaxing.";
+                    yield "I ease into the hot spring. The water is warm. Other visitors are relaxing nearby.";
                 }
             }
-            case COLD_SPRING -> "The cold spring helps clear your mind. You feel more stable.";
-            case SHARK_POOL -> "Staff guides you to the hottest pool. The water is uncomfortably warm.";
+            case COLD_SPRING -> "The cold water shocks my system. My mind feels clearer. More stable.";
+            case SHARK_POOL -> "A staff member guides me to the hottest pool. The water is uncomfortably warm.";
         };
     }
     
     private String getEndingNarrative(EndingStatus ending) {
         return switch (ending) {
-            case SURVIVE_LOOP_A -> "You flee the facility in panic. When you wake up, it feels like a nightmare... but was it?";
-            case SURVIVE_LOOP_B -> "The cold spring worked. You feel normal again. You leave safely.";
-            case SURVIVE_LOOP_C -> "You followed all the rules perfectly. Nothing unusual happened.";
-            case END_DISPOSAL -> "The sharks are hungry. Your instability made you... unsuitable.";
-            case END_ASSIMILATION -> "You sink deeper. The water embraces you. You are becoming one with them.";
+            case SURVIVE_LOOP_A -> "I flee the facility in panic. When I wake up, it feels like a nightmare... but was it?";
+            case SURVIVE_LOOP_B -> "The cold spring worked. I feel normal again. I leave safely.";
+            case SURVIVE_LOOP_C -> "I followed all the rules perfectly. Nothing unusual happened.";
+            case END_DISPOSAL -> "The sharks are hungry. My instability made me... unsuitable.";
+            case END_ASSIMILATION -> "I sink deeper. The water embraces me. I am becoming one with them.";
             default -> "";
         };
     }
