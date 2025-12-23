@@ -13,6 +13,7 @@ import Booklet from './pages/Booklet';
 import MessageBoard from './pages/MessageBoard';
 import Live2DModel from './components/Live2DViewer';
 import Game from './pages/Game';
+import RuleBasedGame from './pages/RuleBasedGame';
 import WeekendReport from './pages/BostonWeekendAgent';
 
 import { Routes, Route } from 'react-router-dom';
@@ -32,6 +33,7 @@ function App() {
         <Route path="/booklet" element={<Booklet />} />
         <Route path="/messageboard" element={<MessageBoard />} />
         <Route path="/game" element={<Game />} />
+        <Route path="/onsen-game" element={<RuleBasedGame />} />
         <Route path="/weekend_report" element={<WeekendReport />} />
       </Routes>
       <Live2DModel />

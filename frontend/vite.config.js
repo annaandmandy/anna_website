@@ -9,4 +9,8 @@ export default defineConfig({
   resolve: {
     extensions: ['.ts', '.js', '.jsx'], // Add .ts to handle Framework files
   },
+  define: {
+    // Fix for SockJS: polyfill global
+    global: 'globalThis',
+  },
 })

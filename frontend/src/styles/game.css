@@ -1,0 +1,491 @@
+/* Onsen Rule-Based Horror Game Styles */
+
+/* === Game Container === */
+.game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Georgia', serif;
+}
+
+/* === Background === */
+.game-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.game-background.transitioning {
+    opacity: 0;
+}
+
+/* === State Display (HUD) === */
+.state-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px 20px;
+    min-width: 250px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.san-meter {
+    margin-bottom: 12px;
+}
+
+.san-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.san-value {
+    font-size: 18px;
+}
+
+.san-status {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.san-bar-container {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.san-bar {
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.location-display,
+.loop-display {
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.location-label,
+.loop-label {
+    color: #aaa;
+    margin-right: 5px;
+}
+
+.location-value,
+.loop-value {
+    color: #fff;
+    font-weight: bold;
+}
+
+.status-effects {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.status-icon {
+    font-size: 20px;
+    display: inline-block;
+}
+
+/* === Text Box === */
+.text-box {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    min-height: 150px;
+    z-index: 50;
+
+    /* Glassmorphism */
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 30px 40px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.9);
+
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.8;
+    cursor: pointer;
+}
+
+.text-content {
+    white-space: pre-wrap;
+}
+
+.cursor-blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.advance-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 20px;
+}
+
+/* Text horror effects */
+.text-horror-medium {
+    color: #ffcccc;
+}
+
+.text-horror-high {
+    color: #ffaaaa;
+    animation: text-shake 0.3s infinite;
+}
+
+@keyframes text-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1px);
+    }
+
+    75% {
+        transform: translateX(1px);
+    }
+}
+
+/* === Choice Panel === */
+.choice-panel {
+    position: absolute;
+    bottom: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 60;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.choice-button {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 15px 25px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.choice-button:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateX(5px);
+}
+
+.choice-button.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* === Rule Modal === */
+.rule-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rule-modal {
+    background: #1a1a1a;
+    border: 3px solid #fff;
+    max-width: 600px;
+    width: 90%;
+    padding: 40px;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+    position: relative;
+}
+
+.rule-paper {
+    background: linear-gradient(135deg, #f5f5dc 0%, #e8e8d0 100%);
+    color: #000;
+    padding: 30px;
+    border: 1px solid #999;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.rule-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+
+.rule-content {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.rule-line {
+    margin: 15px 0;
+    padding-left: 10px;
+}
+
+.dismiss-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+}
+
+.dismiss-button:hover {
+    background: #333;
+}
+
+.reading-timer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #666;
+}
+
+/* Flicker effect for rule modal */
+.flicker {
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* === Start Screen === */
+.game-start-screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
+    color: #fff;
+}
+
+.start-content {
+    text-align: center;
+}
+
+.game-title {
+    font-size: 72px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.game-subtitle {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: #aaa;
+    font-style: italic;
+}
+
+.start-button {
+    padding: 15px 50px;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+}
+
+.start-button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.start-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* === Ending Screen === */
+.ending-screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.ending-overlay {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 60px 80px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.ending-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.ending-message {
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.restart-button {
+    padding: 15px 40px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+}
+
+.restart-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* === Utility Animations === */
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.pulse-slow {
+    animation: pulse 3s infinite;
+}
+
+@keyframes subtle-shake {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-1px, 1px);
+    }
+
+    50% {
+        transform: translate(1px, -1px);
+    }
+
+    75% {
+        transform: translate(-1px, -1px);
+    }
+}
+
+/* === Debug Info === */
+.debug-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #0f0;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 12px;
+    z-index: 1000;
+}
+
+.error-message {
+    color: #ff4444;
+    margin-top: 20px;
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    font-size: 24px;
+}
