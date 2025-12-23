@@ -71,4 +71,16 @@ public class WebSocketService {
         String destination = "/topic/game/" + sessionId;
         messagingTemplate.convertAndSend(destination, (Object) message);
     }
+
+    /**
+     * Send error message to specific session
+     */
+    public void sendError(String sessionId, String errorMessage) {
+        Map<String, Object> message = new HashMap<>();
+        message.put("type", "ERROR");
+        message.put("content", errorMessage);
+
+        String destination = "/topic/game/" + sessionId;
+        messagingTemplate.convertAndSend(destination, (Object) message);
+    }
 }

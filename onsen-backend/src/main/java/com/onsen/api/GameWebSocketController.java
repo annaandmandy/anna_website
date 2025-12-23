@@ -1,0 +1,56 @@
+package com.onsen.api;
+
+import com.onsen.domain.PlayerAction;
+import com.onsen.event.EventType;
+import com.onsen.service.GameEngine;
+import com.onsen.service.WebSocketService;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Controller;
+
+import java.util.Map;
+
+@Controller
+public class GameWebSocketController {
+
+    private final GameEngine gameEngine;
+    private final WebSocketService webSocketService;
+
+    public GameWebSocketController(
+            GameEngine gameEngine,
+            WebSocketService webSocketService) {
+        this.gameEngine = gameEngine;
+        this.webSocketService = webSocketService;
+    }
+
+    /**
+     * Handle game actions via WebSocket
+     * Receives messages sent to /app/game/action
+     */
+    @MessageMapping("/game/action")
+    public void handleAction(@Payload Map<String, Object> payload) {
+        String sessionId = (String) payload.get("sessionId");
+        try {
+            String actionStr = (String) payload.get("action");
+            EventType action = EventType.valueOf(actionStr);
+
+            PlayerAction playerAction = new PlayerAction(action, sessionId);
+
+            // Add metadata if present
+            if (payload.containsKey("metadata") && payload.get("metadata") instanceof Map) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> metadata = (Map<String, Object>) payload.get("metadata");
+                playerAction.setMetadata(metadata);
+            }
+
+            // Process the action
+            gameEngine.processAction(playerAction);
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Log error to console
+            if (sessionId != null) {
+                webSocketService.sendError(sessionId, "Error processing action: " + e.getMessage());
+            }
+        }
+    }
+}
