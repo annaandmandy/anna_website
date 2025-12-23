@@ -1,9 +1,12 @@
 package com.onsen.domain;
 
 public enum EndingStatus {
-    NONE,
-    LOOP_1,
-    LOOP_2,
-    LOOP_3,
-    FINAL
+    NONE,                  
+    
+    SURVIVE_LOOP_A,        
+    SURVIVE_LOOP_B,        
+    SURVIVE_LOOP_C,        
+    
+    END_DISPOSAL,          
+    END_ASSIMILATION       
 }
