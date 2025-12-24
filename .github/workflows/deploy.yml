@@ -19,7 +19,7 @@ jobs:
             echo "Pulling latest changes from main branch..."
             git pull origin main
             echo "Building and Starting Docker containers..."
-            docker-compose up --build -d
+            docker compose down && docker compose up -d --build
             echo "Cleaning up old containers..."
             docker image prune -f
             echo "Deployment completed successfully!"
