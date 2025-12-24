@@ -5,8 +5,8 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      - PUID: 1000
-      - PGID: 1000
+      - PUID=1000
+      - PGID=1000
       - TZ=Asia/Taipei
       - URL=hsiangyuhuang.com
       - SUBDOMAINS=api
@@ -64,7 +64,7 @@ services:
     volumes:
       - redis-data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -88,7 +88,7 @@ services:
       JAVA_TOOL_OPTIONS: "-Xmx300m" # Limit Java heap size
     restart: always
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8081/health"]
+      test: [ "CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8081/health" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -96,4 +96,5 @@ services:
 
 volumes:
   redis-data:
+
 
