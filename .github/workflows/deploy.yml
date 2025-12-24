@@ -5,6 +5,24 @@ on:
     branches: [ "main" ]
   
 jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./onsen-backend
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/onsen-backend:latest
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -18,8 +36,11 @@ jobs:
             cd /root/anna_website/onsen-backend
             echo "Pulling latest changes from main branch..."
             git pull origin main
-            echo "Building and Starting Docker containers..."
-            docker compose down && docker compose up -d --build
+            echo "Pulling latest Docker image..."
+            docker compose pull onsen-backend
+            echo "Starting Docker containers..."
+            docker compose down
+            docker compose up -d
             echo "Cleaning up old containers..."
             docker image prune -f
             echo "Deployment completed successfully!"

@@ -71,10 +71,12 @@ services:
     restart: always
 
   onsen-backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     container_name: onsen-backend
+    image: annaandmandy/onsen-backend:latest
+    pull_policy: always
     depends_on:
       - kafka
       - redis
