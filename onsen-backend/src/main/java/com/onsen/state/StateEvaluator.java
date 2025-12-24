@@ -67,7 +67,7 @@ public class StateEvaluator {
                 state.decreaseSanity(20);
             }
 
-           case ATTACKED_VISITOR -> {
+            case ATTACKED_VISITOR -> {
                 state.markAttackedVisitor();
                 state.decreaseSanity(30);
             }
@@ -96,10 +96,11 @@ public class StateEvaluator {
      * Check if sanity is critically low and trigger staff intervention
      */
     private void checkCriticalSanity(WorldState state, EventType currentEvent) {
-        // If SAN drops below 20 and we're not already being guided, trigger STAFF_GUIDANCE
+        // If SAN drops below 20 and we're not already being guided, trigger
+        // STAFF_GUIDANCE
         if (state.getSanity() < 20 &&
-            currentEvent != EventType.STAFF_GUIDANCE &&
-            state.getCurrentLocation() != Location.SHARK_POOL) {
+                currentEvent != EventType.STAFF_GUIDANCE &&
+                state.getCurrentLocation() != Location.SHARK_POOL) {
             // This will be handled by the game engine to send STAFF_GUIDANCE event
             state.setRequiresStaffGuidance(true);
         }
@@ -111,11 +112,11 @@ public class StateEvaluator {
     private void checkRandomAttack(WorldState state, EventType currentEvent) {
         // When SAN < 30 and not already attacked, 25% chance to attack on any action
         if (state.getSanity() < 30 &&
-            !state.isAttackedVisitor() &&
-            currentEvent != EventType.ATTACKED_VISITOR &&
-            currentEvent != EventType.STAFF_GUIDANCE &&
-            state.getCurrentLocation() != Location.SHARK_POOL &&
-            state.getCurrentLocation() != Location.HOME) {
+                !state.isAttackedVisitor() &&
+                currentEvent != EventType.ATTACKED_VISITOR &&
+                currentEvent != EventType.STAFF_GUIDANCE &&
+                state.getCurrentLocation() != Location.SHARK_POOL &&
+                state.getCurrentLocation() != Location.HOME) {
 
             // 25% chance to lose control and attack
             if (random.nextDouble() < 0.25) {
@@ -127,54 +128,62 @@ public class StateEvaluator {
     }
 
     private void resolveEnding(WorldState state) {
-        
-        // === True Endings (遊戲結束，不可繼續) ===
-        
-        // 被同化條件：SAN < 10 且在 SHARK_POOL
+
+        // True Endings
         if (state.getSanity() < 10 && state.getCurrentLocation() == Location.SHARK_POOL) {
             state.setEnding(EndingStatus.END_ASSIMILATION);
             return;
         }
 
-        // 被吃掉條件：SAN >= 10 但有危險行為且在 SHARK_POOL
+        // Eaten Ending
         if (state.getCurrentLocation() == Location.SHARK_POOL &&
-            (state.isBleeding() || state.isAttackedVisitor())) {
+                (state.isBleeding() || state.isAttackedVisitor())) {
             state.setEnding(EndingStatus.END_DISPOSAL);
             return;
         }
 
-        // === Survival Loops (可以重來，Loop 繼續) ===
-        
+        // Survival Loops
+
         // Survival Loop A:
-        if (state.isNoticedFin() && state.getSanity() < 50) {
+        // Player noticed something scary and leaves quickly, but should have visited
+        // first
+        if (state.isNoticedFin() &&
+                state.getSanity() < 50 &&
+                state.getCurrentLocation() == Location.ENTRANCE &&
+                (state.hasVisited(Location.HOT_SPRING) || state.hasVisited(Location.COLD_SPRING))) {
             state.setEnding(EndingStatus.SURVIVE_LOOP_A);
             return;
         }
 
         // Survival Loop B:
-        if (state.getCurrentLocation() == Location.COLD_SPRING && 
-            state.getSanity() >= 70) {
+        if (state.getCurrentLocation() == Location.COLD_SPRING &&
+                state.getSanity() >= 70) {
             state.setEnding(EndingStatus.SURVIVE_LOOP_B);
             return;
         }
 
-        // Survival Loop C:    
-        if (!state.isNoticedFin() && 
-            state.getSanity() >= 80 && 
-            state.getExposureLevel() == 0) {
+        // Survival Loop C:
+        // Player must have visited at least one hot spring before they can "leave"
+        if (!state.isNoticedFin() &&
+                state.getSanity() >= 80 &&
+                state.getExposureLevel() == 0 &&
+                state.getCurrentLocation() == Location.ENTRANCE &&
+                (state.hasVisited(Location.HOT_SPRING) || state.hasVisited(Location.COLD_SPRING))) {
             state.setEnding(EndingStatus.SURVIVE_LOOP_C);
             return;
         }
-        
+
         // === Game Continues ===
-        // If none of the above conditions are met, keep NONE state, player can continue the game
+        // If none of the above conditions are met, keep NONE state, player can continue
+        // the game
         // For example: SAN = 60, in HOT_SPRING, no fin seen -> continue playing
         if (state.getEnding() != EndingStatus.NONE) {
             // If there is already an ending, do not overwrite
-            // This protection logic ensures that the ending will not be accidentally cleared
+            // This protection logic ensures that the ending will not be accidentally
+            // cleared
             return;
         }
-        
+
         // Explicitly keep the game in progress state
         state.setEnding(EndingStatus.NONE);
     }
