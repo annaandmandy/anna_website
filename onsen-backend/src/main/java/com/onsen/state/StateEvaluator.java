@@ -129,6 +129,13 @@ public class StateEvaluator {
 
     private void resolveEnding(WorldState state) {
 
+        // Skip ending checks if player is still at HOME (game hasn't really started
+        // yet)
+        if (state.getCurrentLocation() == Location.HOME) {
+            state.setEnding(EndingStatus.NONE);
+            return;
+        }
+
         // True Endings
         if (state.getSanity() < 10 && state.getCurrentLocation() == Location.SHARK_POOL) {
             state.setEnding(EndingStatus.END_ASSIMILATION);
@@ -142,7 +149,7 @@ public class StateEvaluator {
             return;
         }
 
-        // Survival Loops
+        // Survival Loops (only check when player is trying to leave from ENTRANCE)
 
         // Survival Loop A:
         // Player noticed something scary and leaves quickly, but should have visited
