@@ -1,0 +1,27 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches: [ "main" ]
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DigitalOcean via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USERNAME }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            cd /root/anna_website/onsen-backend
+            echo "Pulling latest changes from main branch..."
+            git pull origin main
+            echo "Building and Starting Docker containers..."
+            docker-compose up --build -d
+            echo "Cleaning up old containers..."
+            docker image prune -f
+            echo "Deployment completed successfully!"
+            
+          
