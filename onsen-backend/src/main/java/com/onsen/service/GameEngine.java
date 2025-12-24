@@ -86,10 +86,19 @@ public class GameEngine {
      * Send scene update immediately via WebSocket
      */
     protected void sendSceneUpdate(GameSession session, EventType event) {
-        var narrativeLines = narrativeService.getNarrativeLines(
-                event,
-                session.getWorldState().getCurrentLocation(),
-                session.getWorldState().getSanity());
+        // Get dialogue from NarrativeService
+        var dialogueLines = narrativeService.getEventDialogue(event, session.getWorldState());
+
+        // Convert dialogue to simple text lines for WebSocket
+        var narrativeLines = dialogueLines.stream()
+                .map(line -> {
+                    if (line.emotion() != null) {
+                        return line.speaker() + ": " + line.text() + " (" + line.emotion() + ")";
+                    } else {
+                        return line.speaker() + ": " + line.text();
+                    }
+                })
+                .toList();
 
         // Send scene update immediately - frontend handles timing
         if (!narrativeLines.isEmpty()) {

@@ -16,9 +16,11 @@ import java.util.Map;
 public class SceneManager {
 
     private final RuleEvaluator ruleEvaluator;
-    
-    public SceneManager(RuleEvaluator ruleEvaluator) {
+    private final NarrativeService narrativeService;
+
+    public SceneManager(RuleEvaluator ruleEvaluator, NarrativeService narrativeService) {
         this.ruleEvaluator = ruleEvaluator;
+        this.narrativeService = narrativeService;
     }
 
     /**
@@ -28,66 +30,62 @@ public class SceneManager {
         WorldState state = session.getWorldState();
         Location location = state.getCurrentLocation();
         EndingStatus ending = state.getEnding();
-        
+
         // If ending triggered, return ending scene
         if (ending != EndingStatus.NONE) {
             return getEndingScene(ending, state);
         }
-        
+
         // Check if rule should be shown
         var ruleToShow = ruleEvaluator.shouldShowRule(session);
-        
+
         // Get location scene
         final Map<String, Object> scene = getLocationScene(location, state);
-        
+
         // Add rule if needed
         ruleToShow.ifPresent(rule -> {
             scene.put("ruleToShow", Map.of(
-                "stage", rule.stage().name(),
-                "content", rule.content()
-            ));
+                    "stage", rule.stage().name(),
+                    "content", rule.content()));
             // Mark as seen
             ruleEvaluator.markRuleSeen(session, rule.stage());
         });
-        
+
         return scene;
     }
-    
+
     /**
      * Get available choices for current state
      */
     public List<Choice> getAvailableChoices(GameSession session) {
         WorldState state = session.getWorldState();
         Location location = state.getCurrentLocation();
-        
+
         // If ending triggered, no more choices
         if (state.getEnding() != EndingStatus.NONE) {
             return List.of();
         }
-        
+
         // Location-based choices
         return switch (location) {
             case HOME -> List.of(
-                new Choice("enter", "Enter the hot spring facility", EventType.ENTER_HOT_SPRING)
-            );
-            
+                    new Choice("enter", "Enter the hot spring facility", EventType.ENTER_HOT_SPRING));
+
             case ENTRANCE -> List.of(
-                new Choice("continue", "Continue to hot spring", EventType.ENTER_HOT_SPRING),
-                new Choice("leave", "Leave facility", EventType.LEAVE_FACILITY)
-            );
-            
+                    new Choice("continue", "Continue to hot spring", EventType.ENTER_HOT_SPRING),
+                    new Choice("leave", "Leave facility", EventType.LEAVE_FACILITY));
+
             case HOT_SPRING -> getHotSpringChoices(state);
-            
+
             case COLD_SPRING -> List.of(
-                new Choice("stay", "Stay in cold spring", EventType.ENTER_COLD_SPRING),
-                new Choice("hot", "Return to hot spring", EventType.ENTER_HOT_SPRING),
-                new Choice("leave", "Leave facility", EventType.LEAVE_FACILITY)
-            );
-            
+                    new Choice("stay", "Stay in cold spring", EventType.ENTER_COLD_SPRING),
+                    new Choice("hot", "Return to hot spring", EventType.ENTER_HOT_SPRING),
+                    new Choice("leave", "Leave facility", EventType.LEAVE_FACILITY));
+
             case SHARK_POOL -> List.of(); // No escape from shark pool
         };
     }
-    
+
     private List<Choice> getHotSpringChoices(WorldState state) {
         List<Choice> choices = new ArrayList<>();
         choices.add(new Choice("stay", "Stay longer (risky)", EventType.STAY_TOO_LONG));
@@ -96,53 +94,37 @@ public class SceneManager {
         choices.add(new Choice("leave", "Leave facility", EventType.LEAVE_FACILITY));
         return choices;
     }
-    
+
     private Map<String, Object> getLocationScene(Location location, WorldState state) {
         Map<String, Object> scene = new HashMap<>();
         scene.put("location", location.name());
-        scene.put("narrative", getNarrative(location, state));
+
+        // Get dialogue from NarrativeService
+        var dialogueLines = narrativeService.getLocationDialogue(location, state);
+        scene.put("dialogue", dialogueLines);
+
         scene.put("sanity", state.getSanity());
         scene.put("flags", getStateFlags(state));
         return scene;
     }
-    
+
     private Map<String, Object> getEndingScene(EndingStatus ending, WorldState state) {
         Map<String, Object> scene = new HashMap<>();
         scene.put("ending", ending.name());
-        scene.put("narrative", getEndingNarrative(ending));
+
+        // Get ending dialogue from NarrativeService
+        var endingNarrative = narrativeService.getEndingDialogue(ending);
+        scene.put("title", endingNarrative.title());
+        scene.put("dialogue", endingNarrative.dialogue());
+        scene.put("epilogue", endingNarrative.epilogue());
+
         scene.put("finalSanity", state.getSanity());
         scene.put("loopCount", state.getLoopCount());
-        scene.put("canContinue", isSurvivalLoop(ending));
+        scene.put("canContinue", endingNarrative.stats() != null && endingNarrative.stats().continuesToLoop());
+
         return scene;
     }
-    
-    private String getNarrative(Location location, WorldState state) {
-        return switch (location) {
-            case HOME -> "I wake up at home. Mother suggests I visit the hot spring to relax.";
-            case ENTRANCE -> "I arrive at the Onsen Facility. A worn sign displays the entrance rules.";
-            case HOT_SPRING -> {
-                if (state.isNoticedFin()) {
-                    yield "Something feels wrong. I notice strange shapes moving beneath the steam...";
-                } else {
-                    yield "I ease into the hot spring. The water is warm. Other visitors are relaxing nearby.";
-                }
-            }
-            case COLD_SPRING -> "The cold water shocks my system. My mind feels clearer. More stable.";
-            case SHARK_POOL -> "A staff member guides me to the hottest pool. The water is uncomfortably warm.";
-        };
-    }
-    
-    private String getEndingNarrative(EndingStatus ending) {
-        return switch (ending) {
-            case SURVIVE_LOOP_A -> "I flee the facility in panic. When I wake up, it feels like a nightmare... but was it?";
-            case SURVIVE_LOOP_B -> "The cold spring worked. I feel normal again. I leave safely.";
-            case SURVIVE_LOOP_C -> "I followed all the rules perfectly. Nothing unusual happened.";
-            case END_DISPOSAL -> "The sharks are hungry. My instability made me... unsuitable.";
-            case END_ASSIMILATION -> "I sink deeper. The water embraces me. I am becoming one with them.";
-            default -> "";
-        };
-    }
-    
+
     private Map<String, Object> getStateFlags(WorldState state) {
         Map<String, Object> flags = new HashMap<>();
         flags.put("noticedFin", state.isNoticedFin());
@@ -150,13 +132,14 @@ public class SceneManager {
         flags.put("exposure", state.getExposureLevel());
         return flags;
     }
-    
+
     private boolean isSurvivalLoop(EndingStatus ending) {
         return ending == EndingStatus.SURVIVE_LOOP_A ||
-               ending == EndingStatus.SURVIVE_LOOP_B ||
-               ending == EndingStatus.SURVIVE_LOOP_C;
+                ending == EndingStatus.SURVIVE_LOOP_B ||
+                ending == EndingStatus.SURVIVE_LOOP_C;
     }
-    
+
     // Choice DTO
-    public record Choice(String id, String text, EventType action) {}
+    public record Choice(String id, String text, EventType action) {
+    }
 }

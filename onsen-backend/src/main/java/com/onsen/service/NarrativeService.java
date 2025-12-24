@@ -1,66 +1,240 @@
 package com.onsen.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.onsen.domain.EndingStatus;
 import com.onsen.domain.Location;
+import com.onsen.domain.WorldState;
 import com.onsen.event.EventType;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class NarrativeService {
 
-    /**
-     * Get narrative lines for specific events.
-     * Returns all lines immediately - frontend handles pacing and timing.
-     */
-    public List<String> getNarrativeLines(EventType event, Location location, int sanity) {
-        return switch (event) {
-            case STAY_TOO_LONG -> List.of(
-                    "I decide to stay longer. The warmth is... comforting.",
-                    "The water temperature seems to be rising.",
-                    "I feel something watching me from beneath the surface.");
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private JsonNode locations;
+    private JsonNode events;
+    private JsonNode endings;
 
-            case LOOK_AROUND -> {
-                if (sanity < 80) {
-                    yield List.of(
-                            "I slowly turn my head, scanning the room.",
-                            "Most visitors seem normal, but...",
-                            "Wait. What was that in the water?",
-                            "A dark fin breaks the surface for just a moment.");
-                } else {
-                    yield List.of(
-                            "I look around. Everything seems peaceful.",
-                            "Other guests are relaxing quietly.");
-                }
-            }
-
-            case ENTER_HOT_SPRING -> List.of(
-                    "I step into the hot spring.",
-                    "The heat envelops me. It feels good.",
-                    "I notice a faint smell... metallic?");
-
-            case ENTER_COLD_SPRING -> List.of(
-                    "I move to the cold spring section.",
-                    "The shock of cold water clears my mind.",
-                    "I feel more in control now.");
-
-            case INJURED -> List.of(
-                    "Pain shoots through me. I'm bleeding.",
-                    "The water around me darkens with blood.",
-                    "I see shapes moving toward me beneath the surface.",
-                    "They're... circling.");
-
-            default -> List.of(
-                    getImmediateNarrative(event, location));
-        };
+    public NarrativeService() {
+        loadNarratives();
     }
 
-    private String getImmediateNarrative(EventType event, Location location) {
-        return switch (event) {
-            case GAME_START -> "I wake up feeling uneasy. Mother insists I visit the hot spring.";
-            case LEAVE_FACILITY -> "I decide to leave. Something doesn't feel right here.";
-            case ENTER_SHARK_POOL -> "A staff member leads me to a private pool. 'Our premium experience,' they say.";
-            default -> "";
-        };
+    private void loadNarratives() {
+        try {
+            locations = objectMapper.readTree(
+                    new ClassPathResource("narratives/locations.json").getInputStream());
+            events = objectMapper.readTree(
+                    new ClassPathResource("narratives/events.json").getInputStream());
+            endings = objectMapper.readTree(
+                    new ClassPathResource("narratives/endings.json").getInputStream());
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load narrative files", e);
+        }
+    }
+
+    /**
+     * Get dialogue for a location based on game state
+     */
+    public List<DialogueLine> getLocationDialogue(Location location, WorldState state) {
+        JsonNode locationNode = locations.get(location.name());
+        if (locationNode == null) {
+            return List.of();
+        }
+
+        // Determine which variant to use
+        String variant = determineLocationVariant(state);
+
+        JsonNode dialogueNode;
+        if (locationNode.has(variant)) {
+            dialogueNode = locationNode.get(variant).get("dialogue");
+        } else if (locationNode.has("default")) {
+            dialogueNode = locationNode.get("default").get("dialogue");
+        } else {
+            return List.of();
+        }
+
+        return parseDialogue(dialogueNode);
+    }
+
+    /**
+     * Get dialogue for an event
+     */
+    public List<DialogueLine> getEventDialogue(EventType eventType, WorldState state) {
+        JsonNode eventNode = events.get(eventType.name());
+        if (eventNode == null) {
+            return List.of();
+        }
+
+        // Determine which variant to use based on state
+        String variant = determineEventVariant(eventType, state);
+
+        JsonNode dialogueNode;
+        if (eventNode.has(variant)) {
+            dialogueNode = eventNode.get(variant).get("dialogue");
+        } else if (eventNode.has("dialogue")) {
+            // Direct dialogue array
+            dialogueNode = eventNode.get("dialogue");
+        } else {
+            return List.of();
+        }
+
+        return parseDialogue(dialogueNode);
+    }
+
+    /**
+     * Get ending dialogue
+     */
+    public EndingNarrative getEndingDialogue(EndingStatus ending) {
+        JsonNode endingNode = endings.get(ending.name());
+        if (endingNode == null) {
+            return new EndingNarrative("Unknown Ending", List.of(), "", null);
+        }
+
+        String title = endingNode.get("title").asText();
+        List<DialogueLine> dialogue = parseDialogue(endingNode.get("dialogue"));
+        String epilogue = endingNode.get("epilogue").asText();
+
+        // Parse stats if present
+        JsonNode statsNode = endingNode.get("stats");
+        EndingStats stats = null;
+        if (statsNode != null) {
+            stats = new EndingStats(
+                    statsNode.has("discovery") ? statsNode.get("discovery").asBoolean() : false,
+                    statsNode.get("survival").asBoolean(),
+                    statsNode.get("mental_state").asText(),
+                    statsNode.has("continues_to_loop") && statsNode.get("continues_to_loop").asBoolean());
+        }
+
+        return new EndingNarrative(title, dialogue, epilogue, stats);
+    }
+
+    /**
+     * Determine which location variant to show based on game state
+     */
+    private String determineLocationVariant(WorldState state) {
+        // Check for specific conditions first
+        if (state.getCurrentLocation() == Location.HOT_SPRING) {
+            if (state.isNoticedFin()) {
+                return "noticed_fin";
+            }
+            if (state.getSanity() < 30) {
+                return "sanity_low";
+            }
+            // Check if stayed longer
+            if (state.getExposureLevel() > 1) {
+                return "stay_longer";
+            }
+        }
+
+        if (state.getCurrentLocation() == Location.COLD_SPRING) {
+            if (state.getSanity() < 50) {
+                return "panic_recovery";
+            }
+            if (state.getExposureLevel() > 0) {
+                return "stay_longer";
+            }
+        }
+
+        if (state.getCurrentLocation() == Location.SHARK_POOL) {
+            if (state.isBleeding()) {
+                return "bleeding";
+            }
+        }
+
+        if (state.getCurrentLocation() == Location.HOME) {
+            if (state.getLoopCount() > 0) {
+                // Determine which loop variant based on previous ending
+                EndingStatus lastEnding = state.getEnding();
+                if (lastEnding == EndingStatus.SURVIVE_LOOP_A) {
+                    return "after_loop_a";
+                } else if (lastEnding == EndingStatus.SURVIVE_LOOP_B) {
+                    return "after_loop_b";
+                } else if (lastEnding == EndingStatus.SURVIVE_LOOP_C) {
+                    return "after_loop_c";
+                }
+                return "loop_1";
+            }
+        }
+
+        if (state.getCurrentLocation() == Location.ENTRANCE) {
+            if (state.getLoopCount() > 0) {
+                return "after_loop";
+            }
+        }
+
+        return "default";
+    }
+
+    /**
+     * Determine which event variant to show
+     */
+    private String determineEventVariant(EventType eventType, WorldState state) {
+        switch (eventType) {
+            case ENTER_HOT_SPRING:
+                return state.getLoopCount() == 0 ? "first_time" : "repeated";
+
+            case LOOK_AROUND:
+                // Probability of noticing the fin based on sanity
+                if (state.getSanity() < 70 && !state.isNoticedFin()) {
+                    return "notice_fin";
+                }
+                return "safe";
+
+            case STAY_TOO_LONG:
+                return state.getExposureLevel() > 2 ? "danger" : "warning";
+
+            case ENTER_COLD_SPRING:
+                return state.getSanity() < 50 ? "panic" : "normal";
+
+            case LEAVE_FACILITY:
+                return state.getSanity() < 40 ? "panic" : "normal";
+
+            default:
+                return "default";
+        }
+    }
+
+    /**
+     * Parse dialogue array from JSON
+     */
+    private List<DialogueLine> parseDialogue(JsonNode dialogueArray) {
+        List<DialogueLine> lines = new ArrayList<>();
+        if (dialogueArray == null || !dialogueArray.isArray()) {
+            return lines;
+        }
+
+        for (JsonNode lineNode : dialogueArray) {
+            String speaker = lineNode.get("speaker").asText();
+            String text = lineNode.get("text").asText();
+            String emotion = lineNode.has("emotion") ? lineNode.get("emotion").asText() : null;
+
+            lines.add(new DialogueLine(speaker, text, emotion));
+        }
+
+        return lines;
+    }
+
+    // DTOs
+    public record DialogueLine(String speaker, String text, String emotion) {
+    }
+
+    public record EndingNarrative(
+            String title,
+            List<DialogueLine> dialogue,
+            String epilogue,
+            EndingStats stats) {
+    }
+
+    public record EndingStats(
+            boolean discovery,
+            boolean survival,
+            String mentalState,
+            boolean continuesToLoop) {
     }
 }
