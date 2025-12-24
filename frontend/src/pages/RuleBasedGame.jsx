@@ -26,6 +26,7 @@ export default function RuleBasedGame() {
         systemEvent,
         endingTriggered,
         error,
+        availableActions,
         sendAction,
         clearSceneUpdate,
         clearRuleToShow,
@@ -47,6 +48,8 @@ export default function RuleBasedGame() {
     // Handle scene updates
     useEffect(() => {
         if (sceneUpdate) {
+            console.log('[Scene Update Received]', sceneUpdate);
+            console.log('[Scene Update Lines]', sceneUpdate.lines);
             setCurrentScene(sceneUpdate);
             setShowChoices(false); // Hide choices while text is displaying
         }
@@ -76,6 +79,20 @@ export default function RuleBasedGame() {
     const startGame = () => {
         sendAction('GAME_START');
         setGameStarted(true);
+    };
+
+    const restartGame = () => {
+        // Clear localStorage - fix: use correct key
+        localStorage.removeItem('onsen_session_id');
+
+        // Reset all state
+        setGameStarted(false);
+        setCurrentScene(null);
+        setShowChoices(false);
+        setRuleContent(null);
+
+        // Force page reload to create new session
+        window.location.reload();
     };
 
     const handleTextComplete = () => {
@@ -209,6 +226,28 @@ export default function RuleBasedGame() {
                 }}
             />
 
+            {/* Restart Button */}
+            <button
+                className="restart-button"
+                onClick={restartGame}
+                style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '20px',
+                    padding: '10px 20px',
+                    background: 'rgba(139, 0, 0, 0.8)',
+                    color: 'white',
+                    border: '2px solid rgba(255, 0, 0, 0.5)',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    fontFamily: 'monospace',
+                    fontSize: '14px',
+                    zIndex: 100,
+                }}
+            >
+                🔄 Restart Game
+            </button>
+
             {/* Text Box */}
             {currentScene && (
                 <TextBox
@@ -221,7 +260,7 @@ export default function RuleBasedGame() {
 
             {/* Choices */}
             <ChoicePanel
-                choices={getAvailableChoices()}
+                choices={availableActions}
                 onSelect={handleChoiceSelect}
                 visible={showChoices}
             />
@@ -238,7 +277,15 @@ export default function RuleBasedGame() {
                 <div className="debug-info">
                     <div>Connected: {connected ? '✅' : '❌'}</div>
                     <div>Session: {sessionId}</div>
-                    {gameState && <div>SAN: {gameState.san}</div>}
+                    {gameState && (
+                        <>
+                            <div>SAN: {gameState.san}</div>
+                            <div>Location: {gameState.currentLocation}</div>
+                            <div>Loop: {gameState.loopCount}</div>
+                        </>
+                    )}
+                    {currentScene && <div>Scene Lines: {currentScene.lines?.length || 0}</div>}
+                    <div>Actions: {availableActions.length}</div>
                 </div>
             )}
         </div>

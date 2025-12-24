@@ -14,6 +14,7 @@ export default function useWebSocket(sessionId) {
     const [systemEvent, setSystemEvent] = useState(null);
     const [endingTriggered, setEndingTriggered] = useState(null);
     const [error, setError] = useState(null);
+    const [availableActions, setAvailableActions] = useState([]);
 
     const clientRef = useRef(null);
 
@@ -39,28 +40,39 @@ export default function useWebSocket(sessionId) {
 
         client.onConnect = () => {
             console.log('✅ WebSocket Connected');
+            console.log('[WebSocket] Session ID:', sessionId);
             setConnected(true);
 
             // Subscribe to game session topic
-            client.subscribe(`/topic/game/${sessionId}`, (message) => {
+            const subscription = client.subscribe(`/topic/game/${sessionId}`, (message) => {
+                console.log('[WebSocket] Raw message received:', message);
                 try {
                     const data = JSON.parse(message.body);
+                    console.log('[WebSocket] Parsed message:', data);
                     handleMessage(data);
                 } catch (err) {
                     console.error('Failed to parse WebSocket message:', err);
                     setError('Message parsing error');
                 }
             });
+
+            console.log('[WebSocket] Subscribed to:', `/topic/game/${sessionId}`);
         };
 
         client.onStompError = (frame) => {
             console.error('❌ WebSocket Error:', frame.headers['message']);
+            console.error('[WebSocket] Error frame:', frame);
             setError(frame.headers['message']);
             setConnected(false);
         };
 
         client.onWebSocketClose = () => {
             console.log('🔌 WebSocket Disconnected');
+            setConnected(false);
+        };
+
+        client.onWebSocketError = (error) => {
+            console.error('❌ WebSocket connection error:', error);
             setConnected(false);
         };
 
@@ -102,8 +114,15 @@ export default function useWebSocket(sessionId) {
                 setEndingTriggered(data.payload.endingStatus);
                 break;
 
+            case 'ACTIONS_UPDATE':
+                setAvailableActions(data.payload.actions || []);
+                break;
+
             case 'ERROR':
-                setError(data.payload.message);
+                // Handle both payload.message and content for error messages
+                const errorMessage = data.payload?.message || data.content || 'Unknown error';
+                setError(errorMessage);
+                console.error('[WebSocket] Error received:', errorMessage);
                 break;
 
             default:
@@ -112,6 +131,10 @@ export default function useWebSocket(sessionId) {
     }, []);
 
     const sendAction = useCallback((actionType, metadata = {}) => {
+        console.log('[sendAction] Called with:', actionType, metadata);
+        console.log('[sendAction] sessionId:', sessionId);
+        console.log('[sendAction] connected:', connected);
+
         if (!clientRef.current || !connected) {
             console.error('Cannot send action: WebSocket not connected');
             return;
@@ -123,13 +146,15 @@ export default function useWebSocket(sessionId) {
             metadata,
         };
 
+        console.log('[Action Payload Created]', JSON.stringify(payload, null, 2));
+
         // Send to backend action endpoint
         clientRef.current.publish({
             destination: '/app/game/action',
             body: JSON.stringify(payload),
         });
 
-        console.log('[Action Sent]', payload);
+        console.log('[Action Sent Successfully]');
     }, [connected, sessionId]);
 
     const clearSceneUpdate = useCallback(() => {
@@ -152,6 +177,7 @@ export default function useWebSocket(sessionId) {
         systemEvent,
         endingTriggered,
         error,
+        availableActions,
         sendAction,
         clearSceneUpdate,
         clearRuleToShow,

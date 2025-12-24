@@ -1,5 +1,7 @@
 package com.onsen.domain;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.onsen.event.EventType;
 
 import java.util.HashMap;
@@ -8,6 +10,8 @@ import java.util.Map;
 public class PlayerAction {
     private EventType action;
     private String sessionId;
+
+    @JsonDeserialize(as = HashMap.class)
     private Map<String, Object> metadata;
     
     public PlayerAction() {

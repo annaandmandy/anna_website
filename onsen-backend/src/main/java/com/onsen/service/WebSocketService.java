@@ -29,7 +29,11 @@ public class WebSocketService {
         message.put("payload", payload);
 
         String destination = "/topic/game/" + sessionId;
+        System.out.println("[WebSocketService] Sending to destination: " + destination);
+        System.out.println("[WebSocketService] Message: " + message);
+
         messagingTemplate.convertAndSend(destination, (Object) message);
+        System.out.println("[WebSocketService] SCENE_UPDATE sent!");
     }
 
     /**
@@ -39,30 +43,48 @@ public class WebSocketService {
      */
     @Deprecated
     public void sendNarrative(String sessionId, String narrative) {
+        System.out.println("[WebSocketService] Preparing to send NARRATIVE");
+        System.out.println("[WebSocketService] SessionId: " + sessionId);
+        System.out.println("[WebSocketService] Narrative: " + narrative);
+
         Map<String, Object> message = new HashMap<>();
         message.put("type", "NARRATIVE");
         message.put("content", narrative);
 
         String destination = "/topic/game/" + sessionId;
+        System.out.println("[WebSocketService] Sending to destination: " + destination);
         messagingTemplate.convertAndSend(destination, (Object) message);
+        System.out.println("[WebSocketService] NARRATIVE sent!");
     }
 
     /**
      * Send state update to specific session
      */
     public void sendStateUpdate(String sessionId, Map<String, Object> state) {
+        System.out.println("[WebSocketService] Preparing to send STATE_UPDATE");
+        System.out.println("[WebSocketService] SessionId: " + sessionId);
+        System.out.println("[WebSocketService] State: " + state);
+
         Map<String, Object> message = new HashMap<>();
         message.put("type", "STATE_UPDATE");
-        message.put("content", state);
+        message.put("payload", state); // Changed from 'content' to 'payload'
 
         String destination = "/topic/game/" + sessionId;
+        System.out.println("[WebSocketService] Sending to destination: " + destination);
+
         messagingTemplate.convertAndSend(destination, (Object) message);
+        System.out.println("[WebSocketService] STATE_UPDATE sent!");
     }
 
     /**
      * Send rule display notification
      */
     public void sendRuleNotification(String sessionId, String ruleStage, String content) {
+        System.out.println("[WebSocketService] Preparing to send RULE_DISPLAY");
+        System.out.println("[WebSocketService] SessionId: " + sessionId);
+        System.out.println("[WebSocketService] Rule Stage: " + ruleStage);
+        System.out.println("[WebSocketService] Content: " + content);
+
         Map<String, Object> message = new HashMap<>();
         message.put("type", "RULE_DISPLAY");
         message.put("stage", ruleStage);
@@ -79,6 +101,18 @@ public class WebSocketService {
         Map<String, Object> message = new HashMap<>();
         message.put("type", "ERROR");
         message.put("content", errorMessage);
+
+        String destination = "/topic/game/" + sessionId;
+        messagingTemplate.convertAndSend(destination, (Object) message);
+    }
+
+    /**
+     * Send available actions to frontend
+     */
+    public void sendAvailableActions(String sessionId, Map<String, Object> actionsData) {
+        Map<String, Object> message = new HashMap<>();
+        message.put("type", "ACTIONS_UPDATE");
+        message.put("payload", actionsData);
 
         String destination = "/topic/game/" + sessionId;
         messagingTemplate.convertAndSend(destination, (Object) message);

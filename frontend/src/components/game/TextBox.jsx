@@ -34,6 +34,7 @@ export default function TextBox({ lines, sanLevel, onComplete, speed = 'normal' 
     useEffect(() => {
         if (!lines || lines.length === 0) return;
 
+        console.log('[TextBox] Received lines:', lines);
         setCurrentLineIndex(0);
         setDisplayedText('');
         setCanAdvance(false);

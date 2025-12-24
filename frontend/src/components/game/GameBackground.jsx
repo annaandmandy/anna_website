@@ -8,16 +8,16 @@ export default function GameBackground({ location, sanLevel, isTransitioning }) 
     const [backgroundImage, setBackgroundImage] = useState('');
 
     useEffect(() => {
-        // Map locations to background images (using EventType naming)
+        // Map locations to background images (using renamed files)
         const backgrounds = {
-            HOME: '/game_img/GAME_START.png',
-            ENTRANCE: '/game_img/INTO_FACILITY.png',
-            HOT_SPRING: '/game_img/ENTER_HOT_SPRING.png',
-            COLD_SPRING: '/game_img/ENTER_COLD_SPRING.png',
+            HOME: '/game_img/HOME.png',
+            ENTRANCE: '/game_img/ENTRANCE.png',
+            HOT_SPRING: '/game_img/HOT_SPRING.png',
+            COLD_SPRING: '/game_img/COLD_SPRING.png',
             SHARK_POOL: '/game_img/STAFF_GUIDANCE.png',
         };
 
-        setBackgroundImage(backgrounds[location] || backgrounds.ENTRANCE);
+        setBackgroundImage(backgrounds[location] || backgrounds.HOME);
     }, [location]);
 
     // Calculate visual distortion based on SAN level

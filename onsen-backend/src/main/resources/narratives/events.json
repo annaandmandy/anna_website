@@ -2,20 +2,44 @@
     "GAME_START": {
         "dialogue": [
             {
-                "speaker": "System",
-                "text": "===================="
+                "speaker": "Mom",
+                "text": "Wake up! You're going to be late!"
             },
             {
-                "speaker": "System",
-                "text": "Welcome to: The Onsen Chronicle"
+                "speaker": "Me",
+                "text": "Mmm... five more minutes..."
             },
             {
-                "speaker": "System",
-                "text": "===================="
+                "speaker": "Mom",
+                "text": "You said you wanted to visit that new onsen today, didn't you?"
+            },
+            {
+                "speaker": "Me",
+                "text": "(Oh right... the onsen everyone's been talking about.)"
             },
             {
                 "speaker": "Narrator",
-                "text": "A rule-based horror story. Please read all rules carefully."
+                "text": "I drag myself out of bed and get ready for the day."
+            }
+        ]
+    },
+    "INTO_FACILITY": {
+        "dialogue": [
+            {
+                "speaker": "Me",
+                "text": "(Here it is... the Onsen facility everyone's been talking about.)"
+            },
+            {
+                "speaker": "Narrator",
+                "text": "I push open the door and step inside."
+            },
+            {
+                "speaker": "Front Desk",
+                "text": "Welcome! Please enjoy your stay."
+            },
+            {
+                "speaker": "Me",
+                "text": "(Something about that smile feels... off. But I'm probably just tired.)"
             }
         ]
     },

@@ -20,9 +20,24 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
+        System.out.println("[WebSocket Config] Registering STOMP endpoints...");
         // WebSocket endpoint for clients to connect
+        // Allow all localhost origins for development
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("http://localhost:5173", "http://localhost:3000")
-                .withSockJS();
+                .setAllowedOriginPatterns("*") // Allow all origins for debugging
+                .withSockJS()
+                .setInterceptors(new org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor() {
+                    @Override
+                    public boolean beforeHandshake(
+                            org.springframework.http.server.ServerHttpRequest request,
+                            org.springframework.http.server.ServerHttpResponse response,
+                            org.springframework.web.socket.WebSocketHandler wsHandler,
+                            java.util.Map<String, Object> attributes) throws Exception {
+                        System.out.println("[WebSocket] Handshake request from: " + request.getRemoteAddress());
+                        System.out.println("[WebSocket] Request URI: " + request.getURI());
+                        return super.beforeHandshake(request, response, wsHandler, attributes);
+                    }
+                });
+        System.out.println("[WebSocket Config] STOMP endpoints registered successfully");
     }
 }

@@ -66,25 +66,36 @@ public class NarrativeService {
      * Get dialogue for an event
      */
     public List<DialogueLine> getEventDialogue(EventType eventType, WorldState state) {
+        System.out.println("[NarrativeService] getEventDialogue - EventType: " + eventType.name());
+
         JsonNode eventNode = events.get(eventType.name());
         if (eventNode == null) {
+            System.out.println("[NarrativeService] ERROR: No event node found for: " + eventType.name());
             return List.of();
         }
+
+        System.out.println("[NarrativeService] Event node found for: " + eventType.name());
 
         // Determine which variant to use based on state
         String variant = determineEventVariant(eventType, state);
+        System.out.println("[NarrativeService] Using variant: " + variant);
 
         JsonNode dialogueNode;
         if (eventNode.has(variant)) {
+            System.out.println("[NarrativeService] Found variant dialogue for: " + variant);
             dialogueNode = eventNode.get(variant).get("dialogue");
         } else if (eventNode.has("dialogue")) {
             // Direct dialogue array
+            System.out.println("[NarrativeService] Using direct dialogue (no variants)");
             dialogueNode = eventNode.get("dialogue");
         } else {
+            System.out.println("[NarrativeService] ERROR: No dialogue found for event: " + eventType.name());
             return List.of();
         }
 
-        return parseDialogue(dialogueNode);
+        List<DialogueLine> result = parseDialogue(dialogueNode);
+        System.out.println("[NarrativeService] Parsed " + result.size() + " dialogue lines");
+        return result;
     }
 
     /**

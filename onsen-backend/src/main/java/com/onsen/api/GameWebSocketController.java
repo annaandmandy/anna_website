@@ -29,9 +29,11 @@ public class GameWebSocketController {
      */
     @MessageMapping("/game/action")
     public void handleAction(@Payload Map<String, Object> payload) {
+        System.out.println("[WS Controller] Received payload: " + payload);
         String sessionId = (String) payload.get("sessionId");
         try {
             String actionStr = (String) payload.get("action");
+            System.out.println("[WS Controller] Parsing action: " + actionStr);
             EventType action = EventType.valueOf(actionStr);
 
             PlayerAction playerAction = new PlayerAction(action, sessionId);
@@ -43,10 +45,15 @@ public class GameWebSocketController {
                 playerAction.setMetadata(metadata);
             }
 
+            System.out.println("[WS Controller] Processing action: " + action + " for session: " + sessionId);
+            System.out.println("[WS Controller] About to call gameEngine.processAction...");
             // Process the action
-            gameEngine.processAction(playerAction);
+            var result = gameEngine.processAction(playerAction);
+            System.out.println("[WS Controller] gameEngine.processAction returned: " + (result.isPresent() ? "Session present" : "Session empty"));
+            System.out.println("[WS Controller] Action processed successfully");
 
         } catch (Exception e) {
+            System.err.println("[WS Controller] Error: " + e.getMessage());
             e.printStackTrace(); // Log error to console
             if (sessionId != null) {
                 webSocketService.sendError(sessionId, "Error processing action: " + e.getMessage());

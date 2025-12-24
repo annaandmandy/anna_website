@@ -24,6 +24,9 @@ public class SessionService {
      */
     public GameSession createSession(String playerId) {
         GameSession session = new GameSession(playerId);
+        // Override the auto-generated sessionId with the playerId
+        // This allows frontend to control the session ID
+        session.setSessionId(playerId);
         saveSession(session);
         return session;
     }

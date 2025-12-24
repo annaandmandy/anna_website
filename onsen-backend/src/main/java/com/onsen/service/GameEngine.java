@@ -3,13 +3,17 @@ package com.onsen.service;
 import com.onsen.domain.GameSession;
 import com.onsen.domain.Location;
 import com.onsen.domain.PlayerAction;
+import com.onsen.domain.WorldState;
 import com.onsen.event.EventType;
 import com.onsen.event.StoryEvent;
 import com.onsen.kafka.EventProducer;
 import com.onsen.state.StateEvaluator;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -37,34 +41,59 @@ public class GameEngine {
      * Process a player action
      */
     public Optional<GameSession> processAction(PlayerAction action) {
-        // Get session
-        Optional<GameSession> sessionOpt = sessionService.getSession(action.getSessionId());
-        if (sessionOpt.isEmpty()) {
-            return Optional.empty();
-        }
+        System.out.println("[GameEngine] processAction called for: " + action.getAction());
 
-        GameSession session = sessionOpt.get();
+        // Get or create session
+        Optional<GameSession> sessionOpt = sessionService.getSession(action.getSessionId());
+        GameSession session;
+
+        if (sessionOpt.isEmpty()) {
+            System.out.println("[GameEngine] Session not found, creating new session: " + action.getSessionId());
+            // Create new session if it doesn't exist (e.g., on GAME_START)
+            session = sessionService.createSession(action.getSessionId());
+        } else {
+            session = sessionOpt.get();
+        }
+        System.out.println(
+                "[GameEngine] Session found, current location: " + session.getWorldState().getCurrentLocation());
 
         // Create event
         StoryEvent event = new StoryEvent(action.getAction(), action.getMetadata());
 
         // Apply event to world state (synchronous for immediate response)
         stateEvaluator.applyEvent(event, session.getWorldState());
+        System.out.println("[GameEngine] Event applied to world state");
 
         // Update location if needed
         updateLocationIfNeeded(action.getAction(), session);
+        System.out.println("[GameEngine] Location updated if needed, new location: "
+                + session.getWorldState().getCurrentLocation());
 
         // Add to event history
         session.addEvent(action.getAction().name());
 
         // Save updated session
         sessionService.saveSession(session);
+        System.out.println("[GameEngine] Session saved");
 
         // Publish to Kafka (asynchronous for event sourcing)
         eventProducer.publish(event);
+        System.out.println("[GameEngine] Event published to Kafka");
 
         // Send scene update via WebSocket (immediate)
+        System.out.println("[GameEngine] About to call sendSceneUpdate...");
         sendSceneUpdate(session, action.getAction());
+        System.out.println("[GameEngine] sendSceneUpdate completed");
+
+        // Send game state update (always send after every action)
+        System.out.println("[GameEngine] About to call sendGameState...");
+        sendGameState(session);
+        System.out.println("[GameEngine] sendGameState completed");
+
+        // Send available actions
+        System.out.println("[GameEngine] About to call sendAvailableActions...");
+        sendAvailableActions(session);
+        System.out.println("[GameEngine] sendAvailableActions completed");
 
         return Optional.of(session);
     }
@@ -86,8 +115,12 @@ public class GameEngine {
      * Send scene update immediately via WebSocket
      */
     protected void sendSceneUpdate(GameSession session, EventType event) {
+        System.out.println("[GameEngine] sendSceneUpdate - Event: " + event);
+        System.out.println("[GameEngine] sendSceneUpdate - SessionId: " + session.getSessionId());
+
         // Get dialogue from NarrativeService
         var dialogueLines = narrativeService.getEventDialogue(event, session.getWorldState());
+        System.out.println("[GameEngine] sendSceneUpdate - Dialogue lines retrieved: " + dialogueLines.size());
 
         // Convert dialogue to simple text lines for WebSocket
         var narrativeLines = dialogueLines.stream()
@@ -100,13 +133,92 @@ public class GameEngine {
                 })
                 .toList();
 
+        System.out.println("[GameEngine] sendSceneUpdate - Narrative lines to send: " + narrativeLines.size());
+
         // Send scene update immediately - frontend handles timing
         if (!narrativeLines.isEmpty()) {
+            System.out.println("[GameEngine] sendSceneUpdate - Sending scene update via WebSocket");
             webSocketService.sendSceneUpdate(
                     session.getSessionId(),
                     generateSceneId(event, session),
                     narrativeLines);
+            System.out.println("[GameEngine] sendSceneUpdate - Scene update sent successfully");
+        } else {
+            System.out.println("[GameEngine] sendSceneUpdate - WARNING: No narrative lines to send!");
         }
+    }
+
+    /**
+     * Send current game state via WebSocket
+     */
+    protected void sendGameState(GameSession session) {
+        Map<String, Object> stateData = new HashMap<>();
+        WorldState world = session.getWorldState();
+
+        stateData.put("san", world.getSanity());
+        stateData.put("currentLocation", world.getCurrentLocation().name());
+        stateData.put("loopCount", world.getLoopCount());
+        stateData.put("bleeding", world.isBleeding());
+        stateData.put("noticedFin", world.isNoticedFin());
+        stateData.put("attackedVisitor", world.isAttackedVisitor());
+        stateData.put("exposureLevel", world.getExposureLevel());
+
+        webSocketService.sendStateUpdate(session.getSessionId(), stateData);
+    }
+
+    /**
+     * Send available actions to frontend based on current game state
+     */
+    protected void sendAvailableActions(GameSession session) {
+        List<Map<String, Object>> actions = new ArrayList<>();
+        Location currentLocation = session.getWorldState().getCurrentLocation();
+
+        // Define actions based on location
+        switch (currentLocation) {
+            case HOME:
+                actions.add(createAction("INTO_FACILITY", "Enter the Onsen Facility", false));
+                break;
+
+            case ENTRANCE:
+                actions.add(createAction("ENTER_HOT_SPRING", "Enter the Hot Spring", false));
+                actions.add(createAction("ENTER_COLD_SPRING", "Enter the Cold Spring", false));
+                actions.add(createAction("LOOK_AROUND", "Look Around", false));
+                actions.add(createAction("LEAVE_FACILITY", "Leave the Facility", false));
+                break;
+
+            case HOT_SPRING:
+                actions.add(createAction("STAY_TOO_LONG", "Stay a bit longer...", false));
+                actions.add(createAction("LOOK_AROUND", "Look Around", false));
+                actions.add(createAction("ENTER_COLD_SPRING", "Go to Cold Spring", false));
+                actions.add(createAction("LEAVE_FACILITY", "Leave", false));
+                break;
+
+            case COLD_SPRING:
+                actions.add(createAction("ENTER_HOT_SPRING", "Return to Hot Spring", false));
+                actions.add(createAction("LEAVE_FACILITY", "Leave", false));
+                break;
+
+            case SHARK_POOL:
+                // This location is usually forced/special
+                actions.add(createAction("LEAVE_FACILITY", "Try to Leave", false));
+                break;
+        }
+
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("actions", actions);
+
+        webSocketService.sendAvailableActions(session.getSessionId(), payload);
+    }
+
+    /**
+     * Helper to create action objects
+     */
+    private Map<String, Object> createAction(String id, String text, boolean disabled) {
+        Map<String, Object> action = new HashMap<>();
+        action.put("id", id);
+        action.put("text", text);
+        action.put("disabled", disabled);
+        return action;
     }
 
     /**
@@ -124,6 +236,7 @@ public class GameEngine {
      */
     private void updateLocationIfNeeded(EventType action, GameSession session) {
         Location newLocation = switch (action) {
+            case INTO_FACILITY -> Location.ENTRANCE;
             case ENTER_HOT_SPRING -> Location.HOT_SPRING;
             case ENTER_COLD_SPRING -> Location.COLD_SPRING;
             case ENTER_SHARK_POOL -> Location.SHARK_POOL;

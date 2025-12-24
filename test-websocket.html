@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+</head>
+
+<body>
+    <h1>WebSocket Connection Test</h1>
+    <button onclick="testConnect()">Connect</button>
+    <button onclick="testSend()">Send Test Message</button>
+    <div id="log" style="margin-top: 20px; padding: 10px; background: #f0f0f0;"></div>
+
+    <script>
+        let client;
+        const sessionId = 'test_session_' + Date.now();
+
+        function log(msg) {
+            const logDiv = document.getElementById('log');
+            logDiv.innerHTML += '<div>' + new Date().toISOString() + ': ' + msg + '</div>';
+            console.log(msg);
+        }
+
+        function testConnect() {
+            log('Creating STOMP client...');
+
+            client = new StompJs.Client({
+                brokerURL: 'ws://localhost:8081/ws',
+                connectHeaders: {},
+                debug: (str) => log('[STOMP Debug] ' + str),
+                reconnectDelay: 5000,
+            });
+
+            client.webSocketFactory = () => {
+                return new SockJS('http://localhost:8081/ws');
+            };
+
+            client.onConnect = () => {
+                log('✅ Connected!');
+
+                client.subscribe(`/topic/game/${sessionId}`, (message) => {
+                    log('📨 Message received: ' + message.body);
+                });
+
+                log('Subscribed to /topic/game/' + sessionId);
+            };
+
+            client.onStompError = (frame) => {
+                log('❌ STOMP Error: ' + frame.headers.message);
+            };
+
+            client.onWebSocketClose = () => {
+                log('🔌 Disconnected');
+            };
+
+            client.activate();
+        }
+
+        function testSend() {
+            if (!client || !client.connected) {
+                log('❌ Not connected!');
+                return;
+            }
+
+            const payload = {
+                sessionId: sessionId,
+                action: 'GAME_START',
+                metadata: {}
+            };
+
+            log('📤 Sending: ' + JSON.stringify(payload));
+
+            client.publish({
+                destination: '/app/game/action',
+                body: JSON.stringify(payload)
+            });
+        }
+    </script>
+</body>
+
+</html>
