@@ -39,10 +39,13 @@ jobs:
           script: |
             cd /root/anna_website/onsen-backend
             
-            echo "Updating docker-compose.yml..."
-            # ensure the file is the same as GitHub
+            echo "Updating code from GitHub..."
             git fetch --all
             git reset --hard origin/main
+            
+            echo "Setting up nginx configuration..."
+            mkdir -p nginx/config/nginx/site-confs
+            cp nginx-configs/api.conf nginx/config/nginx/site-confs/api
             
             echo "Pulling latest Docker image..."
             docker compose pull onsen-backend
@@ -51,6 +54,18 @@ jobs:
             docker compose down
             docker compose up -d
             
+            echo "Waiting for services to start..."
+            sleep 10
+            
+            echo "Verifying deployment..."
+            docker compose ps
+            
+            echo "Testing backend directly..."
+            docker exec onsen-backend wget -q -O- http://localhost:8081/health || echo "⚠️  Backend health check failed"
+            
+            echo "Testing API through nginx proxy..."
+            curl -f -k https://api.hsiangyuhuang.com/api/rules/current || echo "⚠️  Nginx proxy test failed"
+            
             echo "Cleaning up..."
             docker image prune -f
-            echo "Deployment completed successfully!"
+            echo "✅ Deployment completed successfully!"

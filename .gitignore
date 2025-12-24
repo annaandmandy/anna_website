@@ -2,3 +2,8 @@ node_modules
 
 .DS_Store
 
+# Ignore SWAG-managed nginx config (certificates, logs, etc.)
+# But keep our source config in nginx-configs/
+onsen-backend/nginx/config/
+onsen-backend/deploy.sh
+onsen-backend/DEPLOY_INSTRUCTIONS.md
