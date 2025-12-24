@@ -11,6 +11,7 @@ services:
       - URL=hsiangyuhuang.com
       - SUBDOMAINS=api
       - VALIDATION=http
+      - ONLY_SUBDOMAINS=true
       - EMAIL=annaandtommy1004@gmail.com
     volumes:
       - ./nginx/config:/config
