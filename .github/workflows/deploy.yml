@@ -45,7 +45,7 @@ jobs:
             
             echo "Setting up nginx configuration..."
             mkdir -p nginx/config/nginx/site-confs
-            cp nginx-configs/api.conf nginx/config/nginx/site-confs/api
+            cp nginx-configs/api.conf nginx/config/nginx/site-confs/api.conf
             
             echo "Pulling latest Docker image..."
             docker compose pull onsen-backend
