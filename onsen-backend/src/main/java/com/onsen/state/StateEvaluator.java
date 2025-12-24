@@ -7,8 +7,12 @@ import com.onsen.event.EventType;
 import com.onsen.event.StoryEvent;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
 @Component
 public class StateEvaluator {
+
+    private final Random random = new Random();
 
     public void applyEvent(StoryEvent event, WorldState state) {
 
@@ -18,6 +22,27 @@ public class StateEvaluator {
 
             case ENTER_HOT_SPRING -> {
                 state.decreaseSanity(5);
+                // 15% chance to get injured when entering hot spring
+                if (!state.isBleeding() && random.nextDouble() < 0.15) {
+                    state.markBleeding();
+                    state.decreaseSanity(20);
+                    state.setJustGotInjured(true);
+                }
+            }
+
+            case ENTER_COLD_SPRING -> {
+                state.decreaseSanity(2);
+                state.decreaseExposure(1);
+                // 10% chance to get injured when entering cold spring
+                if (!state.isBleeding() && random.nextDouble() < 0.10) {
+                    state.markBleeding();
+                    state.decreaseSanity(20);
+                    state.setJustGotInjured(true);
+                }
+                // 冷泉可以增加 SAN
+                if (state.getSanity() >= 25 && state.getSanity() < 80) {
+                    state.increaseSanity(15);
+                }
             }
 
             case STAY_TOO_LONG -> {
@@ -35,15 +60,6 @@ public class StateEvaluator {
             case NOTICE_FIN -> {
                 state.markNoticedFin();
                 state.decreaseSanity(8);
-            }
-
-            case ENTER_COLD_SPRING -> {
-                state.decreaseSanity(2);
-                state.decreaseExposure(1);
-                // 冷泉可以增加 SAN
-                if (state.getSanity() >= 25 && state.getSanity() < 80) {
-                    state.increaseSanity(15);
-                }
             }
 
             case INJURED -> {
@@ -70,6 +86,9 @@ public class StateEvaluator {
         // Check if SAN is critically low and trigger STAFF_GUIDANCE if needed
         checkCriticalSanity(state, type);
 
+        // Check if player should randomly attack visitor when SAN is low
+        checkRandomAttack(state, type);
+
         resolveEnding(state);
     }
 
@@ -83,6 +102,27 @@ public class StateEvaluator {
             state.getCurrentLocation() != Location.SHARK_POOL) {
             // This will be handled by the game engine to send STAFF_GUIDANCE event
             state.setRequiresStaffGuidance(true);
+        }
+    }
+
+    /**
+     * Check if player should randomly attack a visitor when SAN is low
+     */
+    private void checkRandomAttack(WorldState state, EventType currentEvent) {
+        // When SAN < 30 and not already attacked, 25% chance to attack on any action
+        if (state.getSanity() < 30 &&
+            !state.isAttackedVisitor() &&
+            currentEvent != EventType.ATTACKED_VISITOR &&
+            currentEvent != EventType.STAFF_GUIDANCE &&
+            state.getCurrentLocation() != Location.SHARK_POOL &&
+            state.getCurrentLocation() != Location.HOME) {
+
+            // 25% chance to lose control and attack
+            if (random.nextDouble() < 0.25) {
+                state.markAttackedVisitor();
+                state.decreaseSanity(30);
+                state.setShouldAttackVisitor(true);
+            }
         }
     }
 

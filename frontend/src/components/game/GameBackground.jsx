@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 /**
  * Dynamic background component with location-based images and SAN-level effects
  */
-export default function GameBackground({ location, sanLevel, isTransitioning }) {
+export default function GameBackground({ location, sanLevel, noticedFin, lastAction, isTransitioning }) {
     const [backgroundImage, setBackgroundImage] = useState('');
 
     useEffect(() => {
@@ -17,13 +17,19 @@ export default function GameBackground({ location, sanLevel, isTransitioning }) 
             SHARK_POOL: '/game_img/STAFF_GUIDANCE.png',
         };
 
-        // Special case: if in HOT_SPRING and SAN is very low, show NOTICED_FIN image (distorted reality)
-        if (location === 'HOT_SPRING' && sanLevel < 30) {
+        // Priority 1: Show action-specific images
+        if (lastAction === 'LOOK_AROUND') {
+            setBackgroundImage('/game_img/LOOK_AROUND.png');
+        }
+        // Priority 2: If noticed the fin, show NOTICED_FIN image (distorted reality)
+        else if (noticedFin && (location === 'HOT_SPRING' || location === 'COLD_SPRING')) {
             setBackgroundImage('/game_img/NOTICED_FIN.png');
-        } else {
+        }
+        // Priority 3: Default location backgrounds
+        else {
             setBackgroundImage(backgrounds[location] || backgrounds.HOME);
         }
-    }, [location, sanLevel]);
+    }, [location, sanLevel, noticedFin, lastAction]);
 
     // Calculate visual distortion based on SAN level
     const getVisualEffects = () => {
@@ -54,9 +60,13 @@ export default function GameBackground({ location, sanLevel, isTransitioning }) 
 GameBackground.propTypes = {
     location: PropTypes.string.isRequired,
     sanLevel: PropTypes.number.isRequired,
+    noticedFin: PropTypes.bool,
+    lastAction: PropTypes.string,
     isTransitioning: PropTypes.bool,
 };
 
 GameBackground.defaultProps = {
+    noticedFin: false,
+    lastAction: null,
     isTransitioning: false,
 };

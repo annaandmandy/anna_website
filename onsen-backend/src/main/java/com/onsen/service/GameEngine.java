@@ -74,6 +74,20 @@ public class GameEngine {
         System.out.println("[GameEngine] Location updated if needed, new location: "
                 + session.getWorldState().getCurrentLocation());
 
+        // Check if player just got injured
+        if (session.getWorldState().isJustGotInjured()) {
+            System.out.println("[GameEngine] Player got injured - sending INJURED scene");
+            session.getWorldState().clearInjuredFlag();
+            sendSceneUpdate(session, EventType.INJURED);
+        }
+
+        // Check if player should attack visitor
+        if (session.getWorldState().isShouldAttackVisitor()) {
+            System.out.println("[GameEngine] Player attacks visitor - sending ATTACKED_VISITOR scene");
+            session.getWorldState().clearAttackFlag();
+            sendSceneUpdate(session, EventType.ATTACKED_VISITOR);
+        }
+
         // Check if staff guidance is required due to low SAN
         if (session.getWorldState().isRequiresStaffGuidance()) {
             System.out.println("[GameEngine] Staff guidance required - triggering event");

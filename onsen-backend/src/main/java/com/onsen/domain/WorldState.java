@@ -10,6 +10,8 @@ public class WorldState {
     private int loopCount;
     private EndingStatus ending;
     private boolean requiresStaffGuidance;
+    private boolean justGotInjured;
+    private boolean shouldAttackVisitor;
 
     public WorldState() {
         this.sanity = 100;
@@ -21,6 +23,8 @@ public class WorldState {
         this.loopCount = 0;
         this.ending = EndingStatus.NONE;
         this.requiresStaffGuidance = false;
+        this.justGotInjured = false;
+        this.shouldAttackVisitor = false;
     }
 
     public void decreaseSanity(int amount) {
@@ -106,5 +110,29 @@ public class WorldState {
 
     public void clearStaffGuidance() {
         this.requiresStaffGuidance = false;
+    }
+
+    public boolean isJustGotInjured() {
+        return justGotInjured;
+    }
+
+    public void setJustGotInjured(boolean justGotInjured) {
+        this.justGotInjured = justGotInjured;
+    }
+
+    public void clearInjuredFlag() {
+        this.justGotInjured = false;
+    }
+
+    public boolean isShouldAttackVisitor() {
+        return shouldAttackVisitor;
+    }
+
+    public void setShouldAttackVisitor(boolean shouldAttackVisitor) {
+        this.shouldAttackVisitor = shouldAttackVisitor;
+    }
+
+    public void clearAttackFlag() {
+        this.shouldAttackVisitor = false;
     }
 }

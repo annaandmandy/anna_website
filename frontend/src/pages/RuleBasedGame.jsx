@@ -17,6 +17,7 @@ export default function RuleBasedGame() {
     const [currentScene, setCurrentScene] = useState(null);
     const [showChoices, setShowChoices] = useState(false);
     const [ruleContent, setRuleContent] = useState(null);
+    const [lastAction, setLastAction] = useState(null);
 
     const {
         connected,
@@ -104,6 +105,12 @@ export default function RuleBasedGame() {
     const handleChoiceSelect = (choiceId) => {
         sendAction(choiceId);
         setShowChoices(false);
+        setLastAction(choiceId);
+
+        // Clear lastAction after 3 seconds (so background can return to normal)
+        setTimeout(() => {
+            setLastAction(null);
+        }, 3000);
     };
 
     const handleRuleDismiss = () => {
@@ -209,15 +216,17 @@ export default function RuleBasedGame() {
         <div className="game-container">
             {/* Background */}
             <GameBackground
-                location={gameState?.currentLocation || 'ENTRANCE'}
+                location={gameState?.currentLocation || 'HOME'}
                 sanLevel={gameState?.san || 100}
+                noticedFin={gameState?.noticedFin || false}
+                lastAction={lastAction}
                 isTransitioning={false}
             />
 
             {/* HUD */}
             <StateDisplay
                 san={gameState?.san || 100}
-                location={gameState?.currentLocation || 'ENTRANCE'}
+                location={gameState?.currentLocation || 'HOME'}
                 loopCount={gameState?.loopCount || 0}
                 status={{
                     bleeding: gameState?.bleeding,
