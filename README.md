@@ -1,6 +1,10 @@
 ## My Personal Website
 URL: [https://www.hsiangyuhuang.com](https://www.hsiangyuhuang.com)
 
+## Tech Stacks: 
+Java + SpringBoot Backend, Kafka, Redis, Web Socket for Rule Based Game on /onsen-game page.
+Deployed on DigiTalOcean using Docker.
+React and JavaScript for Frontend.
 
 ## Acknowledgments
 
