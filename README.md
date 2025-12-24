@@ -6,6 +6,8 @@ Java + SpringBoot Backend, Kafka, Redis, Web Socket for Rule Based Game on /onse
 Deployed on DigiTalOcean using Docker.
 React and JavaScript for Frontend.
 
+Upgraded to 2GB for testing, consider removing kafka for memory optimization.
+
 ## Acknowledgments
 
 The Live2D model in this project was created by the author using **Live2D Cubism Editor** and implemented with the **Live2D Cubism SDK**.  
