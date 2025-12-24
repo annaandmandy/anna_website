@@ -17,8 +17,13 @@ export default function GameBackground({ location, sanLevel, isTransitioning }) 
             SHARK_POOL: '/game_img/STAFF_GUIDANCE.png',
         };
 
-        setBackgroundImage(backgrounds[location] || backgrounds.HOME);
-    }, [location]);
+        // Special case: if in HOT_SPRING and SAN is very low, show NOTICED_FIN image (distorted reality)
+        if (location === 'HOT_SPRING' && sanLevel < 30) {
+            setBackgroundImage('/game_img/NOTICED_FIN.png');
+        } else {
+            setBackgroundImage(backgrounds[location] || backgrounds.HOME);
+        }
+    }, [location, sanLevel]);
 
     // Calculate visual distortion based on SAN level
     const getVisualEffects = () => {

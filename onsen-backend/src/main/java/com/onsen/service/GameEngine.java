@@ -64,10 +64,25 @@ public class GameEngine {
         stateEvaluator.applyEvent(event, session.getWorldState());
         System.out.println("[GameEngine] Event applied to world state");
 
-        // Update location if needed
+        // Send scene update BEFORE location change so scene matches current location
+        System.out.println("[GameEngine] About to call sendSceneUpdate...");
+        sendSceneUpdate(session, action.getAction());
+        System.out.println("[GameEngine] sendSceneUpdate completed");
+
+        // Update location if needed (AFTER sending scene)
         updateLocationIfNeeded(action.getAction(), session);
         System.out.println("[GameEngine] Location updated if needed, new location: "
                 + session.getWorldState().getCurrentLocation());
+
+        // Check if staff guidance is required due to low SAN
+        if (session.getWorldState().isRequiresStaffGuidance()) {
+            System.out.println("[GameEngine] Staff guidance required - triggering event");
+            session.getWorldState().clearStaffGuidance();
+            // Send STAFF_GUIDANCE scene immediately
+            sendSceneUpdate(session, EventType.STAFF_GUIDANCE);
+            // Update location to SHARK_POOL
+            session.getWorldState().setLocation(Location.SHARK_POOL);
+        }
 
         // Add to event history
         session.addEvent(action.getAction().name());
@@ -80,11 +95,6 @@ public class GameEngine {
         eventProducer.publish(event);
         System.out.println("[GameEngine] Event published to Kafka");
 
-        // Send scene update via WebSocket (immediate)
-        System.out.println("[GameEngine] About to call sendSceneUpdate...");
-        sendSceneUpdate(session, action.getAction());
-        System.out.println("[GameEngine] sendSceneUpdate completed");
-
         // Send game state update (always send after every action)
         System.out.println("[GameEngine] About to call sendGameState...");
         sendGameState(session);
@@ -94,6 +104,15 @@ public class GameEngine {
         System.out.println("[GameEngine] About to call sendAvailableActions...");
         sendAvailableActions(session);
         System.out.println("[GameEngine] sendAvailableActions completed");
+
+        // Check if ending has been triggered
+        if (session.getWorldState().getEnding() != com.onsen.domain.EndingStatus.NONE) {
+            System.out.println("[GameEngine] Ending triggered: " + session.getWorldState().getEnding());
+            webSocketService.sendEndingTrigger(
+                session.getSessionId(),
+                session.getWorldState().getEnding().name()
+            );
+        }
 
         return Optional.of(session);
     }
@@ -125,10 +144,14 @@ public class GameEngine {
         // Convert dialogue to simple text lines for WebSocket
         var narrativeLines = dialogueLines.stream()
                 .map(line -> {
-                    if (line.emotion() != null) {
-                        return line.speaker() + ": " + line.text() + " (" + line.emotion() + ")";
+                    String speaker = line.speaker() != null ? line.speaker() : "";
+                    String text = line.text() != null ? line.text() : "";
+                    String emotion = line.emotion();
+
+                    if (emotion != null && !emotion.isEmpty()) {
+                        return speaker + ": " + text + " (" + emotion + ")";
                     } else {
-                        return line.speaker() + ": " + line.text();
+                        return speaker + ": " + text;
                     }
                 })
                 .toList();

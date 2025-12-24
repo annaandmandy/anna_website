@@ -117,4 +117,24 @@ public class WebSocketService {
         String destination = "/topic/game/" + sessionId;
         messagingTemplate.convertAndSend(destination, (Object) message);
     }
+
+    /**
+     * Send ending trigger to frontend
+     */
+    public void sendEndingTrigger(String sessionId, String endingStatus) {
+        System.out.println("[WebSocketService] Preparing to send ENDING_TRIGGER");
+        System.out.println("[WebSocketService] SessionId: " + sessionId);
+        System.out.println("[WebSocketService] Ending: " + endingStatus);
+
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("endingStatus", endingStatus);
+
+        Map<String, Object> message = new HashMap<>();
+        message.put("type", "ENDING_TRIGGER");
+        message.put("payload", payload);
+
+        String destination = "/topic/game/" + sessionId;
+        messagingTemplate.convertAndSend(destination, (Object) message);
+        System.out.println("[WebSocketService] ENDING_TRIGGER sent!");
+    }
 }

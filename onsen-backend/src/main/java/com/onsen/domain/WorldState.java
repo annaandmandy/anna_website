@@ -3,13 +3,14 @@ package com.onsen.domain;
 public class WorldState {
     private int sanity;
     private Location currentLocation;
-    private boolean noticedFin;       
-    private boolean bleeding;          
-    private boolean attackedVisitor;   
-    private int exposureLevel;         
-    private int loopCount;             
+    private boolean noticedFin;
+    private boolean bleeding;
+    private boolean attackedVisitor;
+    private int exposureLevel;
+    private int loopCount;
     private EndingStatus ending;
-    
+    private boolean requiresStaffGuidance;
+
     public WorldState() {
         this.sanity = 100;
         this.currentLocation = Location.HOME;
@@ -19,6 +20,7 @@ public class WorldState {
         this.exposureLevel = 0;
         this.loopCount = 0;
         this.ending = EndingStatus.NONE;
+        this.requiresStaffGuidance = false;
     }
 
     public void decreaseSanity(int amount) {
@@ -92,5 +94,17 @@ public class WorldState {
 
     public EndingStatus getEnding() {
         return ending;
+    }
+
+    public boolean isRequiresStaffGuidance() {
+        return requiresStaffGuidance;
+    }
+
+    public void setRequiresStaffGuidance(boolean requiresStaffGuidance) {
+        this.requiresStaffGuidance = requiresStaffGuidance;
+    }
+
+    public void clearStaffGuidance() {
+        this.requiresStaffGuidance = false;
     }
 }

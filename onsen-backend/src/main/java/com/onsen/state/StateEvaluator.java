@@ -24,7 +24,7 @@ public class StateEvaluator {
                 state.decreaseSanity(10);
                 state.increaseExposure(1);
             }
-            
+
             case LOOK_AROUND -> {
                 if (state.getSanity() < 80) {
                     state.markNoticedFin();
@@ -50,22 +50,40 @@ public class StateEvaluator {
                 state.markBleeding();
                 state.decreaseSanity(20);
             }
-            
+
            case ATTACKED_VISITOR -> {
                 state.markAttackedVisitor();
                 state.decreaseSanity(30);
             }
 
             case STAFF_GUIDANCE -> {
+                // Staff guidance leads to shark pool
                 state.decreaseSanity(5);
+                state.setLocation(Location.SHARK_POOL);
             }
-            
+
             default -> {
                 // 其他事件暂不处理
             }
         }
 
+        // Check if SAN is critically low and trigger STAFF_GUIDANCE if needed
+        checkCriticalSanity(state, type);
+
         resolveEnding(state);
+    }
+
+    /**
+     * Check if sanity is critically low and trigger staff intervention
+     */
+    private void checkCriticalSanity(WorldState state, EventType currentEvent) {
+        // If SAN drops below 20 and we're not already being guided, trigger STAFF_GUIDANCE
+        if (state.getSanity() < 20 &&
+            currentEvent != EventType.STAFF_GUIDANCE &&
+            state.getCurrentLocation() != Location.SHARK_POOL) {
+            // This will be handled by the game engine to send STAFF_GUIDANCE event
+            state.setRequiresStaffGuidance(true);
+        }
     }
 
     private void resolveEnding(WorldState state) {
