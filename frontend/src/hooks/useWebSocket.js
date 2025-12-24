@@ -21,9 +21,34 @@ export default function useWebSocket(sessionId) {
     useEffect(() => {
         if (!sessionId) return;
 
+        // Use environment variable if available, otherwise determine from current page
+        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'localhost:8081';
+        const wsUrl = import.meta.env.VITE_WS_URL;
+
+        let brokerURL;
+        let sockJsUrl;
+
+        if (wsUrl) {
+            // Explicit WebSocket URL provided
+            brokerURL = wsUrl;
+            sockJsUrl = wsUrl.replace('wss://', 'https://').replace('ws://', 'http://');
+        } else {
+            // Auto-detect based on page protocol
+            const isSecure = window.location.protocol === 'https:';
+            const wsProtocol = isSecure ? 'wss:' : 'ws:';
+            const httpProtocol = isSecure ? 'https:' : 'http:';
+
+            brokerURL = `${wsProtocol}//${backendUrl}/ws`;
+            sockJsUrl = `${httpProtocol}//${backendUrl}/ws`;
+        }
+
+        console.log(`[WebSocket] Connecting to: ${brokerURL}`);
+        console.log(`[WebSocket] SockJS fallback: ${sockJsUrl}`);
+        console.log(`[WebSocket] Page protocol: ${window.location.protocol}`);
+
         // Create WebSocket connection
         const client = new Client({
-            brokerURL: `ws://localhost:8081/ws`, // Matches backend port
+            brokerURL,
             connectHeaders: {},
             debug: (str) => {
                 console.log('[WebSocket Debug]', str);
@@ -35,7 +60,7 @@ export default function useWebSocket(sessionId) {
 
         // Use SockJS for fallback
         client.webSocketFactory = () => {
-            return new SockJS('http://localhost:8081/ws');
+            return new SockJS(sockJsUrl);
         };
 
         client.onConnect = () => {
