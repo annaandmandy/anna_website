@@ -1,14 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as LAppDefine from "../live2d/src/lappdefine";
 import { LAppDelegate } from "../live2d/src/lappdelegate";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Live2DViewer = () => {
     const initialized = useRef(false);
     const [showDialog, setShowDialog] = useState(false);
     const [dialogMessage, setDialogMessage] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
     const [modelName, setModelName] = useState('anna');
+
+    // Don't render Live2D on the onsen-game page
+    if (location.pathname === '/onsen-game') {
+        return null;
+    }
 
     useEffect(() => {
         if (initialized.current) return;
