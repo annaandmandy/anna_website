@@ -1,11 +1,35 @@
 services:
+  nginx:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: nginx-gateway
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID: 1000
+      - PGID: 1000
+      - TZ=Asia/Taipei
+      - URL=hsiangyuhuang.com
+      - SUBDOMAINS=api
+      - VALIDATION=http
+      - EMAIL=annaandtommy1004@gmail.com
+    volumes:
+      - ./nginx/config:/config
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    depends_on:
+      - onsen-backend
   zookeeper:
     image: confluentinc/cp-zookeeper:7.6.0
     container_name: onsen-zookeeper
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      KAFKA_HEAP_OPTS: "-Xmx128M -Xms128M" # Limit Zookeeper memory usage
     ports:
       - "2181:2181"
+    restart: always
 
   kafka:
     image: confluentinc/cp-kafka:7.6.0
@@ -28,6 +52,9 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
+      KAFKA_HEAP_OPTS: "-Xmx256M -Xms256M" # Limit Kafka memory usage
+    restart: always
+
   redis:
     image: redis:7-alpine
     container_name: onsen-redis
@@ -41,6 +68,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: always
 
   onsen-backend:
     build:
@@ -56,6 +84,9 @@ services:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
       SPRING_REDIS_HOST: redis
       SPRING_REDIS_PORT: 6379
+      SERVER_PORT: 8081
+      JAVA_TOOL_OPTIONS: "-Xmx300m" # Limit Java heap size
+    restart: always
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8081/health"]
       interval: 30s
