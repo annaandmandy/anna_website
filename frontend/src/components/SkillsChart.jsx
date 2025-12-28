@@ -78,7 +78,7 @@ const SkillsChart = ({ onSkillClick }) => {
                     </div>
                 </div>
             ))}
-
+            {/* 
             <div className="skills-legend" data-aos="fade-up">
                 <div className="legend-item">
                     <div className="legend-bar legend-expert"></div>
@@ -92,7 +92,7 @@ const SkillsChart = ({ onSkillClick }) => {
                     <div className="legend-bar legend-proficient"></div>
                     <span>Proficient (&lt;70%)</span>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

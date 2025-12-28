@@ -31,9 +31,10 @@ export default function HireMe() {
                         fontSize: "0.9rem",
                         fontWeight: "600",
                         marginBottom: "2rem",
+                        marginTop: "2rem",
                         boxShadow: "0 4px 12px rgba(76, 175, 80, 0.3)"
                     }}>
-                        🟢 Available for Full-Time Roles • May 2026+
+                        Available for Full-Time Roles • Feb 2026+
                     </div>
                     <h1 className="hero-title" style={{ fontSize: "3rem" }}>Work With Anna Huang</h1>
                     <h2 className="hero-subtitle">AI Engineer | Backend Engineer | Software Engineer</h2>
@@ -55,7 +56,7 @@ export default function HireMe() {
                 <div className="grid grid-3">
                     <div className="grid-item">
                         <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem" }}>✅ Backend Engineer</h3>
-                        <p>Building scalable APIs, microservices, and database architectures. Expert in FastAPI, Python, SQL, MongoDB, and RESTful design.</p>
+                        <p>Building scalable APIs, microservices, and database architectures. Expert in FastAPI, Python, SQL, cloud deployment (AWS, Azure, Cloudflare), MongoDB, and RESTful design.</p>
                     </div>
                     <div className="grid-item">
                         <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem" }}>✅ AI Engineer</h3>
@@ -63,7 +64,7 @@ export default function HireMe() {
                     </div>
                     <div className="grid-item">
                         <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem" }}>✅ Software Engineer</h3>
-                        <p>Full-stack development with modern frameworks. Strong foundation in React, Next.js, cloud deployment (AWS, Azure, Cloudflare), and DevOps.</p>
+                        <p>Full-stack development with modern frameworks. Strong foundation in React, Next.js, and DevOps. Experience in OOP structure and system design using C++.</p>
                     </div>
                 </div>
             </section>
@@ -73,25 +74,25 @@ export default function HireMe() {
                 <h2 style={{ marginBottom: "2rem" }}>What I Bring to Your Team</h2>
                 <div className="grid grid-2">
                     <div>
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>💡 Production-Grade AI Systems</h3>
+                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>💡 Production AI Systems at Scale</h3>
                         <p style={{ marginBottom: "1.5rem" }}>
-                            I don't just build demos—I architect complete systems that scale. My LLM Multi-Agent Platform handles 10K+ documents with &lt;1s retrieval, and my Novel Generator runs serverless on Cloudflare Workers generating 10K+ word narratives.
+                            Built a multi-agent LLM platform using FastAPI and LangGraph managing asynchronous communication between Coordinator, Writer, and Product agents. Architected RAG pipelines for RhettSearch (DS+X Hackathon Winner) that retrieves academic literature via OpenAlex API and synthesizes insights using OpenAI.
                         </p>
 
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>⚡ Performance-Driven Backend Engineering</h3>
+                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>⚡ Data-Driven Engineering Results</h3>
                         <p style={{ marginBottom: "1.5rem" }}>
-                            Proven track record of optimization: 60% latency reduction in document processing, 50% faster search queries for 5K+ users, and maintaining 95% accuracy in production RAG systems.
+                            Proven track record of measurable impact: improved forecasting accuracy from 8.3% to 73.4% R² using ARIMA-XGBoost pipeline. Designed normalized PostgreSQL schemas and built 10+ features processing user interactions and location data for Citale, now serving real users.
                         </p>
                     </div>
                     <div>
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>🚀 Full-Stack Deployment Experience</h3>
+                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>🚀 Full-Stack Cloud Infrastructure</h3>
                         <p style={{ marginBottom: "1.5rem" }}>
-                            From React frontends to FastAPI backends to AWS/Azure cloud infrastructure—I handle the complete development cycle. Deployed applications serving thousands of active users.
+                            End-to-end deployment experience across AWS (Lambda, Step Functions, EC2, S3) and Azure ecosystems. Built serverless ETL pipelines for real-time event ingestion and deployed EC2-based web scrapers with Cron automation for reliable data extraction.
                         </p>
 
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>📊 Research-Backed Problem Solving</h3>
+                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>📊 Rapid Prototyping to Production</h3>
                         <p>
-                            2+ years of research experience with measurable results: 65.1% R² improvement in forecasting models. I bring analytical rigor to engineering challenges.
+                            Hackathon winner (DS+X 2025 - Best Overall) with proven ability to ship fast. Managed weekly Agile Sprints deploying to Vercel with PostHog analytics integration. Designed RESTful APIs handling complex JSON serialization for frontend integration.
                         </p>
                     </div>
                 </div>
@@ -99,10 +100,6 @@ export default function HireMe() {
 
             {/* Skills Section with Interactive Chart */}
             <section className="section" id="skills" data-aos="fade-up">
-                <h2 style={{ marginBottom: "1rem", textAlign: "center" }}>Technical Expertise by Role</h2>
-                <p style={{ textAlign: "center", color: "var(--text-secondary)", marginBottom: "3rem" }}>
-                    Click any skill to see related projects
-                </p>
                 <SkillsChart onSkillClick={handleSkillClick} />
             </section>
 

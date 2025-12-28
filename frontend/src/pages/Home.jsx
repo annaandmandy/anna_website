@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import emailjs from "emailjs-com";
@@ -72,6 +73,7 @@ export default function Home() {
                         <p>
                             I am actively seeking full-time roles in <strong>Backend Software Engineering</strong>, <strong>AI Infrastructure</strong>, and <strong>Cloud Engineering</strong> starting early 2026.
                         </p>
+                        <p><Link to="/hire-me" style={{ textDecoration: "underline" }}>See more details about job searching in the <strong>Hire Me</strong> page.</Link></p>
                     </div>
                     <div>
                         <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>Core Skills</h3>
