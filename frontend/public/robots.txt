@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
-Sitemap: https://hsiangyuhuang-anna.vercel.app/sitemap.xml
+
+# Sitemap
+Sitemap: https://www.hsiangyuhuang.com/sitemap.xml
+
+# Important pages for recruiters
+Allow: /about
+Allow: /projects
+Allow: /resume.pdf

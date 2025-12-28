@@ -46,7 +46,7 @@ export default function Home() {
                     <div>
                         <img
                             src="/img_main/anna_nobg.png"
-                            alt="Anna"
+                            alt="Hsiang Yu (Anna) Huang - AI Engineer and Backend Engineer"
                             style={{
                                 width: "100%",
                                 maxWidth: "400px",
@@ -265,7 +265,7 @@ export default function Home() {
                             I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
                         </p>
                         <div className="flex-col" style={{ gap: "1rem" }}>
-                            <a href="mailto:annahuang@example.com" style={{ fontSize: "1.1rem" }}>📧 Email Me</a>
+                            <a href="mailto:huanganna1004@gmail.com" style={{ fontSize: "1.1rem" }}>📧 Email Me</a>
                             <a href="https://www.linkedin.com/in/hsiangyuhuang/" target="_blank" style={{ fontSize: "1.1rem" }}>🔗 LinkedIn</a>
                             <a href="https://github.com/annaandmandy" target="_blank" style={{ fontSize: "1.1rem" }}>💻 GitHub</a>
                         </div>

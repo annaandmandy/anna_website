@@ -35,7 +35,7 @@ export default function About() {
         <div className="grid-item" data-aos="fade-up">
           <img
             src="/img_main/pikmin_walk.png"
-            alt="Walking"
+            alt="Pikmin Bloom walking game - Anna Huang's fitness activity tracker"
           />
           <h3>Walking</h3>
           <p style={{ marginBottom: "1rem" }}>
@@ -50,7 +50,7 @@ export default function About() {
         <div className="grid-item" data-aos="fade-up">
           <img
             src="/img_main/drawing_cat.jpg"
-            alt="Drawing"
+            alt="Digital art drawing by Anna Huang - cat illustration on iPad"
           />
           <h3>Drawing</h3>
           <p style={{ marginBottom: "1rem" }}>
@@ -64,7 +64,7 @@ export default function About() {
         <div className="grid-item" data-aos="fade-up">
           <img
             src="/img_main/silksong.png"
-            alt="Gaming"
+            alt="Hollow Knight Silksong gameplay - Anna's gaming interest"
           />
           <h3>Playing Video Games</h3>
           <p style={{ marginBottom: "1rem" }}>

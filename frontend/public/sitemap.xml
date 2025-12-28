@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hsiangyuhuang-anna.vercel.app/</loc>
+    <loc>https://www.hsiangyuhuang.com/</loc>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://hsiangyuhuang-anna.vercel.app/about</loc>
+    <loc>https://www.hsiangyuhuang.com/about</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hsiangyuhuang-anna.vercel.app/projects</loc>
-    <priority>0.8</priority>
+    <loc>https://www.hsiangyuhuang.com/projects</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://hsiangyuhuang-anna.vercel.app/interests</loc>
+    <loc>https://www.hsiangyuhuang.com/interests</loc>
     <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hsiangyuhuang-anna.vercel.app/gorillacharms</loc>
+    <loc>https://www.hsiangyuhuang.com/gorillacharms</loc>
     <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hsiangyuhuang-anna.vercel.app/booklet</loc>
+    <loc>https://www.hsiangyuhuang.com/booklet</loc>
     <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hsiangyuhuang-anna.vercel.app/messageboard</loc>
+    <loc>https://www.hsiangyuhuang.com/messageboard</loc>
     <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
   </url>
 </urlset>

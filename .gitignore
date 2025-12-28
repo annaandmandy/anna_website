@@ -7,3 +7,5 @@ node_modules
 onsen-backend/nginx/config/
 onsen-backend/deploy.sh
 onsen-backend/DEPLOY_INSTRUCTIONS.md
+
+.env
