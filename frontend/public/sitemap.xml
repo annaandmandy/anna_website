@@ -16,6 +16,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.hsiangyuhuang.com/hire-me</loc>
+    <priority>0.95</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.hsiangyuhuang.com/interests</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>

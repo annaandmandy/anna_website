@@ -15,6 +15,7 @@ import Live2DModel from './components/Live2DViewer';
 import Game from './pages/Game';
 import RuleBasedGame from './pages/RuleBasedGame';
 import WeekendReport from './pages/BostonWeekendAgent';
+import HireMe from './pages/HireMe';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/game" element={<Game />} />
         <Route path="/onsen-game" element={<RuleBasedGame />} />
         <Route path="/weekend_report" element={<WeekendReport />} />
+        <Route path="/hire-me" element={<HireMe />} />
       </Routes>
       <Live2DModel />
       <Footer />
