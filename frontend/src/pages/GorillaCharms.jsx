@@ -3,7 +3,7 @@ import React from "react";
 export default function GorillaCharms() {
     return (
         <div className="container section">
-            <div className="text-center" style={{ marginBottom: "3rem" }}>
+            <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }}>
                 <h1>Iteration: Gorilla Charm</h1>
             </div>
             <div className="flex justify-center" style={{ marginBottom: "4rem" }}>

@@ -9,7 +9,7 @@ export default function Booklet() {
 
     return (
         <div className="container section">
-            <div className="text-center" style={{ marginBottom: "3rem" }} data-aos="fade-down">
+            <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
                 <h1>Booklet</h1>
                 <p>Final Project from AR123 Foundation Design.</p>
             </div>

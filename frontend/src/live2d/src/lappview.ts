@@ -160,8 +160,8 @@ export class LAppView {
     const initGearTexture = (textureInfo: TextureInfo): void => {
       const x = width - textureInfo.width * 1;
       const y = height - textureInfo.height * 1;
-      const fwidth = textureInfo.width * 1.5;
-      const fheight = textureInfo.height * 1.5;
+      const fwidth = textureInfo.width * 0.8;
+      const fheight = textureInfo.height * 0.8;
       this._gear = new LAppSprite(x, y, fwidth, fheight, textureInfo.id);
       this._gear.setSubdelegate(this._subdelegate);
     };
