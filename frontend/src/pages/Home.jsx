@@ -29,6 +29,49 @@ export default function Home() {
         );
     }
 
+    const personSchema = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hsiang Yu Huang",
+        "alternateName": "Anna Huang",
+        "url": "https://www.hsiangyuhuang.com",
+        "image": "https://www.hsiangyuhuang.com/icon.png",
+        "jobTitle": [
+            "AI Engineer",
+            "Backend Engineer",
+            "Software Engineer",
+            "Data Engineer"
+        ],
+        "worksFor": {
+            "@type": "EducationalOrganization",
+            "name": "Boston University"
+        },
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "National Taiwan University of Science and Technology"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Boston",
+            "addressRegion": "MA",
+            "addressCountry": "US"
+        },
+        "email": "huanganna1004@gmail.com",
+        "sameAs": [
+            "https://www.linkedin.com/in/hsiangyuhuang/",
+            "https://github.com/annaandmandy"
+        ],
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Multi-Agent Systems",
+            "RAG Pipelines",
+            "FastAPI",
+            "Cloud Infrastructure",
+            "Machine Learning",
+            "Software Engineering"
+        ]
+    };
+
     return (
         <div className="flex flex-col gap-20 pb-32 overflow-hidden">
             <SEO
@@ -36,6 +79,7 @@ export default function Home() {
                 description="AI Engineer specializing in Multi-Agent Systems, RAG Pipelines, and Cloud Infrastructure. Master's student at Boston University seeking full-time opportunities."
                 name="Hsiang Yu Huang"
                 type="website"
+                jsonLd={personSchema}
             />
             {/* Hero Section */}
             <section className="relative pt-20 md:pt-32 px-6 max-w-7xl mx-auto w-full" data-aos="fade-up">

@@ -189,6 +189,32 @@ export default function Projects() {
         },
     ];
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": projects.map((project, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "SoftwareApplication",
+                "name": project.title,
+                "description": project.detailedDesc || project.desc,
+                "applicationCategory": project.category || "Software",
+                "operatingSystem": "Web, Cloud",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Hsiang Yu (Anna) Huang"
+                },
+                "url": project.link && project.link.startsWith('http') ? project.link : `https://www.hsiangyuhuang.com${project.link}`
+            }
+        }))
+    };
+
     return (
         <div className="container section">
             <SEO
@@ -196,6 +222,7 @@ export default function Projects() {
                 description="Explore my portfolio of AI, Backend, and Full Stack projects. Featuring Multi-Agent Systems, RAG Pipelines, and Cloud Infrastructure implementations."
                 name="Hsiang Yu Huang"
                 type="website"
+                jsonLd={jsonLd}
             />
             <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
                 <h1>All Projects</h1>
