@@ -254,8 +254,13 @@ export class LAppSubdelegate {
     }
     this._captured = true;
 
-    const localX: number = pageX - this._canvas.offsetLeft;
-    const localY: number = pageY - this._canvas.offsetTop;
+    // Convert page coordinates to canvas-local coordinates
+    // For fixed positioning: use clientX/Y (viewport-relative)
+    const rect = this._canvas.getBoundingClientRect();
+    const clientX = pageX - window.scrollX;
+    const clientY = pageY - window.scrollY;
+    const localX: number = clientX - rect.left;
+    const localY: number = clientY - rect.top;
 
     this._view.onTouchesBegan(localX, localY);
   }
@@ -268,8 +273,12 @@ export class LAppSubdelegate {
       return;
     }
 
-    const localX: number = pageX - this._canvas.offsetLeft;
-    const localY: number = pageY - this._canvas.offsetTop;
+    // Convert page coordinates to canvas-local coordinates
+    const rect = this._canvas.getBoundingClientRect();
+    const clientX = pageX - window.scrollX;
+    const clientY = pageY - window.scrollY;
+    const localX: number = clientX - rect.left;
+    const localY: number = clientY - rect.top;
 
     this._view.onTouchesMoved(localX, localY);
   }
@@ -285,8 +294,12 @@ export class LAppSubdelegate {
       return;
     }
 
-    const localX: number = pageX - this._canvas.offsetLeft;
-    const localY: number = pageY - this._canvas.offsetTop;
+    // Convert page coordinates to canvas-local coordinates
+    const rect = this._canvas.getBoundingClientRect();
+    const clientX = pageX - window.scrollX;
+    const clientY = pageY - window.scrollY;
+    const localX: number = clientX - rect.left;
+    const localY: number = clientY - rect.top;
 
     this._view.onTouchesEnded(localX, localY);
   }
@@ -302,8 +315,12 @@ export class LAppSubdelegate {
       return;
     }
 
-    const localX: number = pageX - this._canvas.offsetLeft;
-    const localY: number = pageY - this._canvas.offsetTop;
+    // Convert page coordinates to canvas-local coordinates
+    const rect = this._canvas.getBoundingClientRect();
+    const clientX = pageX - window.scrollX;
+    const clientY = pageY - window.scrollY;
+    const localX: number = clientX - rect.left;
+    const localY: number = clientY - rect.top;
 
     this._view.onTouchesEnded(localX, localY);
   }

@@ -190,7 +190,7 @@ export default function Projects() {
 
     return (
         <div className="container section">
-            <div className="text-center" style={{ marginBottom: "3rem" }} data-aos="fade-down">
+            <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
                 <h1>All Projects</h1>
                 <p>A collection of my work in AI Engineering, Backend Development, and Full Stack applications.</p>
             </div>

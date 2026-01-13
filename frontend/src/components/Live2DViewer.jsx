@@ -9,7 +9,6 @@ const Live2DViewer = () => {
     const [dialogMessage, setDialogMessage] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
-    const [modelName, setModelName] = useState('anna');
 
     // Don't render Live2D on the onsen-game page
     if (location.pathname === '/onsen-game') {
@@ -28,19 +27,15 @@ const Live2DViewer = () => {
         delegate.run();
 
         // Access the Live2D manager through the subdelegate
-        // Wait a bit for initialization to complete
         setTimeout(() => {
-            // Get the first subdelegate (index 0)
             const subdelegate = delegate._subdelegates?.at(0);
             if (subdelegate) {
                 const live2DManager = subdelegate.getLive2DManager();
 
-                console.log('Live2D Manager:', live2DManager);
-
                 if (live2DManager) {
                     live2DManager.onUserTap = (area) => {
-                        const modelName = live2DManager.getCurrentModelName();
-                        console.log('Current Model Name:', modelName);
+                        console.log('Live2D Tapped');
+
                         const modelDialog = live2DManager.getCurrentModelDialog();
                         if (modelDialog && modelDialog.length > 0) {
                             const randomIndex = Math.floor(Math.random() * modelDialog.length);
@@ -48,31 +43,27 @@ const Live2DViewer = () => {
                             setDialogMessage(message);
                             setShowDialog(true);
                         } else {
-                            setDialogMessage("╰(*°▽°*)╯");
+                            setDialogMessage("Hi there! I'm Anna's digital avatar.");
                             setShowDialog(true);
                         }
+                        // Auto-hide after 4 seconds
                         setTimeout(() => {
                             setShowDialog(false);
-                        }, 3000);
+                        }, 4000);
                     };
-
                 }
             }
-        }, 100); // Small delay to ensure initialization is complete
+        }, 500);
     }, []);
-
-
 
     return (
         <>
             <div id="live2d-canvas" />
             {showDialog && (
-                <div>
-                    <div>
-                        <p className="live2d-dialog">
-                            {dialogMessage}
-                        </p>
-                    </div>
+                <div className="fixed bottom-[350px] right-20 max-w-[240px] p-4 bg-white/95 backdrop-blur-sm border border-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-2xl rounded-br-sm text-sm font-medium text-dark animate-bounce-in z-[101]">
+                    <p className="leading-relaxed">
+                        {dialogMessage}
+                    </p>
                 </div>
             )}
         </>

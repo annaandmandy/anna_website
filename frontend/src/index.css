@@ -1,32 +1,28 @@
 :root {
-  /* Color Palette - Light Yellow Theme */
-  --bg-color: #FFFCEB;
-  /* light creamy yellow */
+  /* Color Palette - Updated Cream & Warm Yellow Theme */
+  --bg-color: #f8f8f5;
+  /* Light Cream */
+  --bg-secondary: #ffffff;
+  /* White for cards */
 
-  --bg-secondary: #FFF3C2;
-  /* warmer muted yellow */
+  --primary-color: #fcd96e;
+  /* Friendly Yellow */
+  --accent-color: #e3c054;
+  /* Deep Yellow */
 
-  --primary-color: #FFD93D;
-  /* soft pale butter yellow */
+  --text-primary: #1c180d;
+  /* Dark Brown/Black */
+  --text-secondary: #5e5845;
+  /* Muted Brown */
 
-  --accent-color: #E9CFA8;
-  /* warm beige accent that matches the gradient */
-
-  --text-primary: #2F2F2F;
-  /* comfortable dark gray */
-
-  --text-secondary: #555555;
-  /* softer medium gray */
-
-  --link-color: #D28A3A;
-  /* warm pumpkin-orange that matches warm theme */
+  --link-color: #bfa143;
+  /* Gold/Ochre */
 
   color-scheme: light;
 
   /* Typography */
-  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
-  /* Modern heading font */
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
   --spacing-sm: 0.5rem;
@@ -36,7 +32,7 @@
 
   /* Layout */
   --max-width: 1200px;
-  --header-height: 70px;
+  --header-height: 80px;
 }
 
 * {
@@ -57,6 +53,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -68,18 +65,17 @@ h6 {
   font-family: var(--font-heading);
   font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
-
-/* increased */
 
 a {
   color: var(--link-color);
@@ -164,49 +160,17 @@ a:hover {
   margin-bottom: var(--spacing-md);
 }
 
-/* Live2D Canvas - Adjusted */
-#live2d-canvas,
+/* Live2D styles moved to component via Tailwind */
+
+/* Live2D Canvas - Targeting the class the library uses */
 .live2d-canvas {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 300px;
-  /* Fixed width for consistency */
-  height: 400px;
-  max-height: 50vh;
-  pointer-events: none;
-  z-index: 50;
-}
-
-/* Live2D Dialog */
-.live2d-dialog {
-  position: fixed;
-  bottom: 350px;
-  /* Positioned above the model */
-  right: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  z-index: 10000;
-  max-width: 250px;
-  text-align: center;
-  font-family: var(--font-main);
-  font-size: 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  position: fixed !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  width: 200px !important;
+  height: 300px !important;
+  z-index: 100 !important;
+  pointer-events: auto !important;
 }
 
 /* Navbar Styles */

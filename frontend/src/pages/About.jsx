@@ -10,7 +10,7 @@ export default function About() {
   return (
     <div className="container section">
       {/* Hero Section */}
-      <div className="text-center" style={{ marginBottom: "3rem" }} data-aos="fade-down">
+      <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
         <h1>About Me</h1>
       </div>
 

@@ -9,7 +9,7 @@ export default function Interests() {
 
     return (
         <div className="container section">
-            <div className="text-center" style={{ marginBottom: "3rem" }} data-aos="fade-down">
+            <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
                 <h1>Interests</h1>
             </div>
             <div className="grid-item" data-aos="fade-up" style={{ maxWidth: "800px", margin: "0 auto" }}>
