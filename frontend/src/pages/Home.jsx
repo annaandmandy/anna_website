@@ -271,17 +271,9 @@ export default function Home() {
 
                         <div className="pl-6 border-l-2 border-stone-200 hover:border-primary transition-colors">
                             <h3 className="text-2xl font-bold">Research Assistant</h3>
-                            <div className="text-text-secondary font-medium mb-2">NTUST AI Lab | 2023–24</div>
+                            <div className="text-text-secondary font-medium mb-2">NTUST AI Lab and Stats Lab | 2023–24</div>
                             <p className="text-lg leading-relaxed">
-                                Achieved 73.4% R² gain in sales forecasting models using rolling window adaptive modeling.
-                            </p>
-                        </div>
-
-                        <div className="pl-6 border-l-2 border-stone-200 hover:border-primary transition-colors">
-                            <h3 className="text-2xl font-bold">Research Assistant</h3>
-                            <div className="text-text-secondary font-medium mb-2">NTUST Stats Lab | 2023</div>
-                            <p className="text-lg leading-relaxed">
-                                Developed shelf optimization models using K-means clustering to analyze product sales performance.
+                                Achieved 73.4% R² gain in sales forecasting models using rolling window adaptive modeling, and developed shelf optimization models using K-means clustering to analyze product sales performance.
                             </p>
                         </div>
                     </div>
