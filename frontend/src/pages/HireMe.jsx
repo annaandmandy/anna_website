@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SkillsChart from "../components/SkillsChart";
+import SEO from "../components/SEO";
 import { useNavigate } from "react-router-dom";
 
 export default function HireMe() {
@@ -19,6 +20,12 @@ export default function HireMe() {
 
     return (
         <div className="container">
+            <SEO
+                title="Hire Anna Huang - AI & Backend Engineer"
+                description="Hsiang Yu (Anna) Huang is available for full-time roles in AI Engineering, Backend Development, and Cloud Infrastructure. View resume and skills."
+                name="Hsiang Yu Huang"
+                type="profile"
+            />
             {/* Hero Section */}
             <section className="hero" data-aos="fade-up" style={{ minHeight: "60vh" }}>
                 <div className="hero-content" style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>

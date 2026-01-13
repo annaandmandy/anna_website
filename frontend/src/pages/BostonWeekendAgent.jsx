@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SEO from "../components/SEO";
 
 // The public URL you copied from your S3 bucket
 const REPORT_URL = 'https://boston-weekend-agent-reports.s3.amazonaws.com/reports/weekend_summary.txt';
@@ -80,6 +81,12 @@ const WeekendReport = () => {
 
   return (
     <div className="container section">
+      <SEO
+        title="Boston Weekend Vibe - AI Generated Reports"
+        description="Weekly AI-generated reports on Boston's weekend mood, weather, and events. Powered by a multi-agent system."
+        name="Hsiang Yu Huang"
+        type="article"
+      />
       {/* Heading */}
       <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
         <h1>Boston Weekend Vibe</h1>

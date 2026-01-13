@@ -4,13 +4,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import SEO from "../components/SEO";
 
 export default function MessageBoard() {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
-      }, []);
+    }, []);
 
     useEffect(() => {
         fetchMessages();
@@ -18,16 +19,16 @@ export default function MessageBoard() {
 
     const fetchMessages = async () => {
         const { data, error } = await supabase
-        .from("Message")
-        .select("*")
-        .order("likes", { ascending: false })
-        .order("created_at", { ascending: false });
+            .from("Message")
+            .select("*")
+            .order("likes", { ascending: false })
+            .order("created_at", { ascending: false });
         console.log(data);
 
         if (error) {
-        console.error("Error fetching messages:", error);
+            console.error("Error fetching messages:", error);
         } else {
-        setMessages(data);
+            setMessages(data);
         }
     };
 
@@ -39,12 +40,12 @@ export default function MessageBoard() {
         if (!content) return;
 
         const { error } = await supabase
-        .from("Message")
-        .insert([{ content, likes: 0, created_at: new Date() }]);
+            .from("Message")
+            .insert([{ content, likes: 0, created_at: new Date() }]);
 
         if (!error) {
-        fetchMessages();
-        form.reset();
+            fetchMessages();
+            form.reset();
         }
     };
 
@@ -62,6 +63,12 @@ export default function MessageBoard() {
 
     return (
         <div className="container-fluid py-3">
+            <SEO
+                title="Message Board - Hsiang Yu (Anna) Huang"
+                description="Community message board. Leave a note, share a thought, or just say hi!"
+                name="Hsiang Yu Huang"
+                type="website"
+            />
             {/* Heading */}
             <div className="text-center mb-5" data-aos="fade-down">
                 <h1 className="fw-bold">Message Board</h1>
@@ -71,49 +78,49 @@ export default function MessageBoard() {
             {/* Floating messages container */}
             <div className="position-relative w-100 rounded mb-5" style={{ maxWidth: "800px", margin: "0 auto", maxHeight: "500px", overflowY: "auto" }} data-aos="fade-up">
                 {messages.map((m, i) => (
-                <div
-                    key={m.id}
-                    className={`d-flex justify-content-between align-items-center mb-3 p-3 rounded shadow-sm cursor-pointer`}
-                    style={{
-                        background: "linear-gradient(135deg, #ffecd2, #fffbea)",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                    }}
-                    onClick={() => handleLike(m.id, m.likes)}
-                >
-                    <span>{m.content}  &nbsp; ♡  {m.likes}</span>
-                    <span className="text-muted" style={{ fontSize: "0.8rem" }}> - {new Date(m.created_at).toLocaleString()}</span>
-                </div>
+                    <div
+                        key={m.id}
+                        className={`d-flex justify-content-between align-items-center mb-3 p-3 rounded shadow-sm cursor-pointer`}
+                        style={{
+                            background: "linear-gradient(135deg, #ffecd2, #fffbea)",
+                            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                        }}
+                        onClick={() => handleLike(m.id, m.likes)}
+                    >
+                        <span>{m.content}  &nbsp; ♡  {m.likes}</span>
+                        <span className="text-muted" style={{ fontSize: "0.8rem" }}> - {new Date(m.created_at).toLocaleString()}</span>
+                    </div>
                 ))}
             </div>
 
             {/* Form */}
             <div className="d-flex flex-column align-items-center mb-5" data-aos="fade-up">
                 <form
-                onSubmit={handleSubmit}
-                className="w-full"
-                style={{ maxWidth: "800px", width: "90%" }}
+                    onSubmit={handleSubmit}
+                    className="w-full"
+                    style={{ maxWidth: "800px", width: "90%" }}
                 >
-                <div className="mb-3">
-                    <label htmlFor="content" className="form-label">
-                    Message:
-                    </label>
-                    <input
-                    type="text"
-                    id="content"
-                    name="content"
-                    className="form-control"
-                    placeholder="Write a message..."
-                    required
-                    />
-                </div>
+                    <div className="mb-3">
+                        <label htmlFor="content" className="form-label">
+                            Message:
+                        </label>
+                        <input
+                            type="text"
+                            id="content"
+                            name="content"
+                            className="form-control"
+                            placeholder="Write a message..."
+                            required
+                        />
+                    </div>
 
-                <button
-                    type="submit"
-                    className="btn w-100"
-                    style={{ backgroundColor: "#FFD93D" }}
-                >
-                    Submit
-                </button>
+                    <button
+                        type="submit"
+                        className="btn w-100"
+                        style={{ backgroundColor: "#FFD93D" }}
+                    >
+                        Submit
+                    </button>
                 </form>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -30,6 +31,12 @@ export default function Home() {
 
     return (
         <div className="flex flex-col gap-20 pb-32 overflow-hidden">
+            <SEO
+                title="Hsiang Yu (Anna) Huang - AI Engineer & Backend Specialist"
+                description="AI Engineer specializing in Multi-Agent Systems, RAG Pipelines, and Cloud Infrastructure. Master's student at Boston University seeking full-time opportunities."
+                name="Hsiang Yu Huang"
+                type="website"
+            />
             {/* Hero Section */}
             <section className="relative pt-20 md:pt-32 px-6 max-w-7xl mx-auto w-full" data-aos="fade-up">
 

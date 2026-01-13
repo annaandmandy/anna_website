@@ -18,12 +18,13 @@ import WeekendReport from './pages/BostonWeekendAgent';
 import HireMe from './pages/HireMe';
 
 import { Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <HelmetProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -40,7 +41,7 @@ function App() {
       </Routes>
       <Live2DModel />
       <Footer />
-    </>
+    </HelmetProvider>
   );
 }
 

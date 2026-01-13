@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SEO from "../components/SEO";
 
 export default function Interests() {
     useEffect(() => {
@@ -9,6 +10,12 @@ export default function Interests() {
 
     return (
         <div className="container section">
+            <SEO
+                title="Interests & Hobbies - Hsiang Yu (Anna) Huang"
+                description="Discover my personal interests beyond code, including digital art, game design, and creative writing."
+                name="Hsiang Yu Huang"
+                type="website"
+            />
             <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
                 <h1>Interests</h1>
             </div>

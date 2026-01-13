@@ -6,6 +6,7 @@ import ChoicePanel from '../components/game/ChoicePanel';
 import RuleModal from '../components/game/RuleModal';
 import StateDisplay from '../components/game/StateDisplay';
 import '../styles/game.css';
+import SEO from '../components/SEO';
 
 /**
  * Onsen Rule-Based Horror Game
@@ -183,6 +184,12 @@ export default function RuleBasedGame() {
 
         return (
             <div className="ending-screen" style={{ backgroundImage: `url(${ending.image})` }}>
+                <SEO
+                    title={`Ending: ${ending.title} - Onsen Game`}
+                    description={`You reached the ${ending.title} ending in Onsen. ${ending.message}`}
+                    name="Hsiang Yu Huang"
+                    type="game"
+                />
                 <div className="ending-overlay">
                     <h1 className="ending-title">{ending.title}</h1>
                     <p className="ending-message">{ending.message}</p>
@@ -200,6 +207,12 @@ export default function RuleBasedGame() {
     if (!gameStarted) {
         return (
             <div className="game-start-screen">
+                <SEO
+                    title="Onsen - Rule-Based Horror Game"
+                    description="Escape the loop in this rule-based horror game set in a mysterious Onsen. Can you survive the night?"
+                    name="Hsiang Yu Huang"
+                    type="game"
+                />
                 <div className="start-content">
                     <h1 className="game-title">Onsen</h1>
                     <p className="game-subtitle">A Rule-Based Horror Experience</p>
@@ -214,6 +227,12 @@ export default function RuleBasedGame() {
 
     return (
         <div className="game-container">
+            <SEO
+                title="Onsen - Rule-Based Horror Game"
+                description="Escape the loop in this rule-based horror game set in a mysterious Onsen. Can you survive the night?"
+                name="Hsiang Yu Huang"
+                type="game"
+            />
             {/* Background */}
             <GameBackground
                 location={gameState?.currentLocation || 'HOME'}

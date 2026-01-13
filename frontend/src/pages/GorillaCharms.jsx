@@ -1,8 +1,15 @@
 import React from "react";
+import SEO from "../components/SEO";
 
 export default function GorillaCharms() {
     return (
         <div className="container section">
+            <SEO
+                title="Gorilla Charms - Design Portfolio"
+                description="A collection of creative design iterations and storytelling illustrations centered around Gorilla Charms."
+                name="Hsiang Yu Huang"
+                type="article"
+            />
             <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }}>
                 <h1>Iteration: Gorilla Charm</h1>
             </div>

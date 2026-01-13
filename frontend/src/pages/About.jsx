@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SEO from "../components/SEO";
 
 export default function About() {
   useEffect(() => {
@@ -9,6 +10,12 @@ export default function About() {
 
   return (
     <div className="container section">
+      <SEO
+        title="About Me - Hsiang Yu (Anna) Huang"
+        description="Learn more about Hsiang Yu (Anna) Huang, an AI Engineer and Master's student at Boston University. Explore my background, interests, and technical skills."
+        name="Hsiang Yu Huang"
+        type="profile"
+      />
       {/* Hero Section */}
       <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
         <h1>About Me</h1>

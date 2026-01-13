@@ -1,5 +1,21 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "hsiangyuhuang.com"
+        }
+      ],
+      "destination": "https://www.hsiangyuhuang.com/:path*",
+      "permanent": true
+    }
   ]
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SEO from "../components/SEO";
 
 export default function Booklet() {
     useEffect(() => {
@@ -9,6 +10,12 @@ export default function Booklet() {
 
     return (
         <div className="container section">
+            <SEO
+                title="Foundation Design Booklet - Hsiang Yu (Anna) Huang"
+                description="Interactive digital flipbook showcasing my final project for AR123 Foundation Design."
+                name="Hsiang Yu Huang"
+                type="article"
+            />
             <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
                 <h1>Booklet</h1>
                 <p>Final Project from AR123 Foundation Design.</p>

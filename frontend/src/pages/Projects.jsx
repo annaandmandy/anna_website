@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ProjectModal from "../components/ProjectModal";
+import SEO from "../components/SEO";
 
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -190,6 +191,12 @@ export default function Projects() {
 
     return (
         <div className="container section">
+            <SEO
+                title="Projects - Hsiang Yu (Anna) Huang"
+                description="Explore my portfolio of AI, Backend, and Full Stack projects. Featuring Multi-Agent Systems, RAG Pipelines, and Cloud Infrastructure implementations."
+                name="Hsiang Yu Huang"
+                type="website"
+            />
             <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
                 <h1>All Projects</h1>
                 <p>A collection of my work in AI Engineering, Backend Development, and Full Stack applications.</p>
