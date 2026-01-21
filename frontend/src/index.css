@@ -71,21 +71,22 @@ body {
 h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
-  font-weight: bold;
+  font-weight: 800;
+  /* Force Extra Bold */
   /* Mobile default */
 }
 
 h2 {
   font-family: var(--font-heading);
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 800;
   /* Mobile default */
 }
 
 h3 {
   font-family: var(--font-heading);
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @media (min-width: 768px) {
