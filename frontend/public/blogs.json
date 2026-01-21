@@ -1,0 +1,482 @@
+[
+    {
+        "id": 1,
+        "title": "How I Designed a Production Chatbot Backend (API, DB, LLM, Analytics)",
+        "slug": "how-i-designed-a-production-chatbot-backend",
+        "file": "how-i-designed-a-production-chatbot-backend.md",
+        "link": "https://www.hsiangyuhuang.com/blogs/how-i-designed-a-production-chatbot-backend-api-db-llm-analytics",
+        "content": "",
+        "date": "2025-01-20"
+    },
+    {
+        "id": 2,
+        "title": "LangGraph vs LangChain: When and Why to Use Each",
+        "slug": "langgraph-vs-langchain-when-and-why-to-use-each",
+        "link": "https://www.hsiangyuhuang.com/blogs/langgraph-vs-langchain-when-and-why-to-use-each",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 3,
+        "title": "Designing an LLM Memory System: Short-Term, Vector, and Summarization",
+        "slug": "designing-an-llm-memory-system-short-term-vector-and-summarization",
+        "link": "https://www.hsiangyuhuang.com/blogs/designing-an-llm-memory-system-short-term-vector-and-summarization",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 4,
+        "title": "RAG from Scratch: Architecture, Failure Cases, and Evaluation",
+        "slug": "rag-from-scratch-architecture-failure-cases-and-evaluation",
+        "link": "https://www.hsiangyuhuang.com/blogs/rag-from-scratch-architecture-failure-cases-and-evaluation",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 5,
+        "title": "Prompt Engineering Is Not Guessing: A Structured Iteration Framework",
+        "slug": "prompt-engineering-is-not-guessing-a-structured-iteration-framework",
+        "link": "https://www.hsiangyuhuang.com/blogs/prompt-engineering-is-not-guessing-a-structured-iteration-framework",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 6,
+        "title": "How LLM Systems Fail in Production (And How to Catch Them)",
+        "slug": "how-llm-systems-fail-in-production-and-how-to-catch-them",
+        "link": "https://www.hsiangyuhuang.com/blogs/how-llm-systems-fail-in-production-and-how-to-catch-them",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 7,
+        "title": "Designing an AI System for Latency, Cost, and Reliability",
+        "slug": "designing-an-ai-system-for-latency-cost-and-reliability",
+        "link": "https://www.hsiangyuhuang.com/blogs/designing-an-ai-system-for-latency-cost-and-reliability",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 8,
+        "title": "Building an Agent Router: Intent Classification for LLM Workflows",
+        "slug": "building-an-agent-router-intent-classification-for-llm-workflows",
+        "link": "https://www.hsiangyuhuang.com/blogs/building-an-agent-router-intent-classification-for-llm-workflows",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 9,
+        "title": "Logging and Observability for LLM Applications",
+        "slug": "logging-and-observability-for-llm-applications",
+        "link": "https://www.hsiangyuhuang.com/blogs/logging-and-observability-for-llm-applications",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 10,
+        "title": "From Notebook to Production: Lessons Shipping an AI Feature",
+        "slug": "from-notebook-to-production-lessons-shipping-an-ai-feature",
+        "link": "https://www.hsiangyuhuang.com/blogs/from-notebook-to-production-lessons-shipping-an-ai-feature",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 11,
+        "title": "FastAPI Internals: Request Lifecycle and Dependency Injection",
+        "slug": "fastapi-internals-request-lifecycle-and-dependency-injection",
+        "link": "https://www.hsiangyuhuang.com/blogs/fastapi-internals-request-lifecycle-and-dependency-injection",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 12,
+        "title": "Designing REST APIs for AI Systems",
+        "slug": "designing-rest-apis-for-ai-systems",
+        "link": "https://www.hsiangyuhuang.com/blogs/designing-rest-apis-for-ai-systems",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 13,
+        "title": "MongoDB Schema Design for AI Applications",
+        "slug": "mongodb-schema-design-for-ai-applications",
+        "link": "https://www.hsiangyuhuang.com/blogs/mongodb-schema-design-for-ai-applications",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 14,
+        "title": "SQL vs NoSQL in AI Systems: Real Tradeoffs",
+        "slug": "sql-vs-nosql-in-ai-systems-real-tradeoffs",
+        "link": "https://www.hsiangyuhuang.com/blogs/sql-vs-nosql-in-ai-systems-real-tradeoffs",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 15,
+        "title": "Kafka for AI Engineers: Event-Driven Thinking",
+        "slug": "kafka-for-ai-engineers-event-driven-thinking",
+        "link": "https://www.hsiangyuhuang.com/blogs/kafka-for-ai-engineers-event-driven-thinking",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 16,
+        "title": "Faust vs Kafka Streams: Async Stream Processing Explained",
+        "slug": "faust-vs-kafka-streams-async-stream-processing-explained",
+        "link": "https://www.hsiangyuhuang.com/blogs/faust-vs-kafka-streams-async-stream-processing-explained",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 17,
+        "title": "Redis Beyond Caching: Queues, Rate Limiting, and Locks",
+        "slug": "redis-beyond-caching-queues-rate-limiting-and-locks",
+        "link": "https://www.hsiangyuhuang.com/blogs/redis-beyond-caching-queues-rate-limiting-and-locks",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 18,
+        "title": "CI/CD for AI Engineers: Docker, GitHub Actions, and AWS",
+        "slug": "ci-cd-for-ai-engineers-docker-github-actions-and-aws",
+        "link": "https://www.hsiangyuhuang.com/blogs/ci-cd-for-ai-engineers-docker-github-actions-and-aws",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 19,
+        "title": "Feature Flags and Config Management for AI Products",
+        "slug": "feature-flags-and-config-management-for-ai-products",
+        "link": "https://www.hsiangyuhuang.com/blogs/feature-flags-and-config-management-for-ai-products",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 20,
+        "title": "Handling Retries, Timeouts, and Partial Failures in AI Pipelines",
+        "slug": "handling-retries-timeouts-and-partial-failures-in-ai-pipelines",
+        "link": "https://www.hsiangyuhuang.com/blogs/handling-retries-timeouts-and-partial-failures-in-ai-pipelines",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 21,
+        "title": "Designing a Scalable Chatbot System",
+        "slug": "designing-a-scalable-chatbot-system",
+        "link": "https://www.hsiangyuhuang.com/blogs/designing-a-scalable-chatbot-system",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 22,
+        "title": "How to Design an Event Ingestion Pipeline",
+        "slug": "how-to-design-an-event-ingestion-pipeline",
+        "link": "https://www.hsiangyuhuang.com/blogs/how-to-design-an-event-ingestion-pipeline",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 23,
+        "title": "Designing a Metrics Pipeline (Latency, Cost, Usage)",
+        "slug": "designing-a-metrics-pipeline-latency-cost-usage",
+        "link": "https://www.hsiangyuhuang.com/blogs/designing-a-metrics-pipeline-latency-cost-usage",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 24,
+        "title": "Tradeoffs Between Sync vs Async AI Workflows",
+        "slug": "tradeoffs-between-sync-vs-async-ai-workflows",
+        "link": "https://www.hsiangyuhuang.com/blogs/tradeoffs-between-sync-vs-async-ai-workflows",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 25,
+        "title": "Designing for Multi-Tenant AI Systems",
+        "slug": "designing-for-multi-tenant-ai-systems",
+        "link": "https://www.hsiangyuhuang.com/blogs/designing-for-multi-tenant-ai-systems",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 26,
+        "title": "Rate Limiting Strategies for AI APIs",
+        "slug": "rate-limiting-strategies-for-ai-apis",
+        "link": "https://www.hsiangyuhuang.com/blogs/rate-limiting-strategies-for-ai-apis",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 27,
+        "title": "Data Modeling for Analytics vs Transactions",
+        "slug": "data-modeling-for-analytics-vs-transactions",
+        "link": "https://www.hsiangyuhuang.com/blogs/data-modeling-for-analytics-vs-transactions",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 28,
+        "title": "Cold Start Problems in AI Systems",
+        "slug": "cold-start-problems-in-ai-systems",
+        "link": "https://www.hsiangyuhuang.com/blogs/cold-start-problems-in-ai-systems",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 29,
+        "title": "When to Use Background Jobs vs Streaming",
+        "slug": "when-to-use-background-jobs-vs-streaming",
+        "link": "https://www.hsiangyuhuang.com/blogs/when-to-use-background-jobs-vs-streaming",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 30,
+        "title": "Designing Systems That Fail Gracefully",
+        "slug": "designing-systems-that-fail-gracefully",
+        "link": "https://www.hsiangyuhuang.com/blogs/designing-systems-that-fail-gracefully",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 31,
+        "title": "How HashMaps Actually Work (And Why They’re Fast)",
+        "link": "https://www.hsiangyuhuang.com/blogs/how-hashmaps-actually-work-and-why-theyre-fast",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 32,
+        "title": "When to Use BFS vs DFS in Real Systems",
+        "slug": "when-to-use-bfs-vs-dfs-in-real-systems",
+        "link": "https://www.hsiangyuhuang.com/blogs/when-to-use-bfs-vs-dfs-in-real-systems",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 33,
+        "title": "Why Binary Search Is Everywhere",
+        "slug": "why-binary-search-is-everywhere",
+        "link": "https://www.hsiangyuhuang.com/blogs/why-binary-search-is-everywhere",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 34,
+        "title": "Big-O for Backend Engineers (Without Math Pain)",
+        "slug": "big-o-for-backend-engineers-without-math-pain",
+        "link": "https://www.hsiangyuhuang.com/blogs/big-o-for-backend-engineers-without-math-pain",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 35,
+        "title": "How Databases Use Indexes Internally",
+        "slug": "how-databases-use-indexes-internally",
+        "link": "https://www.hsiangyuhuang.com/blogs/how-databases-use-indexes-internally",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 36,
+        "title": "Transactions, Isolation Levels, and Real Bugs",
+        "slug": "transactions-isolation-levels-and-real-bugs",
+        "link": "https://www.hsiangyuhuang.com/blogs/transactions-isolation-levels-and-real-bugs",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 37,
+        "title": "What Happens When You Make an HTTP Request",
+        "slug": "what-happens-when-you-make-an-http-request",
+        "link": "https://www.hsiangyuhuang.com/blogs/what-happens-when-you-make-an-http-request",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 38,
+        "title": "Threads, Async, and Event Loops Explained",
+        "slug": "threads-async-and-event-loops-explained",
+        "link": "https://www.hsiangyuhuang.com/blogs/threads-async-and-event-loops-explained",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 39,
+        "title": "Why Queues Exist (And When You Need One)",
+        "slug": "why-queues-exist-and-when-you-need-one",
+        "link": "https://www.hsiangyuhuang.com/blogs/why-queues-exist-and-when-you-need-one",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 40,
+        "title": "Common Backend Bottlenecks and How to Debug Them",
+        "slug": "common-backend-bottlenecks-and-how-to-debug-them",
+        "link": "https://www.hsiangyuhuang.com/blogs/common-backend-bottlenecks-and-how-to-debug-them",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 41,
+        "title": "What Fine-Tuning Is (And When You Don’t Need It)",
+        "slug": "what-fine-tuning-is-and-when-you-dont-need-it",
+        "link": "https://www.hsiangyuhuang.com/blogs/what-fine-tuning-is-and-when-you-dont-need-it",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 42,
+        "title": "Embeddings Explained for Software Engineers",
+        "slug": "embeddings-explained-for-software-engineers",
+        "link": "https://www.hsiangyuhuang.com/blogs/embeddings-explained-for-software-engineers",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 43,
+        "title": "Model Evaluation for Non-Research Engineers",
+        "slug": "model-evaluation-for-non-research-engineers",
+        "link": "https://www.hsiangyuhuang.com/blogs/model-evaluation-for-non-research-engineers",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 44,
+        "title": "Tokenization, Context Windows, and Why They Matter",
+        "slug": "tokenization-context-windows-and-why-they-matter",
+        "link": "https://www.hsiangyuhuang.com/blogs/tokenization-context-windows-and-why-they-matter",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 45,
+        "title": "GPU vs CPU: What AI Engineers Actually Need to Know",
+        "slug": "gpu-vs-cpu-what-ai-engineers-actually-need-to-know",
+        "link": "https://www.hsiangyuhuang.com/blogs/gpu-vs-cpu-what-ai-engineers-actually-need-to-know",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 46,
+        "title": "Why Inference Optimization Matters More Than Training",
+        "slug": "why-inference-optimization-matters-more-than-training",
+        "link": "https://www.hsiangyuhuang.com/blogs/why-inference-optimization-matters-more-than-training",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 47,
+        "title": "Cost Modeling for LLM APIs",
+        "slug": "cost-modeling-for-llm-apis",
+        "link": "https://www.hsiangyuhuang.com/blogs/cost-modeling-for-llm-apis",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 48,
+        "title": "Hallucinations: Causes, Detection, and Mitigation",
+        "slug": "hallucinations-causes-detection-and-mitigation",
+        "link": "https://www.hsiangyuhuang.com/blogs/hallucinations-causes-detection-and-mitigation",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 49,
+        "title": "Prompt vs Model: Choosing the Right Lever",
+        "slug": "prompt-vs-model-choosing-the-right-lever",
+        "link": "https://www.hsiangyuhuang.com/blogs/prompt-vs-model-choosing-the-right-lever",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 50,
+        "title": "When NOT to Use AI",
+        "slug": "when-not-to-use-ai",
+        "link": "https://www.hsiangyuhuang.com/blogs/when-not-to-use-ai",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 51,
+        "title": "How AI Engineers Are Different from ML Researchers",
+        "slug": "how-ai-engineers-are-different-from-ml-researchers",
+        "link": "https://www.hsiangyuhuang.com/blogs/how-ai-engineers-are-different-from-ml-researchers",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 52,
+        "title": "The Real AI Engineer Skill Gap in 2025",
+        "slug": "the-real-ai-engineer-skill-gap-in-2025",
+        "link": "https://www.hsiangyuhuang.com/blogs/the-real-ai-engineer-skill-gap-in-2025",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 53,
+        "title": "Why Most AI Proof-of-Concepts Fail",
+        "slug": "why-most-ai-proof-of-concepts-fail",
+        "link": "https://www.hsiangyuhuang.com/blogs/why-most-ai-proof-of-concepts-fail",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 54,
+        "title": "Building AI Products vs AI Demos",
+        "slug": "building-ai-products-vs-ai-demos",
+        "link": "https://www.hsiangyuhuang.com/blogs/building-ai-products-vs-ai-demos",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 55,
+        "title": "The Economics of AI Startups",
+        "slug": "the-economics-of-ai-startups",
+        "link": "https://www.hsiangyuhuang.com/blogs/the-economics-of-ai-startups",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 56,
+        "title": "Evaluating New AI Tools Without Hype",
+        "slug": "evaluating-new-ai-tools-without-hype",
+        "link": "https://www.hsiangyuhuang.com/blogs/evaluating-new-ai-tools-without-hype",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 57,
+        "title": "What I Look for in an AI Engineering Role",
+        "slug": "what-i-look-for-in-an-ai-engineering-role",
+        "link": "https://www.hsiangyuhuang.com/blogs/what-i-look-for-in-an-ai-engineering-role",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 58,
+        "title": "Lessons from Shipping AI in FinTech",
+        "slug": "lessons-from-shipping-ai-in-fintech",
+        "link": "https://www.hsiangyuhuang.com/blogs/lessons-from-shipping-ai-in-fintech",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 59,
+        "title": "What I’d Learn Differently Starting Over",
+        "slug": "what-i-d-learn-differently-starting-over",
+        "link": "https://www.hsiangyuhuang.com/blogs/what-i-d-learn-differently-starting-over",
+        "content": "",
+        "date": ""
+    },
+    {
+        "id": 60,
+        "title": "My 6-Month Roadmap to Becoming an AI Platform Engineer",
+        "slug": "my-6-month-roadmap-to-becoming-an-ai-platform-engineer",
+        "link": "https://www.hsiangyuhuang.com/blogs/my-6-month-roadmap-to-becoming-an-ai-platform-engineer",
+        "content": "",
+        "date": ""
+    }
+]

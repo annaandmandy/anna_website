@@ -16,6 +16,8 @@ import Game from './pages/Game';
 import RuleBasedGame from './pages/RuleBasedGame';
 import WeekendReport from './pages/BostonWeekendAgent';
 import HireMe from './pages/HireMe';
+import Blogs from './pages/Blogs';
+import BlogPost from './pages/BlogPost';
 
 import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -38,6 +40,8 @@ function App() {
         <Route path="/onsen-game" element={<RuleBasedGame />} />
         <Route path="/weekend_report" element={<WeekendReport />} />
         <Route path="/hire-me" element={<HireMe />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/:slug" element={<BlogPost />} />
       </Routes>
       <Live2DModel />
       <Footer />
