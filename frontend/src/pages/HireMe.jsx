@@ -43,9 +43,9 @@ export default function HireMe() {
                     }}>
                         Available for Full-Time Roles • Feb 2026+
                     </div>
-                    <h1 className="hero-title" style={{ fontSize: "3rem" }}>Work With Anna Huang</h1>
+                    <h1 className="hero-title">Work With Anna Huang</h1>
                     <h2 className="hero-subtitle">AI Engineer | Backend Engineer | Software Engineer</h2>
-                    <p style={{ fontSize: "1.2rem", marginBottom: "2rem", color: "var(--text-secondary)", lineHeight: "1.8" }}>
+                    <p style={{ marginBottom: "2rem", color: "var(--text-secondary)", lineHeight: "1.8" }}>
                         Building production-grade AI systems and scalable backend infrastructure.
                         Specialized in Multi-Agent Systems, RAG Pipelines, FastAPI, and Cloud Architecture.
                     </p>
@@ -62,15 +62,15 @@ export default function HireMe() {
                 <h2 style={{ marginBottom: "2rem" }}>I'm Available For</h2>
                 <div className="grid grid-3">
                     <div className="grid-item">
-                        <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem" }}>✅ Backend Engineer</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>✅ Backend Engineer</h3>
                         <p>Building scalable APIs, microservices, and database architectures. Expert in FastAPI, Python, SQL, cloud deployment (AWS, Azure, Cloudflare), MongoDB, and RESTful design.</p>
                     </div>
                     <div className="grid-item">
-                        <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem" }}>✅ AI Engineer</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>✅ AI Engineer</h3>
                         <p>Designing and deploying multi-agent systems, RAG pipelines, and LLM applications. Specialized in LangGraph, vector databases, and production AI.</p>
                     </div>
                     <div className="grid-item">
-                        <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem" }}>✅ Software Engineer</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>✅ Software Engineer</h3>
                         <p>Full-stack development with modern frameworks. Strong foundation in React, Next.js, and DevOps. Experience in OOP structure and system design using C++.</p>
                     </div>
                 </div>
@@ -81,23 +81,23 @@ export default function HireMe() {
                 <h2 style={{ marginBottom: "2rem" }}>What I Bring to Your Team</h2>
                 <div className="grid grid-2">
                     <div>
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>💡 Production AI Systems at Scale</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>💡 Production AI Systems at Scale</h3>
                         <p style={{ marginBottom: "1.5rem" }}>
                             Built a multi-agent LLM platform using FastAPI and LangGraph managing asynchronous communication between Coordinator, Writer, and Product agents. Architected RAG pipelines for RhettSearch (DS+X Hackathon Winner) that retrieves academic literature via OpenAlex API and synthesizes insights using OpenAI.
                         </p>
 
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>⚡ Data-Driven Engineering Results</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>⚡ Data-Driven Engineering Results</h3>
                         <p style={{ marginBottom: "1.5rem" }}>
                             Proven track record of measurable impact: improved forecasting accuracy from 8.3% to 73.4% R² using ARIMA-XGBoost pipeline. Designed normalized PostgreSQL schemas and built 10+ features processing user interactions and location data for Citale, now serving real users.
                         </p>
                     </div>
                     <div>
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>🚀 Full-Stack Cloud Infrastructure</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>🚀 Full-Stack Cloud Infrastructure</h3>
                         <p style={{ marginBottom: "1.5rem" }}>
                             End-to-end deployment experience across AWS (Lambda, Step Functions, EC2, S3) and Azure ecosystems. Built serverless ETL pipelines for real-time event ingestion and deployed EC2-based web scrapers with Cron automation for reliable data extraction.
                         </p>
 
-                        <h3 style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>📊 Rapid Prototyping to Production</h3>
+                        <h3 style={{ marginBottom: "1rem" }}>📊 Rapid Prototyping to Production</h3>
                         <p>
                             Hackathon winner (DS+X 2025 - Best Overall) with proven ability to ship fast. Managed weekly Agile Sprints deploying to Vercel with PostHog analytics integration. Designed RESTful APIs handling complex JSON serialization for frontend integration.
                         </p>
@@ -132,7 +132,7 @@ export default function HireMe() {
                     <div className="faq-item" style={{ marginBottom: "2rem", padding: "1.5rem", backgroundColor: "var(--bg-secondary)", borderRadius: "12px" }}>
                         <h3 style={{ fontSize: "1.15rem", marginBottom: "0.75rem" }}>What engineering roles is Anna seeking?</h3>
                         <p>
-                            I'm actively seeking Backend Engineer, AI Engineer, Software Engineer, and Data Engineer roles starting May 2026. My expertise spans multi-agent AI systems, RAG pipelines, FastAPI backend development, cloud infrastructure (AWS/Azure), and full-stack web applications.
+                            I'm actively seeking Backend Engineer, AI Engineer, Software Engineer, and Data Engineer roles starting Feb 2026. My expertise spans multi-agent AI systems, RAG pipelines, FastAPI backend development, cloud infrastructure (AWS/Azure), and full-stack web applications.
                         </p>
                     </div>
 
@@ -160,7 +160,7 @@ export default function HireMe() {
                     <div className="faq-item" style={{ padding: "1.5rem", backgroundColor: "var(--bg-secondary)", borderRadius: "12px" }}>
                         <h3 style={{ fontSize: "1.15rem", marginBottom: "0.75rem" }}>What is Anna's education background?</h3>
                         <p>
-                            Master's student at Boston University specializing in Backend Engineering and Cloud Infrastructure (expected May 2026). Previously completed Bachelor's at National Taiwan University of Science and Technology with research in AI and time series forecasting, achieving a 73.4% R² improvement in demand prediction models.
+                            Recent graduated Master's student at Boston University specializing in Backend Engineering and Cloud Infrastructure. Previously completed Bachelor's at National Taiwan University of Science and Technology with research in AI and time series forecasting, achieving a 73.4% R² improvement in demand prediction models.
                         </p>
                     </div>
                 </div>

@@ -236,24 +236,10 @@ export default function Home() {
                         </a>
                     </div>
 
-                    {/* Personal/Weekend */}
-                    <div className="bg-primary/10 rounded-2xl p-8 border border-primary/20 shadow-none hover:shadow-md transition-all duration-300 group flex flex-col justify-center items-center text-center" data-aos="fade-up" data-aos-delay="200">
-                        <div className="w-16 h-16 bg-primary text-dark rounded-full flex items-center justify-center mb-4 text-3xl">
-                            🎨
-                        </div>
-                        <h3 className="text-xl font-bold mb-2">Weekend Labs</h3>
-                        <p className="text-text-secondary text-sm mb-6">
-                            Where I experiment with new agents, games, and designs. Check out my latest weekend reports!
-                        </p>
-                        <Link to="/weekend_report" className="px-6 py-2 bg-primary text-dark font-bold rounded-lg hover:brightness-110 transition-all">
-                            Visit The Lab
-                        </Link>
-                    </div>
-
                 </div>
             </section>
 
-            {/* Personal / Fun Section */}\
+            {/* Personal / Fun Section */}
             {/*}
             <section className="py-20 px-6 bg-white overflow-hidden">
                 <div className="max-w-4xl mx-auto bg-stone-900 rounded-3xl p-12 md:p-16 relative text-center text-white">

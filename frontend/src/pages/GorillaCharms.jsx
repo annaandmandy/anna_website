@@ -10,10 +10,10 @@ export default function GorillaCharms() {
                 name="Hsiang Yu Huang"
                 type="article"
             />
-            <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }}>
+            <div className="text-center" style={{ marginBottom: "var(--spacing-xl)", marginTop: "var(--spacing-xl)" }}>
                 <h1>Iteration: Gorilla Charm</h1>
             </div>
-            <div className="flex justify-center" style={{ marginBottom: "4rem" }}>
+            <div className="flex justify-center" style={{ marginBottom: "var(--spacing-xl)" }}>
                 <img
                     src="img/iteration_gorilla.jpg"
                     alt="Iteration Gorilla"
@@ -21,7 +21,7 @@ export default function GorillaCharms() {
                 />
             </div>
 
-            <div className="text-center" style={{ marginBottom: "3rem" }}>
+            <div className="text-center" style={{ marginBottom: "var(--spacing-xl)" }}>
                 <h1>Story Telling</h1>
             </div>
             <div className="grid grid-3">

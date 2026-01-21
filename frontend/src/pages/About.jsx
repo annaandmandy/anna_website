@@ -17,11 +17,11 @@ export default function About() {
         type="profile"
       />
       {/* Hero Section */}
-      <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
+      <div className="text-center" style={{ marginBottom: "var(--spacing-xl)", marginTop: "var(--spacing-xl)" }} data-aos="fade-down">
         <h1>About Me</h1>
       </div>
 
-      <div className="grid grid-2" style={{ alignItems: "center", marginBottom: "4rem" }} data-aos="fade-up">
+      <div className="grid grid-2" style={{ alignItems: "center", marginBottom: "var(--spacing-xl)" }} data-aos="fade-up">
         <div>
           <h3 style={{ marginBottom: "1rem" }}>Short Bio</h3>
           <p>
@@ -33,7 +33,7 @@ export default function About() {
       </div>
 
       {/* Activities Section */}
-      <div className="text-center" style={{ marginBottom: "3rem" }} data-aos="fade-up">
+      <div className="text-center" style={{ marginBottom: "var(--spacing-xl)" }} data-aos="fade-up">
         <h2>Activities and Interests</h2>
       </div>
 

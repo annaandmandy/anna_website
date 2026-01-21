@@ -16,12 +16,12 @@ export default function Booklet() {
                 name="Hsiang Yu Huang"
                 type="article"
             />
-            <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
+            <div className="text-center" style={{ marginBottom: "var(--spacing-xl)", marginTop: "var(--spacing-xl)" }} data-aos="fade-down">
                 <h1>Booklet</h1>
                 <p>Final Project from AR123 Foundation Design.</p>
             </div>
 
-            <div className="grid-item" style={{ padding: "0", overflow: "hidden", height: "800px", position: "relative" }}>
+            <div className="grid-item" style={{ padding: "0", overflow: "hidden", height: "85vh", position: "relative" }}>
                 <iframe
                     style={{
                         position: "absolute",

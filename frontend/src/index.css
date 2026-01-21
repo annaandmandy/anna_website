@@ -27,13 +27,25 @@
   /* Spacing */
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 4rem;
+  --spacing-lg: 1.5rem;
+  /* Reduced from 2rem for mobile default */
+  --spacing-xl: 3rem;
+  /* Reduced from 4rem */
 
   /* Layout */
   --max-width: 1200px;
-  --header-height: 80px;
+  --header-height: 70px;
+  /* Slightly smaller for mobile */
 }
+
+@media (min-width: 768px) {
+  :root {
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    --header-height: 80px;
+  }
+}
+
 
 * {
   box-sizing: border-box;
@@ -56,25 +68,32 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+h1 {
+  font-size: 2.5rem;
+  /* Mobile default */
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  /* Mobile default */
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
 }
 
 a {
@@ -89,13 +108,24 @@ a:hover {
 
 /* Layout Utilities */
 .container {
+  width: 100%;
   max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
+  margin-left: auto;
+  margin-right: auto;
+  padding-inline: 1.5rem;
+  /* Explicit mobile padding */
+  box-sizing: border-box;
+  /* Redundant but safe */
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
 }
 
 .section {
-  padding: var(--spacing-xl) 0;
+  padding-block: var(--spacing-xl);
 }
 
 .flex {
@@ -120,8 +150,10 @@ a:hover {
   gap: var(--spacing-lg);
 }
 
-.grid-2 {
+.grid-2,
+.grid-3 {
   grid-template-columns: 1fr;
+  /* Mobile default: 1 column */
 }
 
 @media (min-width: 768px) {

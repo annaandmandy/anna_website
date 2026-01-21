@@ -88,7 +88,7 @@ const WeekendReport = () => {
         type="article"
       />
       {/* Heading */}
-      <div className="text-center" style={{ marginBottom: "3rem", marginTop: "3rem" }} data-aos="fade-down">
+      <div className="text-center" style={{ marginBottom: "var(--spacing-xl)", marginTop: "var(--spacing-xl)" }} data-aos="fade-down">
         <h1>Boston Weekend Vibe</h1>
         <p>Your weekly guide to Boston's weekend mood and events</p>
       </div>
