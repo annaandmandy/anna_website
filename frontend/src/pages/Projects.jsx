@@ -166,17 +166,6 @@ export default function Projects() {
             github: null
         },
         {
-            title: "Sundai Club Projects",
-            category: "Hackathon",
-            desc: "Participated in multiple Sundai Club hackathons building creative LLM-powered applications.",
-            detailedDesc: "Active participant in Sundai Club hackathons, experimenting with cutting-edge LLM applications and web technologies. Built several prototypes exploring creative uses of AI in storytelling, productivity tools, and interactive experiences.",
-            tech: ["Web Development", "LLM", "React", "APIs"],
-            metrics: ["Multiple hacks", "LLM apps", "Rapid prototyping", "Community"],
-            impact: "Built multiple LLM-powered prototypes through hackathon rapid development cycles",
-            link: "https://www.sundai.club/hacker/9563db75-7468-4092-98e8-70d9112a127d",
-            github: null
-        },
-        {
             title: "Quantitative Investment Strategy Analysis",
             category: "Data Analysis",
             desc: "Designed and backtested four trading strategies using MA, RSI, BIAS, and Bollinger Bands.",
