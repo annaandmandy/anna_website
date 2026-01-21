@@ -5,6 +5,8 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import '../Markdown.css';
 import SEO from '../components/SEO';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -13,6 +15,8 @@ const BlogPost = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        AOS.init({ duration: 1000 });
+
         // 1. Fetch the manifest to find the file
         fetch('/blogs.json')
             .then(res => res.json())

@@ -69,17 +69,23 @@ body {
 }
 
 h1 {
+  font-family: var(--font-heading);
   font-size: 2.5rem;
+  font-weight: bold;
   /* Mobile default */
 }
 
 h2 {
+  font-family: var(--font-heading);
   font-size: 2rem;
+  font-weight: bold;
   /* Mobile default */
 }
 
 h3 {
+  font-family: var(--font-heading);
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {

@@ -21,7 +21,7 @@ export default function About() {
         <h1>About Me</h1>
       </div>
 
-      <div className="grid grid-2" style={{ alignItems: "center", marginBottom: "var(--spacing-xl)" }} data-aos="fade-up">
+      <div className="grid grid-1" style={{ alignItems: "center", marginBottom: "var(--spacing-xl)" }} data-aos="fade-up">
         <div>
           <h3 style={{ marginBottom: "1rem" }}>Short Bio</h3>
           <p>
