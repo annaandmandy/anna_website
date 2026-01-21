@@ -65,21 +65,23 @@ export default function About() {
             more drawings on this website. ╰(*°▽°*)╯
           </p>
           <a href="https://www.instagram.com/eina.0__0/" className="btn btn-outline" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="/booklet" className="btn btn-outline" target="_blank" rel="noopener noreferrer">Booklet</a>
+          <a href="/gorillacharms" className="btn btn-outline mb-2 mt-2" target="_blank" rel="noopener noreferrer">Gorilla Charms</a>
         </div>
 
         {/* Gaming */}
         <div className="grid-item" data-aos="fade-up">
           <img
-            src="/img_main/silksong.png"
-            alt="Hollow Knight Silksong gameplay - Anna's gaming interest"
+            src="/img_main/sundai.png"
+            alt="Sundai Hack Club - Anna's building prototypes interest"
           />
-          <h3>Playing Video Games</h3>
+          <h3>Building Prototypes</h3>
           <p style={{ marginBottom: "1rem" }}>
-            Recently I've been playing Hollow Knight Silksong, and it is
-            driving me crazy. Does anyone want to help me beat the Boss
-            (；′⌒`) ?
+            I enjoy building prototypes of games and apps. You will see
+            more prototypes on this website.
           </p>
-          <a href="https://hollowknightsilksong.com/" className="btn btn-outline" target="_blank" rel="noopener noreferrer">Silksong</a>
+          <a href="https://www.sundai.club/hacker/9563db75-7468-4092-98e8-70d9112a127d" className="btn btn-outline" target="_blank" rel="noopener noreferrer">Sundai Hack Club</a>
+          <a href="https://dogblood-novel.dogblood-novel.workers.dev/#/" className="btn btn-outline mb-2 mt-2" target="_blank" rel="noopener noreferrer">Dogblood Novel</a>
         </div>
       </div>
     </div>
