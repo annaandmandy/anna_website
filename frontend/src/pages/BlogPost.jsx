@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import '../Markdown.css';
+import SEO from '../components/SEO';
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -40,6 +41,12 @@ const BlogPost = () => {
 
     return (
         <div className="min-h-screen bg-bg-primary pt-24 px-6 pb-24">
+            <SEO
+                title={`${blog.title} | Anna's Website`}
+                description={content.slice(0, 150).replace(/[#*`]/g, '') + '...'}
+                name="Anna Huang"
+                type="article"
+            />
             <article className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-stone-100">
                 <Link to="/blogs" className="text-primary no-underline hover:underline mb-8 block">&larr; Back to Blogs</Link>
 

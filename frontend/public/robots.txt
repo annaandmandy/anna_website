@@ -7,4 +7,5 @@ Sitemap: https://www.hsiangyuhuang.com/sitemap.xml
 # Important pages for recruiters
 Allow: /about
 Allow: /projects
+Allow: /blogs
 Allow: /resume.pdf
