@@ -20,16 +20,16 @@ export default function Interests() {
                 <h1>Interests</h1>
             </div>
             <div className="grid-item" data-aos="fade-up" style={{ maxWidth: "800px", margin: "0 auto" }}>
-                <p style={{ marginBottom: "1rem" }}>I am also interested in drawing and designing. Here are some of the works.</p>
+                <p style={{ marginBottom: "1rem" }}>I am also interested in drawing and designing and building prototypes. Here are some of the works.</p>
                 <ul className="nav-links flex-col" style={{ gap: "0.5rem" }}>
+                    <li>
+                        <a href="https://www.sundai.club/hacker/9563db75-7468-4092-98e8-70d9112a127d" className="nav-link" target="_blank" rel="noopener noreferrer">Sundai Hack Club</a>
+                    </li>
                     <li>
                         <a href="/gorillacharms" className="nav-link">Gorilla Charms</a>
                     </li>
                     <li>
                         <a href="/booklet" className="nav-link">Booklet</a>
-                    </li>
-                    <li>
-                        <a href="https://huanghybu.cargo.site/" className="nav-link" target="_blank" rel="noopener noreferrer">Collages</a>
                     </li>
                 </ul>
             </div>
