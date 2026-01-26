@@ -4,7 +4,7 @@ Most chatbot tutorials stop at `openai.chat.completions.create()`. You get a res
 
 A production chatbot needs to handle different user intents, maintain conversation memory across sessions, log everything for debugging, and integrate with external tools like search APIs. When someone asks "show me laptops under $800," you can't just let the LLM guess—you need intent classification, product search, structured extraction, and proper error handling. 
 
-The misconception is that prompt engineering solves everything. It doesn't. Prompts control how the LLM writes, but they can't fetch real-time data, enforce business logic, or prevent hallucinations when facts matter. In my AI engineering internship, after classifying intent, we'd call calculation or retrieval functions and explicitly tell the LLM to answer based on verified data—not make up numbers. This routing pattern is what separates demos from production systems.
+The misconception is that prompt engineering solves everything. It doesn't. Prompts control how the LLM writes, but they can't fetch real-time data, enforce business logic, or prevent hallucinations when facts matter. This routing pattern is what separates demos from production systems.
 
 Understanding the full stack helps you debug properly. Is the response slow because of a bad prompt? Or is vector search returning garbage? Or is the product API timing out? Without visibility into each layer, you're guessing. This matters for shopping assistants, customer support bots, financial analysis tools, or any LLM product where reliability counts. 
 

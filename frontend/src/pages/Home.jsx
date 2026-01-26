@@ -275,14 +275,6 @@ export default function Home() {
                     <h2 className="text-4xl font-extrabold mb-12">Experience</h2>
 
                     <div className="space-y-12">
-                        <div className="pl-6 border-l-2 border-primary">
-                            <h3 className="text-2xl font-bold">AI Engineer Intern</h3>
-                            <div className="text-text-secondary font-medium mb-2">Finz | 2025</div>
-                            <p className="text-lg leading-relaxed">
-                                Refactored the backend infrastructure of a financial AI platform, optimizing Kafka pipelines to handle high-throughput webhooks and real-time forecasting.
-                            </p>
-                        </div>
-
                         <div className="pl-6 border-l-2 border-stone-200 hover:border-primary transition-colors">
                             <h3 className="text-2xl font-bold">Research Assistant</h3>
                             <div className="text-text-secondary font-medium mb-2">BU BIT Lab | 2025</div>
