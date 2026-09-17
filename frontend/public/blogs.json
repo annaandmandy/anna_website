@@ -42,6 +42,20 @@
         "date": "2026-09-17"
     },
     {
+        "id": 63,
+        "title": "Building a Multi-Agent Novel Generator: Keeping an LLM on Plot",
+        "subtitle": "How I built DogBlood, a generator for long power-fantasy and infinite-flow web novels, with a code-driven Director, a Planner, a Writer, and an Editor in LangGraph, and why the pacing had to live outside the model.",
+        "slug": "building-a-multi-agent-novel-generator-keeping-an-llm-on-plot",
+        "file": "building-a-multi-agent-novel-generator-keeping-an-llm-on-plot.md",
+        "project": {
+            "title": "Multi-Agent AI Novel Generator",
+            "link": "/projects#multi-agent-ai-novel-generator"
+        },
+        "link": "https://www.hsiangyuhuang.com/blogs/building-a-multi-agent-novel-generator-keeping-an-llm-on-plot",
+        "content": "",
+        "date": "2026-09-17"
+    },
+    {
         "id": 2,
         "title": "LangGraph vs LangChain: When and Why to Use Each",
         "slug": "langgraph-vs-langchain-when-and-why-to-use-each",

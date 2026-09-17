@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 760" width="780" height="760" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5e5845"/>
+    </marker>
+    <style>
+      .lane { fill: #ffffff; stroke: #e3c054; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 14; }
+      .box { fill: #fdf5d9; stroke: #e3c054; stroke-width: 1.5; rx: 8; }
+      .code { fill: #fcd96e; stroke: #bfa143; stroke-width: 2.5; rx: 8; }
+      .src { fill: #fcd96e; stroke: #e3c054; stroke-width: 2; rx: 8; }
+      .layer { fill: #ffffff; stroke: #e3c054; stroke-width: 2; rx: 8; }
+      .title { fill: #1c180d; font-size: 13.5px; font-weight: 700; text-anchor: middle; }
+      .sub { fill: #5e5845; font-size: 11px; text-anchor: middle; }
+      .label { fill: #5e5845; font-size: 11.5px; font-weight: 700; letter-spacing: 1.5px; text-anchor: middle; }
+      .note { fill: #5e5845; font-size: 10.5px; font-style: italic; text-anchor: middle; }
+      .edge { stroke: #5e5845; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .plain { stroke: #5e5845; stroke-width: 1.6; fill: none; }
+      .dashed { stroke: #5e5845; stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="780" height="760" fill="#f8f8f5"/>
+  <rect x="20" y="20" width="440" height="700" class="lane"/>
+  <text x="240" y="44" class="label" >LANGGRAPH · ONE CHAPTER PER RUN</text>
+  <rect x="90" y="60" width="300" height="60" class="code"/>
+  <text x="240" y="81" class="title">Director</text>
+  <text x="240" y="98" class="sub">code · state machine · no LLM</text>
+  <text x="240" y="113" class="sub">phase · chapter_function · intensity</text>
+  <path d="M 240 120 V 138" class="edge"/>
+  <rect x="90" y="140" width="300" height="60" class="box"/>
+  <text x="240" y="161" class="title">Planner</text>
+  <text x="240" y="178" class="sub">LLM · chapter_goal · 3 story_beats · hook</text>
+  <text x="240" y="193" class="sub">may not: dialogue · new rules · spoilers</text>
+  <path d="M 240 200 V 218" class="edge"/>
+  <rect x="90" y="220" width="300" height="60" class="box"/>
+  <text x="240" y="241" class="title">Writer</text>
+  <text x="240" y="258" class="sub">LLM · JSON: content + deltas</text>
+  <text x="240" y="273" class="sub">new_memories · clues · character_updates</text>
+  <path d="M 240 280 V 298" class="edge"/>
+  <rect x="90" y="300" width="300" height="44" class="box"/>
+  <text x="240" y="321" class="title">Polish</text>
+  <text x="240" y="338" class="sub">LLM · flow &amp; senses · change no events</text>
+  <path d="M 240 344 V 362" class="edge"/>
+  <rect x="90" y="364" width="300" height="60" class="box"/>
+  <text x="240" y="385" class="title">Editor</text>
+  <text x="240" y="402" class="sub">LLM · 5 checks · PASS or REWRITE_REQUIRED</text>
+  <text x="240" y="417" class="sub">never edits, only rejects</text>
+  <path d="M 240 424 V 456" class="edge"/>
+  <rect x="140" y="458" width="200" height="40" class="src"/>
+  <text x="240" y="479" class="title">Chapter + deltas</text>
+  <text x="240" y="496" class="sub">returned to the reader</text>
+  <path d="M 390 394 H 430 V 250 H 392" class="dashed"/>
+  <text x="444" y="320" class="note" transform="rotate(-90 444 320)">REWRITE_REQUIRED</text>
+  <text x="240" y="540" class="label" >STATE FED INTO EVERY NODE</text>
+  <rect x="40" y="556" width="160" height="56" class="box"/>
+  <text x="120" y="577" class="title">plotState</text>
+  <text x="120" y="594" class="sub">phase · sub_phase · progress</text>
+  <text x="120" y="609" class="sub">current dungeon · rules</text>
+  <rect x="220" y="556" width="160" height="56" class="box"/>
+  <text x="300" y="577" class="title">context</text>
+  <text x="300" y="594" class="sub">last 2,000 chars · memories</text>
+  <text x="300" y="609" class="sub">clues · characters · tags</text>
+  <rect x="85" y="632" width="250" height="44" class="box"/>
+  <text x="210" y="653" class="title">anti-cliché rules</text>
+  <text x="210" y="670" class="sub">genre isolation · banned AI phrases</text>
+  <text x="240" y="706" class="note" >fallback: Gemini 2.0 Flash → DeepSeek via OpenRouter</text>
+  <rect x="480" y="20" width="280" height="330" class="lane"/>
+  <text x="620" y="44" class="label" >SUPABASE · STORY STATE</text>
+  <rect x="500" y="60" width="240" height="44" class="layer"/>
+  <text x="620" y="81" class="title">novels</text>
+  <text x="620" y="98" class="sub">settings · blueprint · plot_state</text>
+  <rect x="500" y="116" width="240" height="44" class="layer"/>
+  <text x="620" y="137" class="title">chapters</text>
+  <text x="620" y="154" class="sub">content · chapter_index</text>
+  <rect x="500" y="172" width="240" height="44" class="layer"/>
+  <text x="620" y="193" class="title">characters</text>
+  <text x="620" y="210" class="sub">status · profile · attributes</text>
+  <rect x="500" y="228" width="240" height="44" class="layer"/>
+  <text x="620" y="249" class="title">memories</text>
+  <text x="620" y="266" class="sub">event · summary · fact</text>
+  <rect x="500" y="284" width="240" height="44" class="layer"/>
+  <text x="620" y="305" class="title">dungeons</text>
+  <text x="620" y="322" class="sub">rules · entities · endings</text>
+  <rect x="480" y="380" width="280" height="340" class="lane"/>
+  <text x="620" y="404" class="label" >READER · REACT ON CLOUDFLARE</text>
+  <rect x="500" y="420" width="240" height="56" class="box"/>
+  <text x="620" y="441" class="title">Prefetch loop</text>
+  <text x="620" y="458" class="sub">owner only · stays 5 chapters ahead</text>
+  <text x="620" y="473" class="sub">generationError → retry button</text>
+  <path d="M 620 476 V 494" class="edge"/>
+  <rect x="500" y="496" width="240" height="56" class="box"/>
+  <text x="620" y="517" class="title">Write deltas</text>
+  <text x="620" y="534" class="sub">memories · character updates</text>
+  <text x="620" y="549" class="sub">clues → plot_state, in parallel</text>
+  <path d="M 620 552 V 570" class="edge"/>
+  <rect x="500" y="572" width="240" height="56" class="box"/>
+  <text x="620" y="593" class="title">Read</text>
+  <text x="620" y="610" class="sub">CSS column pages · swipe · TTS</text>
+  <text x="620" y="625" class="sub">translate · Gemini/DeepSeek toggle</text>
+  <rect x="500" y="648" width="240" height="44" class="src"/>
+  <text x="620" y="669" class="title">Interactive mode</text>
+  <text x="620" y="686" class="sub">branch designer · 3 choices per turn</text>
+  <path d="M 340 478 H 470 V 448 H 498" class="plain"/>
+  <path d="M 470 448 H 498" class="edge"/>
+  <path d="M 740 524 H 770 V 250 H 742" class="dashed"/>
+</svg>

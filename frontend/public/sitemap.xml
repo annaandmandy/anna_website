@@ -75,4 +75,9 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/building-a-multi-agent-novel-generator-keeping-an-llm-on-plot</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

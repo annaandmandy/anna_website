@@ -71,13 +71,14 @@ export default function Projects() {
         {
             title: "Multi-Agent AI Novel Generator",
             category: "AI Engineering",
-            desc: "Hierarchical agent workflow (Director, Planner, Writer) capable of generating coherent long-form narratives with recursive self-correction.",
-            detailedDesc: "Designed and deployed a hierarchical multi-agent system on Cloudflare Workers that generates 10,000+ word coherent narratives. Implemented recursive self-correction loops and solved context window challenges to maintain plot continuity across chapters. Leverages Supabase for story state management.",
-            tech: ["LangGraph", "Cloudflare Workers", "Supabase", "OpenAI API"],
-            metrics: ["3-tier hierarchy", "Serverless", "Auto-correction"],
-            impact: "Generates publication-quality long-form content with maintained narrative consistency across 15+ chapters",
+            desc: "Director, Planner, Writer, Editor pipeline in LangGraph that generates coherent long-form web novels, with a code-driven state machine controlling pacing and an Editor loop for self-correction.",
+            detailedDesc: "Designed and deployed a multi-agent novel generator for long power-fantasy and infinite-flow web novels. A deterministic Director state machine controls plot phase and pacing, a Planner LLM turns it into story beats, a Writer LLM produces chapters plus structured memory and character deltas, and an Editor LLM rejects drafts that break continuity. Story state lives in Supabase; the reader prefetches chapters ahead of the user.",
+            tech: ["LangGraph", "Gemini", "DeepSeek", "Express", "Supabase", "React", "Cloudflare Workers", "Railway"],
+            metrics: ["4-stage pipeline", "Editor rewrite loop", "100+ chapters"],
+            impact: "Generates long-form narratives that hold plot structure and character continuity across 100+ chapters",
             link: "https://dogblood-novel.dogblood-novel.workers.dev/",
-            github: "https://github.com/annaandmandy/dogblood-novel"
+            github: "https://github.com/annaandmandy/dogblood-novel",
+            blog: "/blogs/building-a-multi-agent-novel-generator-keeping-an-llm-on-plot"
         }, {
             title: "NVIDIA Sentiment Data & ML Pipeline",
             category: "Data Engineering",
