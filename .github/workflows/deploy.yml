@@ -1,8 +1,11 @@
 name: Deploy to DigitalOcean
 
+# Auto-deploy disabled: the onsen-backend server is currently down.
+# To re-enable, restore the push trigger below.
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
+  # push:
+  #   branches: [ "main" ]
   
 jobs:
   build-and-push:
