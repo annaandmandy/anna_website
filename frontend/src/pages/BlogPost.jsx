@@ -58,7 +58,16 @@ const BlogPost = () => {
                 {blog.subtitle && (
                     <p className="text-stone-600 text-lg mb-4">{blog.subtitle}</p>
                 )}
-                <p className="text-stone-500 text-sm mb-8 border-b pb-4">{blog.date}</p>
+                <p className="text-stone-500 text-sm mb-8 border-b pb-4">
+                    {blog.date}
+                    {blog.project && (
+                        <>
+                            <span className="mx-2">·</span>
+                            Related project:{' '}
+                            <Link to={blog.project.link} className="text-primary hover:underline">{blog.project.title}</Link>
+                        </>
+                    )}
+                </p>
 
                 <div className="markdown-content">
                     <ReactMarkdown

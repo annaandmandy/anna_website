@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './ProjectModal.css';
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
@@ -94,6 +95,11 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                             GitHub →
                         </a>
                     )}
+                    {project.blog && (
+                        <Link to={project.blog} className="btn btn-outline" onClick={onClose}>
+                            Read Blog →
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>
@@ -111,6 +117,7 @@ ProjectModal.propTypes = {
         impact: PropTypes.string,
         link: PropTypes.string,
         github: PropTypes.string,
+        blog: PropTypes.string,
     }),
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,

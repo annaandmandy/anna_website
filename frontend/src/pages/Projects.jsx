@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ProjectModal from "../components/ProjectModal";
@@ -7,10 +8,19 @@ import SEO from "../components/SEO";
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const location = useLocation();
+
+    const slugify = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
     }, []);
+
+    useEffect(() => {
+        if (!location.hash) return;
+        const el = document.getElementById(location.hash.slice(1));
+        if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
+    }, [location.hash]);
 
     const projects = [
         {
@@ -33,7 +43,8 @@ export default function Projects() {
             metrics: ["In Production", "Multi-Agent Orchestration"],
             impact: "Built a production-grade multi-agent platform for Generative search optimization(GEO) research focusing on Brands.",
             link: "https://llm-platform.vercel.app",
-            github: "https://github.com/annaandmandy/LLMPlatform"
+            github: "https://github.com/annaandmandy/LLMPlatform",
+            blog: "/blogs/how-i-designed-a-production-chatbot-backend"
         }, {
             title: "Relational Database Engine Kernel",
             category: "Systems Engineering",
@@ -75,7 +86,8 @@ export default function Projects() {
             metrics: ["500 Tweets/Day", "Scheduled Inference", "Automated Retraining", "Medallion Architecture"],
             impact: "Automated the full path from raw social discourse to a retrained, scheduled stock-volume prediction model with daily Power BI trend visualizations and sentiment tracking.",
             link: "https://drive.google.com/file/d/1NYY6TYn6GqhrX9HX0D0ZWnrpZfo0DMal/view?usp=drive_link",
-            github: null
+            github: null,
+            blog: "/blogs/from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline"
         },
         {
             title: "Boston Weekend Vibe",
@@ -220,7 +232,7 @@ export default function Projects() {
 
             <div className="grid grid-3">
                 {projects.map((project, index) => (
-                    <div key={index} className="grid-item project-card" data-aos="fade-up">
+                    <div key={index} id={slugify(project.title)} className="grid-item project-card" data-aos="fade-up">
                         {project.category && (
                             <div className="project-category">{project.category}</div>
                         )}
@@ -251,7 +263,15 @@ export default function Projects() {
                             </p>
                         )}
 
-                        <div className="flex" style={{ gap: "0.5rem" }}>
+                        {project.blog && (
+                            <p style={{ fontSize: "0.85rem", marginBottom: "0.75rem" }}>
+                                <Link to={project.blog} style={{ fontWeight: 600 }}>
+                                    📝 Read the blog post →
+                                </Link>
+                            </p>
+                        )}
+
+                        <div className="flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
                             <a href={project.link} className="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">
                                 {project.link.startsWith('/') ? 'View' : 'Live Demo'}
                             </a>

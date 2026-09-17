@@ -286,12 +286,13 @@ The final layer is Power BI, with two pages.
 
 The first page is an overview of the current prediction and social activity: current stock volume, predicted next-session volume, actual next-session volume once available, sentiment and interaction metrics, verification and account-type distributions, viral tweet counts, and user-level activity.
 
+![Power BI overview page: current stock volume, predicted next-session volume, actual volume and accuracy once available, verification and account-type donuts, tweet and viral tweet counts by user, and average credibility, sentiment, interaction, and follower KPIs](/img/blogs/powerbi-overview.png)
+
 The second page focuses on how sentiment and market volume relate over time, along with the underlying viral tweets for a selected date.
 
-<!-- TODO: drop the two Power BI screenshots here, e.g.
-![Power BI overview page](/img/blogs/powerbi-overview.png)
-![Power BI sentiment vs volume page](/img/blogs/powerbi-sentiment-volume.png)
--->
+![Power BI sentiment vs volume page: a line chart of average sentiment against current volume from August to September, with a table of the day's viral tweets showing reply, retweet, like, sentiment, and interaction scores](/img/blogs/powerbi-sentiment-volume.png)
+
+If you look closely at the tweet table, some emojis show up as question marks. That's the Unicode issue I mention in the next section, and it only became visible once the whole path from API to dashboard was connected.
 
 Power BI Desktop connects to the SQL Pool in Import mode with SQL authentication. I didn't set up Power BI Service scheduled refresh, because that isn't available on a personal Microsoft account. So the evening pipeline ends with the warehouse refreshed and paused, and the dashboard picks up the new data on its next manual refresh.
 
