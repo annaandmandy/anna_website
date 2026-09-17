@@ -28,6 +28,20 @@
         "date": "2026-09-16"
     },
     {
+        "id": 62,
+        "title": "Building Citale: Messaging, Profiles, and Images on Supabase",
+        "subtitle": "What I owned on a nine-person Boston events platform built on Next.js and Supabase: direct messaging with polling, a follow system with derived counts, and an image pipeline from crop to CDN, plus what broke along the way.",
+        "slug": "building-citale-messaging-profiles-and-images-on-supabase",
+        "file": "building-citale-messaging-profiles-and-images-on-supabase.md",
+        "project": {
+            "title": "Citale",
+            "link": "/projects#citale"
+        },
+        "link": "https://www.hsiangyuhuang.com/blogs/building-citale-messaging-profiles-and-images-on-supabase",
+        "content": "",
+        "date": "2026-09-17"
+    },
+    {
         "id": 2,
         "title": "LangGraph vs LangChain: When and Why to Use Each",
         "slug": "langgraph-vs-langchain-when-and-why-to-use-each",

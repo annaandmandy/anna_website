@@ -32,7 +32,8 @@ export default function Projects() {
             metrics: ["Beta Launched", "10+ Core Features", "PostHog Analytics"],
             impact: "Successfully moved from architectural design to a public beta launch, targeting the Boston student community.",
             link: "https://www.citaleco.com",
-            github: null
+            github: "https://github.com/sbel2/Citale",
+            blog: "/blogs/building-citale-messaging-profiles-and-images-on-supabase"
         },
         {
             title: "LLM Multi-Agent Platform",

@@ -215,11 +215,11 @@ export default function Home() {
                         </div>
                         <h3 className="text-xl font-bold mb-3 group-hover:text-amber-600 transition-colors">NVIDIA Volume Forecast</h3>
                         <p className="text-text-secondary text-sm mb-6 leading-relaxed">
-                            Real-time data pipeline using Azure Synapse and Medallion Architecture to ingest tweet sentiment and forecast trading volume.
+                            End-to-end Azure pipeline using Data Factory, Synapse Spark, and Medallion Architecture to turn tweet sentiment into daily trading volume predictions.
                         </p>
-                        <a href="https://drive.google.com/file/d/1NYY6TYn6GqhrX9HX0D0ZWnrpZfo0DMal/view?usp=drive_link" target="_blank" className="font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
-                            Case Study
-                        </a>
+                        <Link to="/blogs/from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline" className="font-bold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
+                            Read the Blog →
+                        </Link>
                     </div>
 
                     {/* Project 5 */}
