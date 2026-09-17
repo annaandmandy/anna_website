@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5e5845"/>
+    </marker>
+    <style>
+      .col { fill: #ffffff; stroke: #e3c054; stroke-width: 1.5; rx: 14; }
+      .head { fill: #fcd96e; stroke: #e3c054; stroke-width: 2; rx: 10; }
+      .step { fill: #fdf5d9; stroke: #e3c054; stroke-width: 1.5; rx: 8; }
+      .end { fill: #fcd96e; stroke: #e3c054; stroke-width: 1.5; rx: 8; }
+      .time { fill: #1c180d; font-size: 17px; font-weight: 800; text-anchor: middle; }
+      .svc { fill: #5e5845; font-size: 10.5px; font-weight: 700; text-anchor: middle; letter-spacing: 0.5px; }
+      .txt { fill: #1c180d; font-size: 12.5px; text-anchor: middle; }
+      .mono { white-space: pre; fill: #5e5845; font-size: 11px; text-anchor: middle; font-family: 'SF Mono', Menlo, Consolas, monospace; }
+      .note { fill: #5e5845; font-size: 11.5px; font-weight: 700; text-anchor: middle; letter-spacing: 1.2px; }
+      .edge { stroke: #5e5845; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #e3c054; stroke-width: 1.5; stroke-dasharray: 5 4; fill: none; }
+    </style>
+  </defs>
+  <rect width="760" height="640" fill="#f8f8f5"/>
+
+  <text x="380" y="28" class="note">DAILY ORCHESTRATION · EASTERN TIME</text>
+
+  <!-- timeline bar -->
+  <line x1="40" y1="52" x2="720" y2="52" class="dash"/>
+
+  <!-- ===== COLUMN 1: 5:00 AM ===== -->
+  <rect x="30" y="66" width="220" height="250" class="col"/>
+  <rect x="44" y="78" width="192" height="58" class="head"/>
+  <text x="140" y="102" class="time">5:00 AM</text>
+  <text x="140" y="122" class="svc">AZURE FUNCTION · TIMER</text>
+
+  <rect x="44" y="150" width="192" height="40" class="step"/>
+  <text x="140" y="175" class="txt">Fetch tweets + market data</text>
+  <path d="M 140 190 V 202" class="edge"/>
+  <rect x="44" y="204" width="192" height="40" class="step"/>
+  <text x="140" y="229" class="txt">Lightweight preprocessing</text>
+  <path d="M 140 244 V 256" class="edge"/>
+  <rect x="44" y="258" width="192" height="44" class="step"/>
+  <text x="140" y="276" class="txt">Write daily Gold</text>
+  <text x="140" y="292" class="mono">gold/stream/YYYY/MM/DD/</text>
+
+  <!-- ===== COLUMN 2: 6:00 AM ===== -->
+  <rect x="270" y="66" width="220" height="304" class="col"/>
+  <rect x="284" y="78" width="192" height="58" class="head"/>
+  <text x="380" y="102" class="time">6:00 AM</text>
+  <text x="380" y="122" class="svc">SYNAPSE · PL_DailyPrediction</text>
+
+  <rect x="284" y="150" width="192" height="40" class="step"/>
+  <text x="380" y="175" class="txt">Resolve ET session date</text>
+  <path d="M 380 190 V 202" class="edge"/>
+  <rect x="284" y="204" width="192" height="40" class="step"/>
+  <text x="380" y="229" class="txt">Load PipelineModel from ADLS</text>
+  <path d="M 380 244 V 256" class="edge"/>
+  <rect x="284" y="258" width="192" height="40" class="step"/>
+  <text x="380" y="283" class="txt">Predict next-session volume</text>
+  <path d="M 380 298 V 310" class="edge"/>
+  <rect x="284" y="312" width="192" height="44" class="step"/>
+  <text x="380" y="330" class="txt">Persist prediction</text>
+  <text x="380" y="346" class="mono">actual = null (not yet known)</text>
+
+  <!-- ===== COLUMN 3: 6:30 PM ===== -->
+  <rect x="510" y="66" width="220" height="520" class="col"/>
+  <rect x="524" y="78" width="192" height="58" class="head"/>
+  <text x="620" y="102" class="time">6:30 PM</text>
+  <text x="620" y="122" class="svc">SYNAPSE · PL_BackfillRetrain</text>
+
+  <rect x="524" y="150" width="192" height="40" class="step"/>
+  <text x="620" y="175" class="txt">Backfill actual volume</text>
+  <path d="M 620 190 V 202" class="edge"/>
+  <rect x="524" y="204" width="192" height="40" class="step"/>
+  <text x="620" y="229" class="txt">Evaluate prediction</text>
+  <path d="M 620 244 V 256" class="edge"/>
+  <rect x="524" y="258" width="192" height="44" class="step"/>
+  <text x="620" y="276" class="txt">Retrain if error &gt; threshold</text>
+  <text x="620" y="292" class="mono">else keep current model</text>
+  <path d="M 620 302 V 314" class="edge"/>
+  <rect x="524" y="316" width="192" height="40" class="step"/>
+  <text x="620" y="341" class="txt">Rebuild Gold aggregates</text>
+  <path d="M 620 356 V 368" class="edge"/>
+  <rect x="524" y="370" width="192" height="44" class="step"/>
+  <text x="620" y="388" class="txt">Resume SQL Pool</text>
+  <text x="620" y="404" class="mono">poll until status = Online</text>
+  <path d="M 620 414 V 426" class="edge"/>
+  <rect x="524" y="428" width="192" height="40" class="step"/>
+  <text x="620" y="453" class="mono">EXEC sp_DailyRefresh</text>
+  <path d="M 620 468 V 480" class="edge"/>
+  <rect x="524" y="482" width="192" height="40" class="step"/>
+  <text x="620" y="507" class="txt">Pause SQL Pool</text>
+  <path d="M 620 522 V 534" class="edge"/>
+  <rect x="524" y="536" width="192" height="40" class="end"/>
+  <text x="620" y="561" class="txt">Warehouse ready for Power BI</text>
+
+  <!-- cross-column arrows -->
+  <path d="M 236 107 H 282" class="edge"/>
+  <path d="M 476 107 H 522" class="edge"/>
+
+  <!-- market close marker -->
+  <line x1="500" y1="150" x2="500" y2="380" class="dash"/>
+  <rect x="493" y="230" width="14" height="70" fill="#f8f8f5"/>
+  <text x="504" y="265" class="mono" transform="rotate(-90 504 265)">market close 4 PM</text>
+
+  <text x="380" y="622" class="mono">Function timer covers both possible UTC hours + ET guard · Synapse triggers scheduled in Eastern Time (DST-safe)</text>
+</svg>

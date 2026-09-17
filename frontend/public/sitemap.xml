@@ -65,4 +65,9 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

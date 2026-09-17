@@ -2,11 +2,22 @@
     {
         "id": 1,
         "title": "How I Designed a Production Chatbot Backend (API, DB, LLM, Analytics)",
+        "subtitle": "How I built a multi-agent chatbot backend with FastAPI, LangGraph, MongoDB vector search, and SERP integrations — from intent routing and conversation memory to streaming, analytics logging, and the latency lessons that came with it.",
         "slug": "how-i-designed-a-production-chatbot-backend",
         "file": "how-i-designed-a-production-chatbot-backend.md",
         "link": "https://www.hsiangyuhuang.com/blogs/how-i-designed-a-production-chatbot-backend-api-db-llm-analytics",
         "content": "",
-        "date": "2025-01-20"
+        "date": "2026-01-20"
+    },
+    {
+        "id": 61,
+        "title": "From Tweets to Trends: Building an End-to-End Azure Data & ML Pipeline",
+        "subtitle": "How I rebuilt a stock-volume prediction system with Azure Data Factory, Synapse Spark, ADLS Gen2, Azure Functions, MLlib, a dedicated SQL warehouse, and Power BI — from historical backfill to scheduled inference and retraining.",
+        "slug": "from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline",
+        "file": "from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline.md",
+        "link": "https://www.hsiangyuhuang.com/blogs/from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline",
+        "content": "",
+        "date": "2026-09-16"
     },
     {
         "id": 2,

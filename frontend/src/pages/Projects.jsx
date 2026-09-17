@@ -67,13 +67,13 @@ export default function Projects() {
             link: "https://dogblood-novel.dogblood-novel.workers.dev/",
             github: "https://github.com/annaandmandy/dogblood-novel"
         }, {
-            title: "NVIDIA Sentiment Data Pipeline",
+            title: "NVIDIA Sentiment Data & ML Pipeline",
             category: "Data Engineering",
-            desc: "Built an automated Medallion architecture pipeline using Azure Synapse and Function Apps for stock sentiment analysis.",
-            detailedDesc: "Engineered an end-to-end data pipeline to ingest and process 500+ daily tweets and stock data. Developed Azure Function Apps to automate daily ETL tasks and ingest data into a Gold-layer for further analysis.",
-            tech: ["Azure Synapse", "Azure Function Apps", "Medallion Architecture", "PostgreSQL", "Python", "Power BI", "Azure Blob Storage", "RapidAPI"],
-            metrics: ["500 Tweets/Day", "Daily Automation", "Medallion Architecture"],
-            impact: "Successfully automated the transition of raw social discourse into structured financial datasets, enabling daily Power BI trend visualizations and sentiment tracking.",
+            desc: "Rebuilt an end-to-end Azure pipeline that turns daily tweets and stock data into stock-volume predictions, from historical backfill to scheduled inference and retraining.",
+            detailedDesc: "Engineered a Medallion-architecture pipeline on ADLS Gen2 orchestrated by Azure Data Factory. Ingests 500+ daily tweets and stock data via Azure Functions, transforms them with Synapse Spark, trains and serves a stock-volume prediction model with MLlib, and lands results in a dedicated SQL warehouse for Power BI dashboards.",
+            tech: ["Azure Data Factory", "Synapse Spark", "ADLS Gen2", "Azure Functions", "Spark MLlib", "Dedicated SQL Pool", "Medallion Architecture", "Python", "Power BI", "RapidAPI"],
+            metrics: ["500 Tweets/Day", "Scheduled Inference", "Automated Retraining", "Medallion Architecture"],
+            impact: "Automated the full path from raw social discourse to a retrained, scheduled stock-volume prediction model with daily Power BI trend visualizations and sentiment tracking.",
             link: "https://drive.google.com/file/d/1NYY6TYn6GqhrX9HX0D0ZWnrpZfo0DMal/view?usp=drive_link",
             github: null
         },

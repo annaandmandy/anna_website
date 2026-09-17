@@ -47,7 +47,7 @@ const BlogPost = () => {
         <div className="min-h-screen bg-bg-primary pt-24 px-6 pb-24">
             <SEO
                 title={`${blog.title} | Anna's Website`}
-                description={content.slice(0, 150).replace(/[#*`]/g, '') + '...'}
+                description={blog.subtitle || content.slice(0, 150).replace(/[#*`]/g, '') + '...'}
                 name="Anna Huang"
                 type="article"
             />
@@ -55,6 +55,9 @@ const BlogPost = () => {
                 <Link to="/blogs" className="text-primary no-underline hover:underline mb-8 block">&larr; Back to Blogs</Link>
 
                 <h1 className="text-4xl font-bold text-dark mb-2">{blog.title}</h1>
+                {blog.subtitle && (
+                    <p className="text-stone-600 text-lg mb-4">{blog.subtitle}</p>
+                )}
                 <p className="text-stone-500 text-sm mb-8 border-b pb-4">{blog.date}</p>
 
                 <div className="markdown-content">

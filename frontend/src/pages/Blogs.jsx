@@ -44,6 +44,9 @@ const Blogs = () => {
                             data-aos="fade-up"
                         >
                             <h2 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{blog.title}</h2>
+                            {blog.subtitle && (
+                                <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "0.5rem" }}>{blog.subtitle}</p>
+                            )}
                             <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>{blog.date || "No Date"}</p>
                         </Link>
                     ))
