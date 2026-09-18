@@ -5,8 +5,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SEO from "../components/SEO";
 
-// The public URL you copied from your S3 bucket
-const REPORT_URL = 'https://boston-weekend-agent-reports.s3.amazonaws.com/reports/weekend_summary.txt';
+// CloudFront exposes only the current public report from the private S3 bucket.
+const REPORT_URL = 'https://d2ugiuoady5eh5.cloudfront.net/reports/weekend_summary.txt';
 
 const WeekendReport = () => {
   // State to hold the report content
