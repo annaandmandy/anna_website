@@ -1,6 +1,12 @@
 .bobo-weekend-page {
   min-height: 100vh;
-  background: var(--bg-color);
+  background:
+    radial-gradient(
+      circle at 88% 7%,
+      rgba(252, 217, 110, 0.18),
+      transparent 25rem
+    ),
+    var(--bg-color);
 }
 
 .bobo-weekend-shell {
