@@ -335,6 +335,230 @@
   text-transform: uppercase;
 }
 
+.bobo-activities {
+  color: var(--text-secondary);
+}
+
+.bobo-activities-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 4px solid var(--primary-color);
+}
+
+.bobo-activities-kicker {
+  margin: 0 0 0.55rem;
+  color: #8a6a00;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.bobo-activities-heading h2 {
+  margin: 0 0 0.55rem;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+.bobo-activities-heading p:last-child {
+  max-width: 620px;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.bobo-activities-count {
+  min-width: 92px;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgba(227, 192, 84, 0.36);
+  border-radius: 12px;
+  background: rgba(252, 217, 110, 0.18);
+  text-align: center;
+}
+
+.bobo-activities-count strong,
+.bobo-activities-count span {
+  display: block;
+}
+
+.bobo-activities-count strong {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+}
+
+.bobo-activities-count span {
+  margin-top: 0.1rem;
+  font-size: 0.68rem;
+}
+
+.bobo-activity-controls {
+  display: grid;
+  grid-template-columns: minmax(190px, 2fr) repeat(4, minmax(118px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.bobo-activity-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+  color: var(--text-primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.bobo-activity-controls input,
+.bobo-activity-controls select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.65rem 0.72rem;
+  border: 1px solid rgba(28, 24, 13, 0.13);
+  border-radius: 9px;
+  background: var(--bg-color);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.bobo-activity-controls input:focus,
+.bobo-activity-controls select:focus {
+  border-color: #b18b13;
+  outline: 3px solid rgba(252, 217, 110, 0.36);
+}
+
+.bobo-activity-table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(28, 24, 13, 0.09);
+  border-radius: 12px;
+  background: var(--bg-color);
+}
+
+.bobo-activity-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.bobo-activity-table th {
+  padding: 0.85rem 0.9rem;
+  background: rgba(252, 217, 110, 0.24);
+  color: var(--text-primary);
+  font-size: 0.67rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.bobo-activity-table td {
+  padding: 1rem 0.9rem;
+  border-top: 1px solid rgba(28, 24, 13, 0.07);
+  vertical-align: top;
+}
+
+.bobo-activity-table tbody tr {
+  transition: background 160ms ease;
+}
+
+.bobo-activity-table tbody tr:hover {
+  background: rgba(252, 217, 110, 0.1);
+}
+
+.bobo-activity-table th:first-child,
+.bobo-activity-table td:first-child {
+  width: 31%;
+}
+
+.bobo-activity-table td strong,
+.bobo-activity-table td span {
+  display: block;
+}
+
+.bobo-activity-table td > span:not(.bobo-price-tag),
+.bobo-activity-meta {
+  margin-top: 0.28rem;
+  color: var(--text-secondary);
+  font-size: 0.71rem;
+}
+
+.bobo-activity-table a {
+  color: #785d00;
+  font-weight: 800;
+  text-decoration-color: rgba(120, 93, 0, 0.4);
+  text-underline-offset: 0.2em;
+}
+
+.bobo-activity-table a:hover {
+  color: #5e4900;
+  background: rgba(252, 217, 110, 0.22);
+}
+
+.bobo-price-tag {
+  display: inline-flex !important;
+  width: fit-content;
+  padding: 0.34rem 0.52rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.bobo-price-tag.is-free {
+  background: rgba(252, 217, 110, 0.35);
+  color: #654e00;
+}
+
+.bobo-price-tag.is-paid {
+  background: rgba(28, 24, 13, 0.08);
+  color: var(--text-primary);
+}
+
+.bobo-price-tag.is-unknown {
+  border: 1px dashed rgba(28, 24, 13, 0.2);
+  color: var(--text-secondary);
+}
+
+.bobo-activities-empty {
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.8rem;
+  border: 1px dashed rgba(28, 24, 13, 0.16);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.bobo-activities-empty span {
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  font-weight: 750;
+}
+
+.bobo-activities-empty p {
+  margin: 0;
+}
+
+.bobo-activities-empty button {
+  padding: 0.55rem 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 .bobo-loading,
 .bobo-error {
   position: relative;
@@ -438,6 +662,39 @@
 
   .bobo-language-switch button {
     flex: 1;
+    padding-inline: 0.55rem;
+    font-size: 0.74rem;
+  }
+
+  .bobo-activities-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .bobo-activities-count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    text-align: left;
+  }
+
+  .bobo-activity-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bobo-activity-search {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 440px) {
+  .bobo-activity-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .bobo-activity-search {
+    grid-column: auto;
   }
 }
 
