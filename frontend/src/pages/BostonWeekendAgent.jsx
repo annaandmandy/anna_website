@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ReactMarkdown from "react-markdown";
@@ -9,6 +9,50 @@ import "../styles/boston-weekend-agent.css";
 const REPORT_URL =
   "https://d2ugiuoady5eh5.cloudfront.net/reports/weekend_summary.json";
 
+const activityDateLabel = (value) => {
+  if (!value) return "Date to confirm";
+  const parsed = new Date(`${value}T12:00:00`);
+  if (Number.isNaN(parsed.getTime())) return value;
+  return parsed.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  });
+};
+
+const activityTimeLabel = (value) => {
+  if (!value) return "Time to confirm";
+  const clock = String(value).match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
+  if (!clock) return value;
+  const hour = Number(clock[1]);
+  const suffix = hour >= 12 ? "PM" : "AM";
+  const displayHour = hour % 12 || 12;
+  return `${displayHour}:${clock[2]} ${suffix}`;
+};
+
+const activityCategoryLabel = (value) =>
+  value && String(value).toLocaleLowerCase() !== "undefined"
+    ? value
+    : "Local event";
+
+const priceSortValue = (activity) => {
+  if (activity.price_type === "free") return 0;
+  const match = String(activity.price || "").match(/\$\s*([\d.]+)/);
+  return match ? Number(match[1]) : Number.POSITIVE_INFINITY;
+};
+
+const timeSortValue = (value) => {
+  const match = String(value || "")
+    .toLocaleLowerCase()
+    .match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\b/);
+  if (!match) return 24 * 60;
+  let hour = Number(match[1]);
+  const minute = Number(match[2] || 0);
+  if (match[3] === "pm" && hour < 12) hour += 12;
+  if (match[3] === "am" && hour === 12) hour = 0;
+  return hour * 60 + minute;
+};
+
 const WeekendReport = () => {
   const [report, setReport] = useState(null);
   const [language, setLanguage] = useState("en");
@@ -16,6 +60,11 @@ const WeekendReport = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(null);
   const [reloadKey, setReloadKey] = useState(0);
+  const [activitySearch, setActivitySearch] = useState("");
+  const [activityCity, setActivityCity] = useState("all");
+  const [activityDate, setActivityDate] = useState("all");
+  const [activityPrice, setActivityPrice] = useState("all");
+  const [activitySort, setActivitySort] = useState("date-asc");
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -51,6 +100,67 @@ const WeekendReport = () => {
   }, [reloadKey]);
 
   const activeReport = report?.languages?.[language]?.markdown ?? "";
+  const activities = report?.activities ?? [];
+  const activityCities = useMemo(
+    () =>
+      [...new Set(activities.map((activity) => activity.city).filter(Boolean))].sort(
+        (left, right) => left.localeCompare(right),
+      ),
+    [activities],
+  );
+  const activityDates = useMemo(
+    () =>
+      [...new Set(activities.map((activity) => activity.date).filter(Boolean))].sort(),
+    [activities],
+  );
+  const visibleActivities = useMemo(() => {
+    const query = activitySearch.trim().toLocaleLowerCase();
+    const filtered = activities.filter((activity) => {
+      const searchable = [
+        activity.title,
+        activity.description,
+        activity.location,
+        activity.city,
+        activity.category,
+        activity.source,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLocaleLowerCase();
+      return (
+        (!query || searchable.includes(query)) &&
+        (activityCity === "all" || activity.city === activityCity) &&
+        (activityDate === "all" || activity.date === activityDate) &&
+        (activityPrice === "all" || activity.price_type === activityPrice)
+      );
+    });
+
+    return [...filtered].sort((left, right) => {
+      if (activitySort === "title-asc") {
+        return left.title.localeCompare(right.title);
+      }
+      if (activitySort === "city-asc") {
+        return String(left.city || left.location).localeCompare(
+          String(right.city || right.location),
+        );
+      }
+      if (activitySort === "price-asc") {
+        return priceSortValue(left) - priceSortValue(right);
+      }
+      const dateOrder = String(left.date || "9999-12-31").localeCompare(
+        String(right.date || "9999-12-31"),
+      );
+      if (dateOrder) return dateOrder;
+      return timeSortValue(left.time) - timeSortValue(right.time);
+    });
+  }, [
+    activities,
+    activityCity,
+    activityDate,
+    activityPrice,
+    activitySearch,
+    activitySort,
+  ]);
 
   return (
     <main className="bobo-weekend-page">
@@ -124,6 +234,15 @@ const WeekendReport = () => {
               >
                 繁體中文 <span>°C</span>
               </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={language === "activities"}
+                className={language === "activities" ? "is-active" : ""}
+                onClick={() => setLanguage("activities")}
+              >
+                Activities <span>{activities.length}</span>
+              </button>
             </div>
           ) : null}
 
@@ -149,6 +268,167 @@ const WeekendReport = () => {
                 Try again · 再試一次
               </button>
             </div>
+          ) : language === "activities" ? (
+            <section
+              className="bobo-activities"
+              role="tabpanel"
+              aria-label="Weekend activity candidates"
+            >
+              <div className="bobo-activities-heading">
+                <div>
+                  <p className="bobo-activities-kicker">EXPLORE THE FULL LIST</p>
+                  <h2>Weekend activities</h2>
+                  <p>
+                    Every eligible event in this report&apos;s source snapshot—not
+                    only Bo&apos;s editorial picks.
+                  </p>
+                </div>
+                <div className="bobo-activities-count" aria-live="polite">
+                  <strong>{visibleActivities.length}</strong>
+                  <span>of {activities.length} events</span>
+                </div>
+              </div>
+
+              <div className="bobo-activity-controls">
+                <label className="bobo-activity-search">
+                  <span>Search</span>
+                  <input
+                    type="search"
+                    value={activitySearch}
+                    onChange={(event) => setActivitySearch(event.target.value)}
+                    placeholder="Music, Cambridge, festival…"
+                  />
+                </label>
+                <label>
+                  <span>Date</span>
+                  <select
+                    value={activityDate}
+                    onChange={(event) => setActivityDate(event.target.value)}
+                  >
+                    <option value="all">All dates</option>
+                    {activityDates.map((date) => (
+                      <option key={date} value={date}>
+                        {activityDateLabel(date)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  <span>City</span>
+                  <select
+                    value={activityCity}
+                    onChange={(event) => setActivityCity(event.target.value)}
+                  >
+                    <option value="all">All cities</option>
+                    {activityCities.map((city) => (
+                      <option key={city} value={city}>
+                        {city}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  <span>Price</span>
+                  <select
+                    value={activityPrice}
+                    onChange={(event) => setActivityPrice(event.target.value)}
+                  >
+                    <option value="all">All prices</option>
+                    <option value="free">Free</option>
+                    <option value="paid">Paid</option>
+                    <option value="unknown">Check listing</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Sort</span>
+                  <select
+                    value={activitySort}
+                    onChange={(event) => setActivitySort(event.target.value)}
+                  >
+                    <option value="date-asc">Date &amp; time</option>
+                    <option value="title-asc">Title A–Z</option>
+                    <option value="city-asc">City A–Z</option>
+                    <option value="price-asc">Lowest price</option>
+                  </select>
+                </label>
+              </div>
+
+              {visibleActivities.length ? (
+                <div className="bobo-activity-table-wrap">
+                  <table className="bobo-activity-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Activity</th>
+                        <th scope="col">Date &amp; time</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Source</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {visibleActivities.map((activity) => (
+                        <tr key={activity.event_id || activity.url}>
+                          <td>
+                            {activity.url ? (
+                              <a
+                                href={activity.url}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                              >
+                                {activity.title}
+                              </a>
+                            ) : (
+                              <strong>{activity.title}</strong>
+                            )}
+                            <span className="bobo-activity-meta">
+                              {activityCategoryLabel(activity.category)}
+                            </span>
+                          </td>
+                          <td>
+                            <strong>{activityDateLabel(activity.date)}</strong>
+                            <span>{activityTimeLabel(activity.time)}</span>
+                          </td>
+                          <td>
+                            <strong>
+                              {activity.city || activity.location || "Greater Boston"}
+                            </strong>
+                            {activity.location && activity.location !== activity.city ? (
+                              <span>{activity.location}</span>
+                            ) : null}
+                          </td>
+                          <td>
+                            <span
+                              className={`bobo-price-tag is-${activity.price_type || "unknown"}`}
+                            >
+                              {activity.price || "Check listing"}
+                            </span>
+                          </td>
+                          <td>
+                            <span>{activity.source || "Event organizer"}</span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="bobo-activities-empty">
+                  <span>⌖ˎˊ˗ 〔・_・?〕</span>
+                  <p>No activities match these filters yet.</p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActivitySearch("");
+                      setActivityCity("all");
+                      setActivityDate("all");
+                      setActivityPrice("all");
+                    }}
+                  >
+                    Clear filters
+                  </button>
+                </div>
+              )}
+            </section>
           ) : (
             <div
               className="bobo-report-content"
