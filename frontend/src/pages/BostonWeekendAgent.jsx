@@ -8,6 +8,22 @@ import "../styles/boston-weekend-agent.css";
 
 const REPORT_URL =
   "https://d2ugiuoady5eh5.cloudfront.net/reports/weekend_summary.json";
+const FEEDBACK_API_URL = (import.meta.env.VITE_FEEDBACK_API_URL || "").replace(
+  /\/$/,
+  "",
+);
+const FEEDBACK_VISITOR_KEY = "boston-weekend-feedback-visitor";
+
+const getFeedbackVisitorId = () => {
+  const existing = window.localStorage.getItem(FEEDBACK_VISITOR_KEY);
+  if (existing) return existing;
+  const randomPart = window.crypto?.randomUUID
+    ? window.crypto.randomUUID()
+    : `${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  const visitorId = `visitor_${randomPart}`;
+  window.localStorage.setItem(FEEDBACK_VISITOR_KEY, visitorId);
+  return visitorId;
+};
 
 const activityDateLabel = (value) => {
   if (!value) return "Date to confirm";
@@ -65,6 +81,9 @@ const WeekendReport = () => {
   const [activityDate, setActivityDate] = useState("all");
   const [activityPrice, setActivityPrice] = useState("all");
   const [activitySort, setActivitySort] = useState("date-asc");
+  const [activityFeedback, setActivityFeedback] = useState({});
+  const [feedbackBusy, setFeedbackBusy] = useState([]);
+  const [feedbackError, setFeedbackError] = useState("");
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -98,6 +117,71 @@ const WeekendReport = () => {
     const intervalId = setInterval(fetchReport, 60 * 60 * 1000);
     return () => clearInterval(intervalId);
   }, [reloadKey]);
+
+  useEffect(() => {
+    if (!FEEDBACK_API_URL || !report?.activities?.length) return undefined;
+    const controller = new AbortController();
+    const loadFeedback = async () => {
+      try {
+        const response = await fetch(`${FEEDBACK_API_URL}/feedback/query`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            event_ids: report.activities.map((activity) => activity.event_id),
+            visitor_id: getFeedbackVisitorId(),
+          }),
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(`Feedback status ${response.status}`);
+        const payload = await response.json();
+        setActivityFeedback(payload.feedback || {});
+        setFeedbackError("");
+      } catch (feedbackFetchError) {
+        if (feedbackFetchError.name !== "AbortError") {
+          console.error("Error fetching activity feedback:", feedbackFetchError);
+          setFeedbackError("Likes are temporarily unavailable.");
+        }
+      }
+    };
+    loadFeedback();
+    return () => controller.abort();
+  }, [report]);
+
+  const toggleActivityLike = async (eventId) => {
+    if (!FEEDBACK_API_URL || feedbackBusy.includes(eventId)) return;
+    const previous = activityFeedback[eventId] || { likes: 0, liked: false };
+    const optimistic = {
+      likes: Math.max(0, previous.likes + (previous.liked ? -1 : 1)),
+      liked: !previous.liked,
+    };
+    setFeedbackBusy((current) => [...current, eventId]);
+    setActivityFeedback((current) => ({ ...current, [eventId]: optimistic }));
+    setFeedbackError("");
+    try {
+      const response = await fetch(`${FEEDBACK_API_URL}/feedback/toggle`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_id: eventId,
+          visitor_id: getFeedbackVisitorId(),
+          action: previous.liked ? "unlike" : "like",
+          request_id: window.crypto.randomUUID(),
+        }),
+      });
+      if (!response.ok) throw new Error(`Feedback status ${response.status}`);
+      const payload = await response.json();
+      setActivityFeedback((current) => ({
+        ...current,
+        ...(payload.feedback || {}),
+      }));
+    } catch (feedbackUpdateError) {
+      console.error("Error updating activity feedback:", feedbackUpdateError);
+      setActivityFeedback((current) => ({ ...current, [eventId]: previous }));
+      setFeedbackError("That Like did not save. Please try again.");
+    } finally {
+      setFeedbackBusy((current) => current.filter((value) => value !== eventId));
+    }
+  };
 
   const activeReport = report?.languages?.[language]?.markdown ?? "";
   const activities = report?.activities ?? [];
@@ -147,6 +231,12 @@ const WeekendReport = () => {
       if (activitySort === "price-asc") {
         return priceSortValue(left) - priceSortValue(right);
       }
+      if (activitySort === "likes-desc") {
+        return (
+          (activityFeedback[right.event_id]?.likes || 0) -
+          (activityFeedback[left.event_id]?.likes || 0)
+        );
+      }
       const dateOrder = String(left.date || "9999-12-31").localeCompare(
         String(right.date || "9999-12-31"),
       );
@@ -160,6 +250,7 @@ const WeekendReport = () => {
     activityPrice,
     activitySearch,
     activitySort,
+    activityFeedback,
   ]);
 
   return (
@@ -349,9 +440,21 @@ const WeekendReport = () => {
                     <option value="title-asc">Title A–Z</option>
                     <option value="city-asc">City A–Z</option>
                     <option value="price-asc">Lowest price</option>
+                    <option value="likes-desc">Most liked</option>
                   </select>
                 </label>
               </div>
+
+              {FEEDBACK_API_URL ? (
+                <div className="bobo-feedback-note" aria-live="polite">
+                  <span>♡</span>
+                  <p>
+                    Like what catches your eye. Your vote is anonymous, reversible,
+                    and saved once per browser.
+                  </p>
+                  {feedbackError ? <strong>{feedbackError}</strong> : null}
+                </div>
+              ) : null}
 
               {visibleActivities.length ? (
                 <div className="bobo-activity-table-wrap">
@@ -363,6 +466,7 @@ const WeekendReport = () => {
                         <th scope="col">Location</th>
                         <th scope="col">Price</th>
                         <th scope="col">Source</th>
+                        {FEEDBACK_API_URL ? <th scope="col">Likes</th> : null}
                       </tr>
                     </thead>
                     <tbody>
@@ -406,6 +510,35 @@ const WeekendReport = () => {
                           <td>
                             <span>{activity.source || "Event organizer"}</span>
                           </td>
+                          {FEEDBACK_API_URL ? (
+                            <td>
+                              <button
+                                type="button"
+                                className={`bobo-like-button ${
+                                  activityFeedback[activity.event_id]?.liked
+                                    ? "is-liked"
+                                    : ""
+                                }`}
+                                aria-pressed={Boolean(
+                                  activityFeedback[activity.event_id]?.liked,
+                                )}
+                                aria-label={`${
+                                  activityFeedback[activity.event_id]?.liked
+                                    ? "Unlike"
+                                    : "Like"
+                                } ${activity.title}`}
+                                disabled={feedbackBusy.includes(activity.event_id)}
+                                onClick={() => toggleActivityLike(activity.event_id)}
+                              >
+                                <span aria-hidden="true">
+                                  {activityFeedback[activity.event_id]?.liked
+                                    ? "♥"
+                                    : "♡"}
+                                </span>
+                                {activityFeedback[activity.event_id]?.likes || 0}
+                              </button>
+                            </td>
+                          ) : null}
                         </tr>
                       ))}
                     </tbody>
