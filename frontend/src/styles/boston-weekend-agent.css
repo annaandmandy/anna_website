@@ -110,7 +110,7 @@
 
 .bobo-letter-card {
   position: relative;
-  max-width: 860px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: clamp(1.5rem, 5vw, 4.5rem);
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -310,7 +310,7 @@
 }
 
 .bobo-weekend-footer {
-  max-width: 860px;
+  max-width: 1080px;
   margin: 1.5rem auto 0;
   display: flex;
   justify-content: center;
