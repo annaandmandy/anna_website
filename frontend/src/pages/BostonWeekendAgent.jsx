@@ -11,7 +11,7 @@ const REPORT_URL =
 
 const WeekendReport = () => {
   const [report, setReport] = useState(null);
-  const [language, setLanguage] = useState("zh");
+  const [language, setLanguage] = useState("en");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [lastFetched, setLastFetched] = useState(null);
@@ -38,7 +38,7 @@ const WeekendReport = () => {
       } catch (fetchError) {
         console.error("Error fetching the weekend report:", fetchError);
         setError(
-          "波波目前收不到最新地圖訊號，請稍後再回來看看。 Bo cannot reach the latest map signal right now—please try again soon.",
+          "Bo cannot reach the latest map signal right now—please try again soon. 波波目前收不到最新地圖訊號，請稍後再回來看看。",
         );
       } finally {
         setIsLoading(false);
@@ -55,7 +55,7 @@ const WeekendReport = () => {
   return (
     <main className="bobo-weekend-page">
       <SEO
-        title="波波的 Boston Weekend Letter"
+        title="Boston Weekend Vibe - Hsiang Yu Huang"
         description="A bilingual, AI-assisted weekend letter with verified events, weather, and local ideas around Greater Boston."
         name="Boston Weekend Agent"
         type="article"
@@ -64,13 +64,15 @@ const WeekendReport = () => {
       <section className="container bobo-weekend-shell">
         <header className="bobo-weekend-hero" data-aos="fade-down">
           <div className="bobo-hero-copy">
-            <p className="bobo-eyebrow">A LETTER FROM BOSTON</p>
-            <h1>波波的週末來信</h1>
+            <p className="bobo-eyebrow">BOSTON WEEKEND AGENT</p>
+            <h1>Boston Weekend Vibe</h1>
             <p className="bobo-hero-subtitle">
-              Boston Weekend Letter · 繁中與 English
+              Bo&apos;s Bilingual Weekend Letter
             </p>
             <p className="bobo-hero-intro">
-              天氣、活動，還有一點住在 Boston 才懂的週末節奏。波波會在週四先送來計畫版，週五早上再檢查變化。
+              Weather, events, and the small rhythms that make a Boston weekend
+              feel local. Bo sends a planning edition on Thursday, then checks
+              for changes again on Friday morning.
             </p>
             <div className="bobo-status-row" aria-label="Report status">
               <span className="bobo-status-dot" aria-hidden="true" />
@@ -96,23 +98,14 @@ const WeekendReport = () => {
         </header>
 
         <article className="bobo-letter-card" data-aos="fade-up">
-          <div className="bobo-letter-tab">THIS WEEKEND</div>
+          <div className="bobo-letter-tab">WEEKEND REPORT</div>
 
           {!isLoading && !error && report ? (
             <div
               className="bobo-language-switch"
               role="tablist"
-              aria-label="選擇報告語言"
+              aria-label="Choose report language"
             >
-              <button
-                type="button"
-                role="tab"
-                aria-selected={language === "zh"}
-                className={language === "zh" ? "is-active" : ""}
-                onClick={() => setLanguage("zh")}
-              >
-                繁體中文 <span>°C</span>
-              </button>
               <button
                 type="button"
                 role="tab"
@@ -122,13 +115,22 @@ const WeekendReport = () => {
               >
                 English <span>°F</span>
               </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={language === "zh"}
+                className={language === "zh" ? "is-active" : ""}
+                onClick={() => setLanguage("zh")}
+              >
+                繁體中文 <span>°C</span>
+              </button>
             </div>
           ) : null}
 
           {isLoading ? (
             <div className="bobo-loading" role="status" aria-live="polite">
               <span className="bobo-loading-face">⌖ˎˊ˗ 〔•ᴗ•〕</span>
-              <p>波波正在展開地圖……</p>
+              <p>Bo is unfolding the map…</p>
               <div className="bobo-loading-line" />
               <div className="bobo-loading-line bobo-loading-line-short" />
             </div>
@@ -144,7 +146,7 @@ const WeekendReport = () => {
                   setReloadKey((value) => value + 1);
                 }}
               >
-                再試一次 · Try again
+                Try again · 再試一次
               </button>
             </div>
           ) : (
@@ -172,7 +174,7 @@ const WeekendReport = () => {
         <footer className="bobo-weekend-footer" data-aos="fade-up">
           <span>Collected and ranked on AWS</span>
           <span aria-hidden="true">·</span>
-          <span>Written in 波波's bilingual voice</span>
+          <span>Written in Bo&apos;s bilingual voice</span>
           <span aria-hidden="true">·</span>
           <span>Always verify details with the organizer</span>
         </footer>
