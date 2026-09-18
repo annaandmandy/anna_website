@@ -120,6 +120,7 @@
   margin: 0 auto;
   padding: clamp(1.5rem, 5vw, 4.5rem);
   border: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 4px solid var(--primary-color);
   border-radius: 12px;
   background: var(--bg-secondary);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -134,14 +135,14 @@
   top: -0.8rem;
   left: clamp(1.5rem, 5vw, 4rem);
   padding: 0.48rem 0.8rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(28, 24, 13, 0.08);
   border-radius: 999px;
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
+  background: var(--primary-color);
+  color: var(--text-primary);
   font-size: 0.7rem;
   font-weight: 850;
   letter-spacing: 0.13em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(191, 161, 67, 0.2);
 }
 
 .bobo-language-switch {
@@ -177,13 +178,13 @@
 }
 
 .bobo-language-switch button.is-active {
-  background: var(--text-primary);
-  color: var(--bg-secondary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background: var(--primary-color);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(191, 161, 67, 0.24);
 }
 
 .bobo-language-switch button.is-active span {
-  color: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .bobo-language-switch button:focus-visible,
@@ -206,15 +207,17 @@
   margin: 0 0 1.4rem;
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: var(--bg-color);
+  border: 1px solid rgba(227, 192, 84, 0.28);
+  background: rgba(252, 217, 110, 0.18);
   color: var(--text-primary);
   font-family: var(--font-main);
   font-weight: 700;
 }
 
 .bobo-report-content h2 {
+  position: relative;
   margin: 2.5rem 0 1rem;
+  padding-left: 0.9rem;
   color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: clamp(1.3rem, 3vw, 1.75rem);
@@ -222,9 +225,30 @@
   letter-spacing: -0.025em;
 }
 
+.bobo-report-content h2::before {
+  content: "";
+  position: absolute;
+  top: 0.12em;
+  bottom: 0.12em;
+  left: 0;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--primary-color);
+}
+
 .bobo-report-content h2:first-of-type {
   margin-top: 0.2rem;
+  padding-left: 0;
+  padding-bottom: 0.8rem;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.bobo-report-content h2:first-of-type::before {
+  top: auto;
+  right: auto;
+  bottom: 0;
+  width: 3.5rem;
+  height: 4px;
 }
 
 .bobo-report-content p {
@@ -237,17 +261,59 @@
   font-weight: 750;
 }
 
+.bobo-report-content > p:has(> strong:only-child) {
+  position: relative;
+  margin: 2.5rem 0 1rem;
+  padding-left: 0.9rem;
+  color: var(--text-primary);
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  line-height: 1.4;
+}
+
+.bobo-report-content > p:has(> strong:only-child)::before {
+  content: "";
+  position: absolute;
+  top: 0.12em;
+  bottom: 0.12em;
+  left: 0;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--primary-color);
+}
+
+.bobo-report-content > p:nth-child(2):has(> strong:only-child) {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding-left: 0;
+  padding-bottom: 0.9rem;
+  font-size: clamp(1.55rem, 3.2vw, 2.1rem);
+  letter-spacing: -0.025em;
+}
+
+.bobo-report-content > p:nth-child(2):has(> strong:only-child)::before {
+  top: auto;
+  right: auto;
+  bottom: 0;
+  width: 3.5rem;
+  height: 4px;
+}
+
 .bobo-report-content a {
-  color: var(--link-color);
+  color: #8a6a00;
   overflow-wrap: anywhere;
   text-decoration: underline;
   text-decoration-color: currentColor;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: color 160ms ease, background 160ms ease;
 }
 
 .bobo-report-content a:hover {
-  color: var(--accent-color);
+  color: #6f5600;
+  background: rgba(252, 217, 110, 0.22);
 }
 
 .bobo-report-content hr {
