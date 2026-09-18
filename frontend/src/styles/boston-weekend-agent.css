@@ -400,6 +400,11 @@
   grid-template-columns: minmax(190px, 2fr) repeat(4, minmax(118px, 1fr));
   gap: 0.8rem;
   margin-bottom: 1.4rem;
+  padding: 1rem;
+  border: 1px solid rgba(191, 161, 67, 0.26);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 12px;
+  background: rgba(252, 217, 110, 0.1);
 }
 
 .bobo-activity-controls label {
@@ -417,9 +422,9 @@
   width: 100%;
   min-height: 42px;
   padding: 0.65rem 0.72rem;
-  border: 1px solid rgba(28, 24, 13, 0.13);
+  border: 1px solid rgba(191, 161, 67, 0.34);
   border-radius: 9px;
-  background: var(--bg-color);
+  background: var(--bg-secondary);
   color: var(--text-primary);
   font: inherit;
   font-size: 0.78rem;
@@ -435,9 +440,11 @@
 
 .bobo-activity-table-wrap {
   overflow-x: auto;
-  border: 1px solid rgba(28, 24, 13, 0.09);
+  border: 1px solid rgba(191, 161, 67, 0.28);
+  border-top: 4px solid var(--primary-color);
   border-radius: 12px;
-  background: var(--bg-color);
+  background: var(--bg-secondary);
+  box-shadow: 0 8px 22px rgba(88, 68, 9, 0.06);
 }
 
 .bobo-activity-table {
@@ -450,7 +457,7 @@
 
 .bobo-activity-table th {
   padding: 0.85rem 0.9rem;
-  background: rgba(252, 217, 110, 0.24);
+  background: var(--primary-color);
   color: var(--text-primary);
   font-size: 0.67rem;
   font-weight: 850;
@@ -461,16 +468,21 @@
 
 .bobo-activity-table td {
   padding: 1rem 0.9rem;
-  border-top: 1px solid rgba(28, 24, 13, 0.07);
+  border-top: 1px solid rgba(191, 161, 67, 0.2);
   vertical-align: top;
 }
 
 .bobo-activity-table tbody tr {
+  background: var(--bg-secondary);
   transition: background 160ms ease;
 }
 
+.bobo-activity-table tbody tr:nth-child(even) {
+  background: var(--bg-color);
+}
+
 .bobo-activity-table tbody tr:hover {
-  background: rgba(252, 217, 110, 0.1);
+  background: rgba(252, 217, 110, 0.22);
 }
 
 .bobo-activity-table th:first-child,
@@ -491,15 +503,16 @@
 }
 
 .bobo-activity-table a {
-  color: #785d00;
+  color: var(--text-primary);
   font-weight: 800;
-  text-decoration-color: rgba(120, 93, 0, 0.4);
-  text-underline-offset: 0.2em;
+  text-decoration-color: var(--primary-color);
+  text-decoration-thickness: 0.18em;
+  text-underline-offset: 0.22em;
 }
 
 .bobo-activity-table a:hover {
   color: #5e4900;
-  background: rgba(252, 217, 110, 0.22);
+  background: var(--primary-color);
 }
 
 .bobo-price-tag {
@@ -517,12 +530,14 @@
 }
 
 .bobo-price-tag.is-paid {
-  background: rgba(28, 24, 13, 0.08);
+  border: 1px solid rgba(191, 161, 67, 0.46);
+  background: rgba(252, 217, 110, 0.16);
   color: var(--text-primary);
 }
 
 .bobo-price-tag.is-unknown {
-  border: 1px dashed rgba(28, 24, 13, 0.2);
+  border: 1px dashed rgba(191, 161, 67, 0.5);
+  background: var(--bg-color);
   color: var(--text-secondary);
 }
 

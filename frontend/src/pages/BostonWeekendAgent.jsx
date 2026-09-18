@@ -20,6 +20,21 @@ const activityDateLabel = (value) => {
   });
 };
 
+const activityTimeLabel = (value) => {
+  if (!value) return "Time to confirm";
+  const clock = String(value).match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
+  if (!clock) return value;
+  const hour = Number(clock[1]);
+  const suffix = hour >= 12 ? "PM" : "AM";
+  const displayHour = hour % 12 || 12;
+  return `${displayHour}:${clock[2]} ${suffix}`;
+};
+
+const activityCategoryLabel = (value) =>
+  value && String(value).toLocaleLowerCase() !== "undefined"
+    ? value
+    : "Local event";
+
 const priceSortValue = (activity) => {
   if (activity.price_type === "free") return 0;
   const match = String(activity.price || "").match(/\$\s*([\d.]+)/);
@@ -366,12 +381,12 @@ const WeekendReport = () => {
                               <strong>{activity.title}</strong>
                             )}
                             <span className="bobo-activity-meta">
-                              {activity.category || "Local event"}
+                              {activityCategoryLabel(activity.category)}
                             </span>
                           </td>
                           <td>
                             <strong>{activityDateLabel(activity.date)}</strong>
-                            <span>{activity.time || "Time to confirm"}</span>
+                            <span>{activityTimeLabel(activity.time)}</span>
                           </td>
                           <td>
                             <strong>
