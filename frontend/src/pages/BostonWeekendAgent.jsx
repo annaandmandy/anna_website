@@ -1,125 +1,183 @@
-// src/WeekendReport.jsx
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import SEO from "../components/SEO";
+import "../styles/boston-weekend-agent.css";
 
-// CloudFront exposes only the current public report from the private S3 bucket.
-const REPORT_URL = 'https://d2ugiuoady5eh5.cloudfront.net/reports/weekend_summary.txt';
+const REPORT_URL =
+  "https://d2ugiuoady5eh5.cloudfront.net/reports/weekend_summary.json";
 
 const WeekendReport = () => {
-  // State to hold the report content
-  const [report, setReport] = useState('Loading latest report...');
-  // State to handle any potential errors
+  const [report, setReport] = useState(null);
+  const [language, setLanguage] = useState("zh");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastFetched, setLastFetched] = useState(null);
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 800, once: true });
   }, []);
 
   useEffect(() => {
-    // This function will be called once when the component mounts
     const fetchReport = async () => {
       try {
-        const response = await fetch(REPORT_URL);
-
-        // Check if the request was successful
+        const response = await fetch(REPORT_URL, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`Failed to fetch report. Status: ${response.status}`);
         }
-
-        const text = await response.text();
-        setReport(text);
-        setError(null); // Clear any previous errors
-      } catch (err) {
-        console.error("Error fetching the report:", err);
-        setError('Sorry, the weekend report could not be loaded at this time. Please check back later.');
-        setReport(''); // Clear the "loading" message
+        const payload = await response.json();
+        if (!payload?.languages?.zh?.markdown || !payload?.languages?.en?.markdown) {
+          throw new Error("Report response is missing a language version");
+        }
+        setReport(payload);
+        setLastFetched(new Date());
+        setError(null);
+      } catch (fetchError) {
+        console.error("Error fetching the weekend report:", fetchError);
+        setError(
+          "波波目前收不到最新地圖訊號，請稍後再回來看看。 Bo cannot reach the latest map signal right now—please try again soon.",
+        );
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchReport();
-
-    // Optional: Set up an interval to refresh the data automatically
-    const intervalId = setInterval(fetchReport, 60 * 60 * 1000); // Refresh every hour
-
-    // Cleanup function to clear the interval when the component unmounts
+    const intervalId = setInterval(fetchReport, 60 * 60 * 1000);
     return () => clearInterval(intervalId);
-  }, []); // The empty dependency array [] means this effect runs only once on mount
+  }, [reloadKey]);
 
-  // Function to parse markdown-like formatting
-  const parseMarkdown = (text) => {
-    const lines = text.split('\n');
-    return lines.map((line, index) => {
-      // Handle bold text with **
-      let parts = line.split(/(\*\*.*?\*\*)/g);
-      parts = parts.map((part, i) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={i} className="fw-bold" style={{ fontSize: "1.1rem" }}>{part.slice(2, -2)}</strong>;
-        }
-        return part;
-      });
-
-      // Handle list items starting with -
-      if (line.trim().startsWith('- ')) {
-        return (
-          <li key={index} className="mb-2" style={{ marginLeft: "1.5rem" }}>
-            {parts}
-          </li>
-        );
-      }
-
-      // Regular lines
-      return (
-        <div key={index} className="mb-1">
-          {parts.length > 1 ? parts : line || '\u00A0'}
-        </div>
-      );
-    });
-  };
+  const activeReport = report?.languages?.[language]?.markdown ?? "";
 
   return (
-    <div className="container section">
+    <main className="bobo-weekend-page">
       <SEO
-        title="Boston Weekend Vibe - AI Generated Reports"
-        description="Weekly AI-generated reports on Boston's weekend mood, weather, and events. Powered by a multi-agent system."
-        name="Hsiang Yu Huang"
+        title="波波的 Boston Weekend Letter"
+        description="A bilingual, AI-assisted weekend letter with verified events, weather, and local ideas around Greater Boston."
+        name="Boston Weekend Agent"
         type="article"
       />
-      {/* Heading */}
-      <div className="text-center" style={{ marginBottom: "var(--spacing-xl)", marginTop: "var(--spacing-xl)" }} data-aos="fade-down">
-        <h1>Boston Weekend Vibe</h1>
-        <p>Your weekly guide to Boston's weekend mood and events</p>
-      </div>
 
-      {/* Report container */}
-      <div
-        className="grid-item"
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-        }}
-        data-aos="fade-up"
-      >
-        {error ? (
-          <p style={{ color: "red", textAlign: "center" }}>{error}</p>
-        ) : (
-          <div style={{
-            whiteSpace: "pre-wrap",
-            lineHeight: "1.8",
-            fontSize: "1rem",
-          }}>
-            {parseMarkdown(report)}
+      <section className="container bobo-weekend-shell">
+        <header className="bobo-weekend-hero" data-aos="fade-down">
+          <div className="bobo-hero-copy">
+            <p className="bobo-eyebrow">A LETTER FROM BOSTON</p>
+            <h1>波波的週末來信</h1>
+            <p className="bobo-hero-subtitle">
+              Boston Weekend Letter · 繁中與 English
+            </p>
+            <p className="bobo-hero-intro">
+              天氣、活動，還有一點住在 Boston 才懂的週末節奏。波波會在週四先送來計畫版，週五早上再檢查變化。
+            </p>
+            <div className="bobo-status-row" aria-label="Report status">
+              <span className="bobo-status-dot" aria-hidden="true" />
+              <span>
+                {lastFetched
+                  ? `Latest report checked ${lastFetched.toLocaleTimeString([], {
+                      hour: "numeric",
+                      minute: "2-digit",
+                    })}`
+                  : "Checking the latest report"}
+              </span>
+            </div>
           </div>
-        )}
-      </div>
 
-      {/* Footer */}
-      <div className="text-center" style={{ fontSize: "0.9rem", marginTop: "2rem", color: "var(--text-secondary)" }} data-aos="fade-up">
-        <p>Generated by the Boston Weekend Mood Agent. Last updated periodically.</p>
-      </div>
-    </div>
+          <div className="bobo-portrait-wrap" aria-hidden="true">
+            <div className="bobo-map-orbit">BOS · BU · CAM</div>
+            <img
+              src="/img/boston-weekend-agent-profile.png"
+              alt=""
+              className="bobo-portrait"
+            />
+          </div>
+        </header>
+
+        <article className="bobo-letter-card" data-aos="fade-up">
+          <div className="bobo-letter-tab">THIS WEEKEND</div>
+
+          {!isLoading && !error && report ? (
+            <div
+              className="bobo-language-switch"
+              role="tablist"
+              aria-label="選擇報告語言"
+            >
+              <button
+                type="button"
+                role="tab"
+                aria-selected={language === "zh"}
+                className={language === "zh" ? "is-active" : ""}
+                onClick={() => setLanguage("zh")}
+              >
+                繁體中文 <span>°C</span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={language === "en"}
+                className={language === "en" ? "is-active" : ""}
+                onClick={() => setLanguage("en")}
+              >
+                English <span>°F</span>
+              </button>
+            </div>
+          ) : null}
+
+          {isLoading ? (
+            <div className="bobo-loading" role="status" aria-live="polite">
+              <span className="bobo-loading-face">⌖ˎˊ˗ 〔•ᴗ•〕</span>
+              <p>波波正在展開地圖……</p>
+              <div className="bobo-loading-line" />
+              <div className="bobo-loading-line bobo-loading-line-short" />
+            </div>
+          ) : error ? (
+            <div className="bobo-error" role="alert">
+              <span>⌖ˎˊ˗ 〔；ᴗ；〕</span>
+              <p>{error}</p>
+              <button
+                type="button"
+                className="bobo-retry-button"
+                onClick={() => {
+                  setIsLoading(true);
+                  setReloadKey((value) => value + 1);
+                }}
+              >
+                再試一次 · Try again
+              </button>
+            </div>
+          ) : (
+            <div
+              className="bobo-report-content"
+              role="tabpanel"
+              lang={language === "zh" ? "zh-Hant" : "en"}
+            >
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  a: ({ children, ...props }) => (
+                    <a {...props} target="_blank" rel="noreferrer noopener">
+                      {children}
+                    </a>
+                  ),
+                }}
+              >
+                {activeReport}
+              </ReactMarkdown>
+            </div>
+          )}
+        </article>
+
+        <footer className="bobo-weekend-footer" data-aos="fade-up">
+          <span>Collected and ranked on AWS</span>
+          <span aria-hidden="true">·</span>
+          <span>Written in 波波's bilingual voice</span>
+          <span aria-hidden="true">·</span>
+          <span>Always verify details with the organizer</span>
+        </footer>
+      </section>
+    </main>
   );
 };
 
