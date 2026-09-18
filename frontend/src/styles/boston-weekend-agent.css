@@ -1,0 +1,385 @@
+.bobo-weekend-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 4%, rgba(252, 217, 110, 0.34), transparent 28rem),
+    radial-gradient(circle at 92% 18%, rgba(227, 192, 84, 0.16), transparent 24rem),
+    var(--bg-color);
+}
+
+.bobo-weekend-shell {
+  padding-top: clamp(2.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3rem, 8vw, 7rem);
+}
+
+.bobo-weekend-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 300px);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  max-width: 980px;
+  margin: 0 auto clamp(2rem, 5vw, 4rem);
+}
+
+.bobo-eyebrow {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  padding: 0.42rem 0.78rem;
+  border: 1px solid rgba(28, 24, 13, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.64);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.bobo-weekend-hero h1 {
+  max-width: 680px;
+  margin-bottom: 0.65rem;
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.bobo-hero-subtitle {
+  margin-bottom: 1.25rem;
+  color: var(--link-color);
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+
+.bobo-hero-intro {
+  max-width: 620px;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.85;
+}
+
+.bobo-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+.bobo-status-dot {
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 50%;
+  background: #76a15d;
+  box-shadow: 0 0 0 5px rgba(118, 161, 93, 0.14);
+}
+
+.bobo-portrait-wrap {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 38% 62% 58% 42% / 45% 42% 58% 55%;
+  background: var(--primary-color);
+  box-shadow: 0 24px 60px rgba(83, 68, 20, 0.16);
+  transform: rotate(2deg);
+}
+
+.bobo-portrait {
+  width: 82%;
+  height: 82%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, 0.86);
+  transform: rotate(-2deg);
+}
+
+.bobo-map-orbit {
+  position: absolute;
+  right: -1.4rem;
+  bottom: 1.1rem;
+  z-index: 2;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: var(--text-primary);
+  color: var(--primary-color);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  transform: rotate(4deg);
+}
+
+.bobo-letter-card {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 4.5rem);
+  border: 1px solid rgba(28, 24, 13, 0.09);
+  border-radius: 24px;
+  background:
+    linear-gradient(rgba(252, 217, 110, 0.06), rgba(252, 217, 110, 0.06)),
+    #fffef9;
+  box-shadow: 0 30px 90px rgba(71, 57, 13, 0.1);
+}
+
+.bobo-letter-card::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  pointer-events: none;
+  border: 1px solid rgba(227, 192, 84, 0.23);
+  border-radius: 17px;
+}
+
+.bobo-letter-tab {
+  position: absolute;
+  top: -0.8rem;
+  left: clamp(1.5rem, 5vw, 4rem);
+  padding: 0.48rem 0.8rem;
+  border-radius: 6px;
+  background: var(--primary-color);
+  color: var(--text-primary);
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 4px 12px rgba(73, 58, 9, 0.12);
+}
+
+.bobo-language-switch {
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+  margin: 0 auto 2.25rem;
+  padding: 0.3rem;
+  display: flex;
+  gap: 0.25rem;
+  border: 1px solid rgba(28, 24, 13, 0.12);
+  border-radius: 999px;
+  background: rgba(244, 241, 230, 0.78);
+}
+
+.bobo-language-switch button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.62rem 1rem;
+  background: transparent;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.83rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.bobo-language-switch button span {
+  margin-left: 0.25rem;
+  color: #8b711b;
+  font-size: 0.72rem;
+}
+
+.bobo-language-switch button.is-active {
+  background: #fffef9;
+  color: var(--text-primary);
+  box-shadow: 0 4px 14px rgba(71, 57, 13, 0.1);
+}
+
+.bobo-language-switch button:focus-visible,
+.bobo-retry-button:focus-visible {
+  outline: 3px solid rgba(227, 192, 84, 0.55);
+  outline-offset: 2px;
+}
+
+.bobo-report-content {
+  position: relative;
+  z-index: 1;
+  color: var(--text-secondary);
+  font-family: ui-serif, Georgia, "Times New Roman", "Noto Serif TC", serif;
+  font-size: clamp(1rem, 1.8vw, 1.08rem);
+  line-height: 1.95;
+}
+
+.bobo-report-content > p:first-child {
+  display: inline-flex;
+  margin: 0 0 1.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(252, 217, 110, 0.24);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-weight: 700;
+}
+
+.bobo-report-content h2 {
+  margin: 2.5rem 0 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+.bobo-report-content h2:first-of-type {
+  margin-top: 0.2rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.bobo-report-content p {
+  margin-bottom: 1.35rem;
+}
+
+.bobo-report-content strong {
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-weight: 750;
+}
+
+.bobo-report-content a {
+  color: #8b711b;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: rgba(191, 161, 67, 0.45);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.bobo-report-content a:hover {
+  color: var(--text-primary);
+  background: rgba(252, 217, 110, 0.2);
+}
+
+.bobo-report-content hr {
+  height: 1px;
+  margin: 3.5rem 0 2.75rem;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(191, 161, 67, 0.65),
+    transparent
+  );
+}
+
+.bobo-report-content hr + h2 {
+  display: inline-flex;
+  margin-top: 0;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  background: var(--text-primary);
+  color: var(--primary-color);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bobo-loading,
+.bobo-error {
+  position: relative;
+  z-index: 1;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.bobo-loading-face,
+.bobo-error > span {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.bobo-loading-line {
+  width: min(100%, 520px);
+  height: 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f2ead0, #fff9e7, #f2ead0);
+  background-size: 200% 100%;
+  animation: bobo-shimmer 1.6s infinite linear;
+}
+
+.bobo-loading-line-short {
+  width: min(72%, 370px);
+}
+
+.bobo-retry-button {
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(28, 24, 13, 0.14);
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.bobo-weekend-footer {
+  max-width: 860px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+@keyframes bobo-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .bobo-weekend-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .bobo-hero-intro {
+    margin-inline: auto;
+  }
+
+  .bobo-status-row {
+    justify-content: center;
+  }
+
+  .bobo-portrait-wrap {
+    order: -1;
+    width: 180px;
+  }
+
+  .bobo-map-orbit {
+    right: -0.6rem;
+  }
+
+  .bobo-letter-card {
+    border-radius: 18px;
+  }
+
+  .bobo-letter-card::before {
+    inset: 8px;
+    border-radius: 13px;
+  }
+
+  .bobo-language-switch {
+    width: 100%;
+  }
+
+  .bobo-language-switch button {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bobo-loading-line {
+    animation: none;
+  }
+}
