@@ -8,10 +8,10 @@ import "../styles/boston-weekend-agent.css";
 
 const REPORT_URL =
   "https://d2ugiuoady5eh5.cloudfront.net/reports/weekend_summary.json";
-const FEEDBACK_API_URL = (import.meta.env.VITE_FEEDBACK_API_URL || "").replace(
-  /\/$/,
-  "",
-);
+const FEEDBACK_API_URL = (
+  import.meta.env.VITE_FEEDBACK_API_URL ||
+  "https://nw4rup2tcj.execute-api.us-east-1.amazonaws.com"
+).replace(/\/$/, "");
 const FEEDBACK_VISITOR_KEY = "boston-weekend-feedback-visitor";
 
 const getFeedbackVisitorId = () => {
