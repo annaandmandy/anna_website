@@ -14,6 +14,37 @@ const FEEDBACK_API_URL = (
 ).replace(/\/$/, "");
 const FEEDBACK_VISITOR_KEY = "boston-weekend-feedback-visitor";
 
+const EDITION_LABELS = {
+  "week-ahead": "WEEK AHEAD",
+  "thursday-preview": "THURSDAY PREVIEW",
+  "friday-update": "FRIDAY UPDATE",
+  "weekend-live": "WEEKEND LIVE",
+  "sunday-and-next": "SUNDAY & NEXT",
+};
+
+const reportDateLabel = (value) => {
+  if (!value) return "";
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return "";
+  return parsed.toLocaleString("en-US", {
+    timeZone: "America/New_York",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+};
+
+const coverageLabel = (coverage) => {
+  if (!coverage?.start_date || !coverage?.end_date) return "";
+  const format = (value) =>
+    new Date(`${value}T12:00:00`).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    });
+  return `${format(coverage.start_date)}–${format(coverage.end_date)}`;
+};
+
 const getFeedbackVisitorId = () => {
   const existing = window.localStorage.getItem(FEEDBACK_VISITOR_KEY);
   if (existing) return existing;
@@ -184,7 +215,10 @@ const WeekendReport = () => {
   };
 
   const activeReport = report?.languages?.[language]?.markdown ?? "";
-  const activities = report?.activities ?? [];
+  const activities = useMemo(() => report?.activities ?? [], [report?.activities]);
+  const editionLabel = EDITION_LABELS[report?.edition] || "DAILY REPORT";
+  const generatedLabel = reportDateLabel(report?.generated_at);
+  const reportCoverage = coverageLabel(report?.coverage);
   const activityCities = useMemo(
     () =>
       [...new Set(activities.map((activity) => activity.city).filter(Boolean))].sort(
@@ -272,18 +306,22 @@ const WeekendReport = () => {
             </p>
             <p className="bobo-hero-intro">
               Weather, events, and the small rhythms that make a Boston weekend
-              feel local. Bo sends a planning edition on Thursday, then checks
-              for changes again on Friday morning.
+              feel local. Bo updates the map every morning, with a fuller planning
+              edition on Thursday and a fresh change check on Friday.
             </p>
             <div className="bobo-status-row" aria-label="Report status">
               <span className="bobo-status-dot" aria-hidden="true" />
               <span>
-                {lastFetched
-                  ? `Latest report checked ${lastFetched.toLocaleTimeString([], {
+                {generatedLabel
+                  ? `${editionLabel} · Updated ${generatedLabel}${
+                      reportCoverage ? ` · Covering ${reportCoverage}` : ""
+                    }`
+                  : lastFetched
+                    ? `Latest report checked ${lastFetched.toLocaleTimeString([], {
                       hour: "numeric",
                       minute: "2-digit",
                     })}`
-                  : "Checking the latest report"}
+                    : "Checking the latest report"}
               </span>
             </div>
           </div>
@@ -299,7 +337,7 @@ const WeekendReport = () => {
         </header>
 
         <article className="bobo-letter-card" data-aos="fade-up">
-          <div className="bobo-letter-tab">WEEKEND REPORT</div>
+          <div className="bobo-letter-tab">{editionLabel}</div>
 
           {!isLoading && !error && report ? (
             <div
@@ -363,15 +401,15 @@ const WeekendReport = () => {
             <section
               className="bobo-activities"
               role="tabpanel"
-              aria-label="Weekend activity candidates"
+              aria-label="Activities over the next ten days"
             >
               <div className="bobo-activities-heading">
                 <div>
                   <p className="bobo-activities-kicker">EXPLORE THE FULL LIST</p>
-                  <h2>Weekend activities</h2>
+                  <h2>Activities over the next 10 days</h2>
                   <p>
-                    Every eligible event in this report&apos;s source snapshot—not
-                    only Bo&apos;s editorial picks.
+                    Every eligible event in Bo&apos;s latest source snapshot—not only
+                    the smaller set selected for today&apos;s letter.
                   </p>
                 </div>
                 <div className="bobo-activities-count" aria-live="polite">
