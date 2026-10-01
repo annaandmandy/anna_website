@@ -100,6 +100,20 @@ const timeSortValue = (value) => {
   return hour * 60 + minute;
 };
 
+const ReportParagraph = ({ children }) => {
+  const paragraphChildren = React.Children.toArray(children);
+  const isSectionHeading =
+    paragraphChildren.length === 1 &&
+    React.isValidElement(paragraphChildren[0]) &&
+    paragraphChildren[0].type === "strong";
+
+  return (
+    <p className={isSectionHeading ? "bobo-report-section-heading" : undefined}>
+      {children}
+    </p>
+  );
+};
+
 const WeekendReport = () => {
   const [report, setReport] = useState(null);
   const [language, setLanguage] = useState("en");
@@ -609,6 +623,7 @@ const WeekendReport = () => {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
+                  p: ReportParagraph,
                   a: ({ children, ...props }) => (
                     <a {...props} target="_blank" rel="noreferrer noopener">
                       {children}
