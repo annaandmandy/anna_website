@@ -210,6 +210,22 @@ a:hover {
   height: 300px !important;
   z-index: 100 !important;
   pointer-events: auto !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* On mobile the fixed character covers the footer links, so get it out of the
+   way once the footer scrolls into view */
+@media (max-width: 767px) {
+  body.live2d-footer-visible .live2d-canvas {
+    opacity: 0;
+    transform: translateY(40px);
+    pointer-events: none !important;
+  }
+
+  body.live2d-footer-visible .live2d-dialog {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 /* Navbar Styles */
