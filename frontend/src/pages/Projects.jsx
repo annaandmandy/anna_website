@@ -24,6 +24,17 @@ export default function Projects() {
 
     const projects = [
         {
+            title: "Meridian \u2014 Confidential M&A Agent",
+            category: "AI Engineering",
+            desc: "\ud83c\udfc6 2nd Place (Dell \u00d7 NVIDIA Hackathon) \u2014 a neutral M&A due-diligence agent that runs entirely on one air-gapped box, so neither party's private data ever leaves the hardware.",
+            detailedDesc: "Two companies want to do a deal, but neither will hand its private data to the other. Meridian is the neutral middle ground: both sides upload signed disclosures into a local clean room, ask questions through Slack, and meet over WebRTC \u2014 and no data, model call or transcript leaves the machine. Access is decided by a deterministic policy engine rather than the model, and every answer carries an evidence label. Built with Carrie Feng in an 8-hour hackathon; I owned the integration and local-serving side \u2014 packaging the agent as an OpenClaw skill on NemoClaw, serving Qwen3.6 locally through vLLM on the GB10, sandboxing it in OpenShell with a host policy that exposes only a few declared API paths, and building the Slack command surface, identity-scoped deal-room access and the clean-room, report and meeting-room interfaces. Carrie owned the defence logic and the vision and voice pipelines.",
+            tech: ["OpenClaw", "NemoClaw", "OpenShell", "vLLM", "Qwen3.6", "NVIDIA GB10", "Slack API", "WebRTC", "Whisper", "Flask", "Docker"],
+            metrics: ["\ud83c\udfc6 2nd Place", "Fully on-prem", "Qwen3.6 on vLLM", "Zero egress"],
+            impact: "Showed that a confidential, two-party AI workflow can run with no cloud dependency at all \u2014 local inference on a single Dell Pro Max with NVIDIA GB10, access decided in code rather than by the model.",
+            link: "https://builderbase.com/event/dell-x-nvidia-ai-hackathon-boston",
+            github: "https://github.com/annaandmandy/dell_nvidia_hackathon"
+        },
+        {
             title: "Citale",
             category: "Full Stack",
             desc: "Social media platform for event discovery, developed within BU Spark! Launch Lab incubator.",
@@ -31,7 +42,7 @@ export default function Projects() {
             tech: ["Next.js", "Supabase", "PostgreSQL", "Google Maps API", "Vercel"],
             metrics: ["Beta Launched", "10+ Core Features", "PostHog Analytics"],
             impact: "Successfully moved from architectural design to a public beta launch, targeting the Boston student community.",
-            link: "https://www.citaleco.com",
+            link: "https://citale.vercel.app",
             github: "https://github.com/sbel2/Citale",
             blog: "/blogs/building-citale-messaging-profiles-and-images-on-supabase"
         },
@@ -92,15 +103,15 @@ export default function Projects() {
             blog: "/blogs/from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline"
         },
         {
-            title: "Boston Weekend Vibe",
+            title: "Boston Weekend Agent",
             category: "Cloud & Backend",
-            desc: "Automated event and weather reporting system using AWS serverless architecture.",
-            detailedDesc: "Built a serverless application using AWS Lambda, S3, and EC2 that generates daily personalized weekend reports combining weather data and Boston events. Automated data collection from multiple APIs and deployed with scheduled triggers. Handles web scraping for event data with EC2 instances.",
-            tech: ["AWS Lambda", "AWS S3", "AWS EC2", "Python", "APIs"],
-            metrics: ["Serverless", "Daily automation", "Multi-source data", "AWS", "Web Scraping"],
-            impact: "Fully automated weekend planning reports with 100% uptime using AWS serverless architecture",
-            link: "/weekend_report",
-            github: null
+            desc: "Serverless weekend guide that collects Greater Boston events daily, ranks them with an LLM editor, and publishes to its own Threads account on schedule \u2014 unattended.",
+            detailedDesc: "EventBridge Scheduler triggers a Step Functions state machine over four containerized Lambdas \u2014 event collection, LLM report, bilingual social copy and activity feedback \u2014 writing timestamped snapshots to S3 and votes to DynamoDB. Events come from Ticketmaster, the City of Boston RSS feed and municipal iCalendar feeds, normalized so one unavailable source never discards usable events from the others. The LLM editor has a versioned persona and reviewed long-term memory in S3, while deterministic code keeps the hard facts \u2014 dates, cancellations, sold-out status, links \u2014 that the model is not allowed to rewrite. Cost is bounded by a conservative 50,000-token estimate gate before each ranking call and a 7,000-token output cap. Infrastructure ships with the code: least-privilege IAM templates, the Step Functions definition, and timezone-aware CloudFormation.",
+            tech: ["AWS Lambda (containers)", "Step Functions", "EventBridge Scheduler", "S3", "DynamoDB", "API Gateway", "CloudFront", "CloudFormation", "IAM", "Docker buildx", "OpenAI", "Python"],
+            metrics: ["Runs unattended", "4-Lambda state machine", "Token-capped LLM calls", "Infra as code"],
+            impact: "Has been publishing on schedule without intervention, with 3.6K+ views on the bot's own Threads account. Replaced an earlier always-on EC2 scraper, so there is no idle compute between runs.",
+            link: "https://www.threads.net/@bostonweekendagent",
+            github: "https://github.com/annaandmandy/boston-weekend-agent"
         },
         {
             title: "RhettSearch – Gamified Research Engine",
@@ -128,10 +139,10 @@ export default function Projects() {
             title: "Hybrid ARIMA–XGBoost Demand Forecasting",
             category: "Machine Learning",
             desc: "Developed a hybrid ARIMA–XGBoost forecasting pipeline for a GPU component manufacturer, improving accuracy from 8.3% → 73.4%.",
-            detailedDesc: "Research project at NTUST AI Lab: Designed a hybrid forecasting model combining ARIMA time-series analysis with XGBoost machine learning. Implemented rolling window adaptive modeling that achieved a 65.1% R² improvement in sales prediction accuracy for GPU components.",
+            detailedDesc: "Research project at NTUST AI & Decision Analysis Lab. Decomposed nine years of monthly sales, modelled the stable seasonal component with seasonal ARIMA and the variable component with XGBoost, then recombined them \u2014 lifting R\u00b2 from 0.083 to 0.734 and cutting MAPE from 28.8% to 16.7% against a single-ARIMA baseline. A conditional rolling window that retrains when forecast error passes a threshold brought MAPE to 14.2%. Engineered external demand drivers as features, including cryptocurrency price, an upstream chip maker's share price and product launch events. Built as decision support for procurement and inventory planning, and presented to the client's business team lead.",
             tech: ["ARIMA", "XGBoost", "Time Series", "Python", "Scikit-learn"],
-            metrics: ["65.1% R² gain", "Hybrid model", "Production deployment", "Research"],
-            impact: "Achieved 65.1% R² improvement (from 8.3% to 73.4%) in demand forecasting accuracy through innovative hybrid modeling",
+            metrics: ["R\u00b2 0.083 \u2192 0.734", "MAPE 28.8% \u2192 14.2%", "Hybrid model", "NTUST Research"],
+            impact: "Turned a baseline that barely tracked the series (R\u00b2 0.083) into a usable monthly forecast (R\u00b2 0.734) by splitting the signal in two and modelling each part with the method that suited it.",
             link: "#",
             github: null
         },
@@ -169,13 +180,13 @@ export default function Projects() {
             github: null
         },
         {
-            title: "Power System Load Forecasting",
+            title: "Ancillary Power Market Forecasting",
             category: "Machine Learning",
-            desc: "Forecasted Taiwan's electricity demand using SARIMAX and Neural Networks, achieving 69.4% accuracy.",
-            detailedDesc: "Time series forecasting project predicting Taiwan's electricity load using SARIMAX (Seasonal ARIMA with exogenous variables) and neural network models. Incorporated weather data and calendar features to achieve 69.4% prediction accuracy for power grid planning.",
-            tech: ["SARIMAX", "Neural Networks", "Time Series", "Python"],
-            metrics: ["69.4% accuracy", "Power grid", "Time series", "Taiwan"],
-            impact: "Achieved 69.4% accuracy in electricity demand forecasting to support power grid capacity planning",
+            desc: "Undergraduate capstone forecasting hourly frequency-regulation reserve trading volume on Taipower's ancillary services market, with a SARIMAX\u2013neural-net hybrid.",
+            detailedDesc: "NTUST Industrial Management capstone (3-person team). Forecast hourly frequency-regulation reserve trading volume on Taiwan's ancillary services market from 6,312 hourly records plus weather and calendar features, after filling missing weather values from nearby stations and dropping dates with too much missing data. SARIMAX captured the 24-hour seasonality with exogenous variables; feeding its residuals into a back-propagation network lifted three-class volume-tier accuracy from 64.07% to 70.03%. Delivered management recommendations: demand-based bid price caps, time-of-day bidding for smaller suppliers, and an aggregator model pooling small suppliers.",
+            tech: ["SARIMAX", "Back-Propagation Network", "Time Series", "Python", "statsmodels"],
+            metrics: ["64.07% \u2192 70.03%", "6,312 hourly records", "Hybrid residual model", "NTUST Capstone"],
+            impact: "Showed that routing SARIMAX residuals through a neural network beats either model alone on volume-tier classification, and turned the forecast into concrete bidding-strategy recommendations for smaller suppliers.",
             link: "https://drive.google.com/file/d/1ymSMYf7Qc58ASLcXHSMZMMnxLYQvSIaI/view?usp=drive_link",
             github: null
         },
