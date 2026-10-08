@@ -56,6 +56,20 @@
         "date": "2026-09-17"
     },
     {
+        "id": 64,
+        "title": "Meridian: A Neutral M&A Agent That Never Leaves the Box",
+        "subtitle": "A trusted intermediary agent for confidential analysis and audit across two companies, without collapsing their information boundaries. How we built it in an 8-hour Dell × NVIDIA hackathon on one NVIDIA GB10, with access decided by code instead of the model. 🏆 2nd place.",
+        "slug": "meridian-a-neutral-m-and-a-agent-that-never-leaves-the-box",
+        "file": "meridian-a-neutral-m-and-a-agent-that-never-leaves-the-box.md",
+        "project": {
+            "title": "Meridian — Confidential M&A Agent",
+            "link": "/projects#meridian-confidential-m-a-agent"
+        },
+        "link": "https://www.hsiangyuhuang.com/blogs/meridian-a-neutral-m-and-a-agent-that-never-leaves-the-box",
+        "content": "",
+        "date": "2026-10-08"
+    },
+    {
         "id": 2,
         "title": "LangGraph vs LangChain: When and Why to Use Each",
         "slug": "langgraph-vs-langchain-when-and-why-to-use-each",

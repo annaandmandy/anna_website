@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 560" width="780" height="560" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5e5845"/>
+    </marker>
+    <style>
+      .lane { fill: #ffffff; stroke: #e3c054; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 14; }
+      .inner { fill: #fffbea; stroke: #e3c054; stroke-width: 1.5; rx: 10; }
+      .box { fill: #fdf5d9; stroke: #e3c054; stroke-width: 1.5; rx: 8; }
+      .mine { fill: #fcd96e; stroke: #bfa143; stroke-width: 2.5; rx: 8; }
+      .src { fill: #ffffff; stroke: #e3c054; stroke-width: 2; rx: 8; }
+      .title { fill: #1c180d; font-size: 13.5px; font-weight: 700; text-anchor: middle; }
+      .sub { fill: #5e5845; font-size: 11px; text-anchor: middle; }
+      .label { fill: #5e5845; font-size: 11.5px; font-weight: 700; letter-spacing: 1.5px; text-anchor: middle; }
+      .note { fill: #5e5845; font-size: 11px; font-style: italic; text-anchor: middle; }
+      .edge { stroke: #5e5845; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .both { stroke: #5e5845; stroke-width: 1.6; fill: none; marker-end: url(#arrow); marker-start: url(#arrow); }
+      .dashed { stroke: #5e5845; stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; marker-end: url(#arrow); marker-start: url(#arrow); }
+      .elabel { fill: #5e5845; font-size: 10.5px; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect width="780" height="560" fill="#f8f8f5"/>
+
+  <!-- Parties lane -->
+  <rect x="20" y="20" width="200" height="520" class="lane"/>
+  <text x="120" y="44" class="label">TWO PARTIES · OWN LAPTOPS</text>
+
+  <rect x="40" y="90" width="160" height="70" class="src"/>
+  <text x="120" y="118" class="title">HarborStone</text>
+  <text x="120" y="136" class="sub">buyer · Slack + browser</text>
+
+  <rect x="40" y="400" width="160" height="70" class="src"/>
+  <text x="120" y="428" class="title">QuantaShield AI</text>
+  <text x="120" y="446" class="sub">target · Slack + browser</text>
+
+  <path d="M 120 160 L 120 400" class="dashed"/>
+  <rect x="60" y="268" width="120" height="30" rx="6" fill="#f8f8f5"/>
+  <text x="120" y="282" class="elabel">WebRTC video</text>
+  <text x="120" y="294" class="elabel">peer to peer</text>
+
+  <!-- GB10 lane -->
+  <rect x="240" y="20" width="520" height="520" class="lane"/>
+  <text x="500" y="44" class="label">DELL PRO MAX · NVIDIA GB10 · EVERYTHING LOCAL</text>
+
+  <!-- NemoClaw / OpenShell sandbox -->
+  <rect x="260" y="64" width="300" height="200" class="inner"/>
+  <text x="410" y="84" class="label">NEMOCLAW</text>
+  <rect x="275" y="96" width="270" height="156" rx="8" fill="#ffffff" stroke="#e3c054" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="410" y="212" class="note">the LLM phrases · the code decides</text>
+  <text x="410" y="229" class="sub">OpenShell sandbox</text>
+  <text x="410" y="243" class="note">egress policy · Landlock · placeholder secrets · OCSF audit</text>
+
+  <rect x="290" y="140" width="110" height="52" class="box"/>
+  <text x="345" y="161" class="title">OpenClaw</text>
+  <text x="345" y="177" class="sub">Slack Socket Mode</text>
+
+  <rect x="420" y="140" width="110" height="52" class="mine"/>
+  <text x="475" y="161" class="title">Meridian skill</text>
+  <text x="475" y="177" class="sub">deterministic policy</text>
+
+  <path d="M 400 166 L 420 166" class="edge"/>
+
+  <!-- Models -->
+  <rect x="580" y="64" width="160" height="90" class="box"/>
+  <text x="660" y="88" class="title">vLLM</text>
+  <text x="660" y="106" class="sub">Qwen3.6-35B-A3B NVFP4</text>
+  <text x="660" y="122" class="sub">LLM + vision</text>
+  <text x="660" y="140" class="sub">no cloud fallback</text>
+
+  <rect x="580" y="174" width="160" height="70" class="box"/>
+  <text x="660" y="200" class="title">Whisper</text>
+  <text x="660" y="218" class="sub">large-v3-turbo on vLLM</text>
+  <text x="660" y="234" class="sub">speech to text</text>
+
+  <path d="M 345 140 L 345 110 L 580 110" class="edge"/>
+  <text x="470" y="104" class="elabel">inference.local</text>
+
+  <!-- Host app -->
+  <rect x="260" y="300" width="300" height="120" class="mine"/>
+  <text x="410" y="326" class="title">Meridian host app (Flask)</text>
+  <text x="410" y="346" class="sub">deal room · clean room · reports</text>
+  <text x="410" y="362" class="sub">meeting room (HTTPS + WebRTC signaling)</text>
+  <text x="410" y="378" class="sub">signature checks · consent · asset verification</text>
+  <text x="410" y="402" class="note">sandbox may call only 4 API paths, python3 only</text>
+
+  <path d="M 475 192 L 475 300" class="edge"/>
+  <text x="522" y="276" class="elabel">meridian-host</text>
+  <text x="522" y="288" class="elabel">policy</text>
+
+  <path d="M 560 360 L 580 360 L 580 244" class="edge"/>
+  <path d="M 560 340 L 600 340 L 600 154" class="edge"/>
+
+  <!-- Data -->
+  <rect x="580" y="300" width="160" height="120" class="src"/>
+  <text x="660" y="326" class="title">Signed data</text>
+  <text x="660" y="346" class="sub">Ed25519 disclosures</text>
+  <text x="660" y="362" class="sub">private A / B records</text>
+  <text x="660" y="378" class="sub">public keys · registry</text>
+  <text x="660" y="394" class="sub">calculation receipt</text>
+
+  <path d="M 475 420 L 475 450 L 660 450 L 660 420" class="edge"/>
+  <text x="567" y="464" class="elabel">read only what the policy allows</text>
+
+  <!-- Party edges -->
+  <path d="M 200 110 C 230 110, 240 160, 290 160" class="both"/>
+  <text x="236" y="102" class="elabel">Slack</text>
+  <path d="M 200 425 C 230 425, 240 380, 290 380" class="both"/>
+  <text x="240" y="414" class="elabel">personal link</text>
+  <text x="240" y="426" class="elabel">HTTPS</text>
+  <path d="M 200 140 C 240 140, 220 340, 290 340" class="both"/>
+
+  <text x="500" y="500" class="note">No data, model call or transcript leaves the box.</text>
+  <text x="500" y="520" class="note">Every line is tied to a Slack-verified person; every answer carries ALLOW / DENY and an evidence tag.</text>
+</svg>

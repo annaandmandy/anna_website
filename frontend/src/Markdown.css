@@ -129,6 +129,16 @@
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.markdown-content video {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 2em auto 0.5em;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: #000;
+}
+
 .markdown-content hr {
     border: 0;
     height: 1px;
