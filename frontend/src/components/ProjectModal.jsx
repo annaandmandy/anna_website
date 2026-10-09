@@ -82,7 +82,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            {project.link.startsWith('/') ? 'View Project' : 'Live Demo →'}
+                            {project.link.startsWith('/blogs/') ? 'Read Blog Post →' : project.link.startsWith('/') ? 'View Project' : 'Live Demo →'}
                         </a>
                     )}
                     {project.github && (

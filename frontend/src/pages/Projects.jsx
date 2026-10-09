@@ -11,6 +11,7 @@ export default function Projects() {
     const location = useLocation();
 
     const slugify = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    const hasLink = (project) => Boolean(project.link) && project.link !== "#";
 
     useEffect(() => {
         AOS.init({ duration: 1000 });
@@ -31,7 +32,7 @@ export default function Projects() {
             tech: ["OpenClaw", "NemoClaw", "OpenShell", "vLLM", "Qwen3.6", "NVIDIA GB10", "Slack API", "WebRTC", "Whisper", "Flask", "Docker"],
             metrics: ["\ud83c\udfc6 2nd Place", "Fully on-prem", "Qwen3.6 on vLLM", "Zero egress"],
             impact: "Showed that a confidential, two-party AI workflow can run with no cloud dependency at all \u2014 local inference on a single Dell Pro Max with NVIDIA GB10, access decided in code rather than by the model.",
-            link: "https://builderbase.com/event/dell-x-nvidia-ai-hackathon-boston",
+            link: "/blogs/meridian-a-neutral-m-and-a-agent-that-never-leaves-the-box",
             github: "https://github.com/annaandmandy/dell_nvidia_hackathon"
         },
         {
@@ -224,7 +225,9 @@ export default function Projects() {
                     "@type": "Person",
                     "name": "Hsiang Yu (Anna) Huang"
                 },
-                "url": project.link && project.link.startsWith('http') ? project.link : `https://www.hsiangyuhuang.com${project.link}`
+                "url": !hasLink(project)
+                    ? `https://www.hsiangyuhuang.com/projects#${slugify(project.title)}`
+                    : project.link.startsWith('http') ? project.link : `https://www.hsiangyuhuang.com${project.link}`
             }
         }))
     };
@@ -285,9 +288,17 @@ export default function Projects() {
                         )}
 
                         <div className="flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-                            <a href={project.link} className="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">
-                                {project.link.startsWith('/') ? 'View' : 'Live Demo'}
-                            </a>
+                            {hasLink(project) && (
+                                project.link.startsWith('/') ? (
+                                    <Link to={project.link} className="btn btn-outline btn-sm">
+                                        {project.link.startsWith('/blogs/') ? 'Read Blog Post' : 'View'}
+                                    </Link>
+                                ) : (
+                                    <a href={project.link} className="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">
+                                        Live Demo
+                                    </a>
+                                )
+                            )}
                             {project.detailedDesc && (
                                 <button
                                     className="btn btn-primary btn-sm"
