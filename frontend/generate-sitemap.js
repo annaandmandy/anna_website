@@ -18,7 +18,9 @@ const staticRoutes = [
     '/hire-me',
     '/interests',
     '/weekend_report',
-    '/blogs'
+    '/blogs',
+    '/Teri/privacy',
+    '/Teri/support'
 ];
 
 async function generateSitemap() {

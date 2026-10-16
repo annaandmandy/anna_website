@@ -17,12 +17,16 @@ import WeekendReport from './pages/BostonWeekendAgent';
 import HireMe from './pages/HireMe';
 import Blogs from './pages/Blogs';
 import BlogPost from './pages/BlogPost';
+import TeriPrivacy from './pages/TeriPrivacy';
+import TeriSupport from './pages/TeriSupport';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   const [count, setCount] = useState(0)
+  // The Teri app's policy pages stay plain so nothing covers the text.
+  const isTeriPage = useLocation().pathname.toLowerCase().startsWith('/teri/');
 
   return (
     <HelmetProvider>
@@ -40,8 +44,10 @@ function App() {
         <Route path="/hire-me" element={<HireMe />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:slug" element={<BlogPost />} />
+        <Route path="/Teri/privacy" element={<TeriPrivacy />} />
+        <Route path="/Teri/support" element={<TeriSupport />} />
       </Routes>
-      <Live2DModel />
+      {!isTeriPage && <Live2DModel />}
       <Footer />
     </HelmetProvider>
   );

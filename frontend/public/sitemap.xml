@@ -8,45 +8,20 @@
   <url>
     <loc>https://www.hsiangyuhuang.com/about</loc>
     <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://www.hsiangyuhuang.com/projects</loc>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://www.hsiangyuhuang.com/hire-me</loc>
-    <priority>0.95</priority>
-    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://www.hsiangyuhuang.com/interests</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.hsiangyuhuang.com/gorillacharms</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.hsiangyuhuang.com/booklet</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.hsiangyuhuang.com/messageboard</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.hsiangyuhuang.com/game</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.hsiangyuhuang.com/onsen-game</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -61,28 +36,391 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.hsiangyuhuang.com/Teri/privacy</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/Teri/support</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.hsiangyuhuang.com/blogs/how-i-designed-a-production-chatbot-backend</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-01-20</lastmod>
   </url>
   <url>
     <loc>https://www.hsiangyuhuang.com/blogs/from-tweets-to-trends-building-an-end-to-end-azure-data-and-ml-pipeline</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-09-16</lastmod>
   </url>
   <url>
     <loc>https://www.hsiangyuhuang.com/blogs/building-citale-messaging-profiles-and-images-on-supabase</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-09-17</lastmod>
   </url>
   <url>
     <loc>https://www.hsiangyuhuang.com/blogs/building-a-multi-agent-novel-generator-keeping-an-llm-on-plot</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-09-17</lastmod>
   </url>
   <url>
     <loc>https://www.hsiangyuhuang.com/blogs/meridian-a-neutral-m-and-a-agent-that-never-leaves-the-box</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/langgraph-vs-langchain-when-and-why-to-use-each</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/designing-an-llm-memory-system-short-term-vector-and-summarization</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/rag-from-scratch-architecture-failure-cases-and-evaluation</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/prompt-engineering-is-not-guessing-a-structured-iteration-framework</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/how-llm-systems-fail-in-production-and-how-to-catch-them</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/designing-an-ai-system-for-latency-cost-and-reliability</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/building-an-agent-router-intent-classification-for-llm-workflows</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/logging-and-observability-for-llm-applications</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/from-notebook-to-production-lessons-shipping-an-ai-feature</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/fastapi-internals-request-lifecycle-and-dependency-injection</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/designing-rest-apis-for-ai-systems</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/mongodb-schema-design-for-ai-applications</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/sql-vs-nosql-in-ai-systems-real-tradeoffs</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/kafka-for-ai-engineers-event-driven-thinking</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/faust-vs-kafka-streams-async-stream-processing-explained</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/redis-beyond-caching-queues-rate-limiting-and-locks</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/ci-cd-for-ai-engineers-docker-github-actions-and-aws</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/feature-flags-and-config-management-for-ai-products</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/handling-retries-timeouts-and-partial-failures-in-ai-pipelines</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/designing-a-scalable-chatbot-system</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/how-to-design-an-event-ingestion-pipeline</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/designing-a-metrics-pipeline-latency-cost-usage</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/tradeoffs-between-sync-vs-async-ai-workflows</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/designing-for-multi-tenant-ai-systems</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/rate-limiting-strategies-for-ai-apis</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/data-modeling-for-analytics-vs-transactions</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/cold-start-problems-in-ai-systems</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/when-to-use-background-jobs-vs-streaming</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/designing-systems-that-fail-gracefully</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/when-to-use-bfs-vs-dfs-in-real-systems</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/why-binary-search-is-everywhere</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/big-o-for-backend-engineers-without-math-pain</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/how-databases-use-indexes-internally</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/transactions-isolation-levels-and-real-bugs</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/what-happens-when-you-make-an-http-request</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/threads-async-and-event-loops-explained</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/why-queues-exist-and-when-you-need-one</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/common-backend-bottlenecks-and-how-to-debug-them</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/what-fine-tuning-is-and-when-you-dont-need-it</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/embeddings-explained-for-software-engineers</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/model-evaluation-for-non-research-engineers</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/tokenization-context-windows-and-why-they-matter</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/gpu-vs-cpu-what-ai-engineers-actually-need-to-know</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/why-inference-optimization-matters-more-than-training</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/cost-modeling-for-llm-apis</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/hallucinations-causes-detection-and-mitigation</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/prompt-vs-model-choosing-the-right-lever</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/when-not-to-use-ai</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/how-ai-engineers-are-different-from-ml-researchers</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/the-real-ai-engineer-skill-gap-in-2025</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/why-most-ai-proof-of-concepts-fail</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/building-ai-products-vs-ai-demos</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/the-economics-of-ai-startups</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/evaluating-new-ai-tools-without-hype</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/what-i-look-for-in-an-ai-engineering-role</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/lessons-from-shipping-ai-in-fintech</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/what-i-d-learn-differently-starting-over</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hsiangyuhuang.com/blogs/my-6-month-roadmap-to-becoming-an-ai-platform-engineer</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-16</lastmod>
   </url>
 </urlset>

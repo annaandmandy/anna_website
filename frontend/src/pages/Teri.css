@@ -1,0 +1,41 @@
+.teri-doc {
+  max-width: 720px;
+  padding-top: calc(var(--header-height) + var(--spacing-lg));
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.teri-doc h1 {
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+}
+
+.teri-doc h2 {
+  font-size: 1.25rem;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.teri-doc ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.teri-doc li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.teri-doc a {
+  color: var(--link-color);
+}
+
+.teri-doc .teri-doc-meta {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.teri-doc code {
+  background: var(--bg-secondary);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
