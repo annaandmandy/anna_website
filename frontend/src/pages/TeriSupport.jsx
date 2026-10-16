@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import "./Teri.css";
 
-const CONTACT = "huanganna1004@gmail.com";
+const CONTACT = "anna@hsiangyuhuang.com";
 
 export default function TeriSupport() {
     return (
